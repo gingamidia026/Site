@@ -265,7 +265,7 @@ a { color: inherit; }
 /* ================= HERO ================= */
 .hero {
     position: relative;
-    padding: 24px 6vw 70px;
+    padding: 28px 6vw 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -307,7 +307,7 @@ a { color: inherit; }
 .hero-chamada {
     position: relative;
     z-index: 2;
-    margin-top: 26px;
+    margin-top: 34px;
     font-size: clamp(44px, 12vw, 104px);
     line-height: 1.05;
     text-transform: uppercase;
@@ -339,7 +339,7 @@ a { color: inherit; }
 .hero-sub {
     position: relative;
     z-index: 2;
-    margin: 18px auto 0;
+    margin: 24px auto 0;
     max-width: 520px;
     font-size: 18px;
 }
@@ -412,7 +412,8 @@ a { color: inherit; }
 }
 .ave img { width: 100%; height: auto; }
 .ave-tucano { left: -6vw; width: 20vw; top: calc(270px + 5vw); }
-.ave-arara { right: -2vw; }
+/* o desenho da arara acaba em 86% da imagem: -6.5vw faz a asa encostar e passar um pouco da borda */
+.ave-arara { right: -6.5vw; }
 
 /* ================= BOTÕES (Correio da Ginga) ================= */
 .botao {
@@ -498,7 +499,7 @@ a { color: inherit; }
     z-index: 2;
     width: 100%;
     max-width: 380px;
-    margin-top: 44px;
+    margin-top: 52px;
     display: grid;
     grid-template-columns: 1fr;
     gap: 30px;
@@ -1185,9 +1186,10 @@ body.modal-aberto { overflow: hidden; }
     .folhas-esq { left: -6vw; top: 300px; }
     .folhas-dir { right: -6vw; top: 300px; }
 
-    .ave { top: 190px; width: min(24vw, 360px); }
-    .ave-tucano { left: -3vw; width: min(20vw, 300px); top: calc(190px + 4vw); }
-    .ave-arara { right: 1vw; }
+    /* aves encostadas na borda: o desenho do tucano começa em 11% da imagem e o da arara acaba em 86% */
+    .ave { top: 210px; width: min(20vw, 360px); }
+    .ave-tucano { left: calc(min(17vw, 300px) * -.12); width: min(17vw, 300px); top: calc(210px + 4vw); }
+    .ave-arara { right: calc(min(20vw, 360px) * -.15); }
 
     .secao { padding: 110px 6vw; }
     #servicos .conteudo { grid-template-columns: 1.2fr 1fr; }
@@ -1261,6 +1263,25 @@ body.modal-aberto { overflow: hidden; }
     }
     .menu a { padding: 10px 12px; min-height: 0; white-space: nowrap; }
     .menu .menu-cta { margin-top: 0; }
+
+    /* no PC tamanhos e espaços seguem a altura da janela: o começo do primeiro selo aparece sem rolar */
+    .hero { padding-top: 4vh; }
+    .hero-centro { padding-top: 6vh; }
+    .logo img { height: clamp(60px, 10vh, 120px); }
+    .divisoria { height: clamp(48px, 8vh, 84px); }
+    .hero-chamada { margin-top: 5vh; font-size: clamp(52px, min(7vw, 11vh), 108px); }
+    .hero-sub { margin-top: 3.5vh; }
+    .grade-tres { margin-top: 7vh; }
+    .sol { top: calc(6vh + clamp(60px, 10vh, 120px) + 2vh); max-width: min(300px, 26vw, 42vh); }
+
+    /* aves menores, encostadas na borda */
+    .ave { top: 230px; width: min(15vw, 230px); }
+    .ave-tucano { left: calc(min(13vw, 200px) * -.12); width: min(13vw, 200px); top: calc(230px + 3vw); }
+    .ave-arara { right: calc(min(15vw, 230px) * -.15); }
+    .folhas { width: 20vw; max-width: 300px; }
+    .folhas-esq { left: -4vw; top: 380px; }
+    .folhas-dir { right: -4vw; top: 380px; }
+    .carimbo-giro { width: 110px; height: 110px; top: 50px; left: -10px; }
 
     .passos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 72px; }
     .grade-portfolio { grid-template-columns: repeat(4, 1fr); }
