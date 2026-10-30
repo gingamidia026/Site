@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Minas Gerais: serras e igrejinha barroca -->
+  <path d="M0 230L70 150L130 210L200 120L280 200L340 150L400 210V300H0Z" opacity=".55"/>
+  <path d="M0 300V260Q200 220 400 262V300Z"/>
+  <g transform="translate(150 140)">
+    <rect x="0" y="40" width="26" height="90"/>
+    <rect x="74" y="40" width="26" height="90"/>
+    <path d="M0 40q13-24 26 0ZM74 40q13-24 26 0Z"/>
+    <path d="M10 16v-6h6v6ZM84 16v-6h6v6Z"/>
+    <path d="M26 60h48v70H26Z"/>
+    <path d="M26 60q24-30 48 0Z"/>
+    <path d="M47 30v-14h6v14ZM42 22h16v4H42Z"/>
+    <path d="M42 130v-34q8-10 16 0v34Z" fill="#F2E8DC" opacity=".5"/>
+  </g>
+</svg>

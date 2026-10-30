@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Rio de Janeiro: Corcovado com o Cristo, Pão de Açúcar e o mar -->
+  <path d="M0 300V200Q40 120 80 110Q120 100 150 190L170 300Z"/>
+  <path d="M74 112v-30h6v30Z"/><path d="M62 88h30v5H62Z"/><circle cx="77" cy="78" r="4"/>
+  <path d="M190 300Q215 150 255 140Q295 150 305 240L320 300Z"/>
+  <path d="M300 300Q320 210 350 205Q385 210 400 260V300Z"/>
+  <path d="M255 142L350 207" stroke="#1D233B" stroke-width="2" fill="none"/>
+  <g fill="none" stroke="#F2E8DC" stroke-opacity=".5" stroke-width="4" stroke-linecap="round">
+    <path d="M10 270q15-8 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/>
+    <path d="M30 288q15-8 30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0t30 0"/>
+  </g>
+</svg>

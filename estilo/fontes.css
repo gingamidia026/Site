@@ -1,0 +1,31 @@
+/* Fontes Ginga Mídia
+   Anton: títulos, em caixa alta (identidade Correio da Ginga)
+   Cantarell: texto, logo e a palavra-chave da tarja (negrito itálico)
+   Limite: 2 fontes no site inteiro (regra fontes-demais) */
+
+:root {
+    --fonte-titulo: 'Anton', 'Impact', sans-serif;
+    --fonte-texto: 'Cantarell', system-ui, sans-serif;
+}
+
+body {
+    font-family: 'Cantarell', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.fonte-titulo {
+    font-family: var(--fonte-titulo);
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: .95;
+    letter-spacing: .005em;
+}
+
+h3, .etiqueta, .botao, label {
+    font-family: 'Cantarell', system-ui, sans-serif;
+}
+
+h3 {
+    font-weight: 700;
+}

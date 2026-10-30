@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Cerrado: ipê florido de galhos tortos -->
+  <path d="M0 255Q200 235 400 255V300H0Z"/>
+  <path d="M190 255q6-50-14-90l10-4q16 30 14 56q10-40 40-60l6 8q-30 24-36 60q-4 16 0 30Z"/>
+  <path d="M182 168q-30-20-52-20l2-8q30 2 54 22Z"/>
+  <g>
+    <circle cx="130" cy="130" r="34"/><circle cx="170" cy="110" r="42"/>
+    <circle cx="225" cy="105" r="38"/><circle cx="260" cy="135" r="30"/>
+    <circle cx="200" cy="145" r="30"/>
+  </g>
+  <g fill="#F2E8DC" opacity=".5">
+    <circle cx="150" cy="105" r="4"/><circle cx="190" cy="90" r="4"/><circle cx="230" cy="120" r="4"/>
+    <circle cx="125" cy="140" r="3"/><circle cx="255" cy="140" r="3"/><circle cx="205" cy="130" r="3"/>
+  </g>
+  <g fill="#1D233B">
+    <circle cx="60" cy="270" r="2"/><circle cx="300" cy="230" r="4"/><circle cx="320" cy="245" r="3"/>
+  </g>
+  <path d="M40 255q4-30 0-50M52 255q6-24 18-40M340 255q-4-28 4-46M354 255q6-20 20-34" stroke="#1D233B" stroke-width="4" fill="none" stroke-linecap="round"/>
+</svg>

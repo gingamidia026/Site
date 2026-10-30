@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Brasília: Congresso Nacional -->
+  <rect x="0" y="250" width="400" height="50"/>
+  <rect x="40" y="226" width="320" height="24"/>
+  <rect x="180" y="80" width="16" height="146"/>
+  <rect x="204" y="80" width="16" height="146"/>
+  <rect x="196" y="120" width="8" height="6"/>
+  <path d="M70 226q40-60 80 0Z"/>
+  <path d="M250 196q40 50 80 0Z"/>
+  <rect x="288" y="196" width="4" height="30"/>
+</svg>

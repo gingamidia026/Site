@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Pantanal: tuiuiú na água, capim e capivara -->
+  <path d="M0 250h400v50H0Z"/>
+  <g fill="none" stroke="#F2E8DC" stroke-opacity=".5" stroke-width="3" stroke-linecap="round">
+    <path d="M20 268h40M120 280h60M240 266h50M320 284h50"/>
+  </g>
+  <!-- tuiuiú -->
+  <g transform="translate(150 70)">
+    <path d="M30 70q-10-50 30-60q40 0 50 60q-10 40-50 40q-30 0-30-40Z"/>
+    <path d="M44 20q-6-26 10-34q16-6 18 14l-8 20Z"/>
+    <path d="M58-8l-46 30l4 4l46-26Z"/>
+    <path d="M52 108l-6 72h5l8-70ZM70 108l6 72h5l-4-72Z"/>
+  </g>
+  <!-- capim -->
+  <g stroke="#1D233B" stroke-width="5" stroke-linecap="round" fill="none">
+    <path d="M30 250q-6-40 4-70M44 250q2-50 20-80M58 250q8-36 26-56M330 250q-4-44 10-74M346 250q4-40 26-62M318 250q-10-30-26-46"/>
+  </g>
+  <!-- capivara -->
+  <path d="M250 250q-4-44 46-46q36 0 44 26q14 0 14 12q0 8-12 8Z"/>
+  <circle cx="338" cy="226" r="2.5" fill="#F2E8DC"/>
+</svg>

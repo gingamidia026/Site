@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Carnaval: pandeiro, máscara, serpentinas e confete -->
+  <g transform="translate(110 200)">
+    <circle r="62"/>
+    <circle r="46" fill="#F2E8DC" opacity=".45"/>
+    <g fill="#1D233B"><rect x="-8" y="-66" width="16" height="10" rx="3"/><rect x="-8" y="56" width="16" height="10" rx="3"/><rect x="-66" y="-8" width="10" height="16" rx="3"/><rect x="56" y="-8" width="10" height="16" rx="3"/></g>
+  </g>
+  <path d="M230 170q30-30 70-14q40-16 70 14q-10 40-44 34q-12-16-26-16t-26 16q-34 6-44-34Z"/>
+  <g fill="#F2E8DC" opacity=".55"><ellipse cx="270" cy="176" rx="14" ry="9"/><ellipse cx="330" cy="176" rx="14" ry="9"/></g>
+  <path d="M300 156q10-50 50-60q-24 22-40 62Z"/>
+  <g fill="none" stroke="#1D233B" stroke-width="5" stroke-linecap="round">
+    <path d="M10 60q30-30 50 0t50 0t50 0"/>
+    <path d="M230 60q20 30 50 10t40 20t50-10"/>
+    <path d="M200 270q20-20 40 0t40 0t40 0t40 0"/>
+  </g>
+  <g><circle cx="200" cy="110" r="5"/><circle cx="40" cy="120" r="4"/><circle cx="380" cy="120" r="5"/><circle cx="250" cy="240" r="4"/><rect x="170" y="40" width="8" height="8" transform="rotate(30 174 44)"/><rect x="350" y="230" width="8" height="8" transform="rotate(20 354 234)"/></g>
+</svg>

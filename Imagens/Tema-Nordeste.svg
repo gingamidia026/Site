@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- sol do sertão com raios, estilo xilogravura de cordel -->
+  <g transform="translate(300 90)">
+    <circle r="38"/>
+    <g stroke="#1D233B" stroke-width="7" stroke-linecap="round">
+      <path d="M0-52V-74M0 52V74M-52 0H-74M52 0H74M-37-37-52-52M37 37 52 52M-37 37-52 52M37-37 52-52"/>
+    </g>
+  </g>
+  <!-- morros -->
+  <path d="M0 250Q70 200 140 235T290 220T400 230V300H0Z"/>
+  <!-- mandacarus -->
+  <g>
+    <rect x="62" y="120" width="22" height="140" rx="11"/>
+    <path d="M62 190H44a12 12 0 0 1-12-12v-40a10 10 0 0 1 20 0v32h10Z"/>
+    <path d="M84 170h16v-36a10 10 0 0 1 20 0v46a12 12 0 0 1-12 12H84Z"/>
+  </g>
+  <g transform="translate(180 40) scale(.7)">
+    <rect x="62" y="120" width="22" height="160" rx="11"/>
+    <path d="M62 200H44a12 12 0 0 1-12-12v-40a10 10 0 0 1 20 0v32h10Z"/>
+    <path d="M84 175h16v-36a10 10 0 0 1 20 0v46a12 12 0 0 1-12 12H84Z"/>
+  </g>
+</svg>

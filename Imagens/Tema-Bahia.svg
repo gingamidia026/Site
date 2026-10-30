@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Bahia: coqueiros, mar e jangada -->
+  <circle cx="320" cy="80" r="30" opacity=".6"/>
+  <path d="M0 250Q100 238 200 248T400 244V300H0Z"/>
+  <g id="c">
+    <path d="M80 250q4-80 30-150h7q-24 70-28 150Z"/>
+    <g transform="translate(113 100)">
+      <path d="M0 0q-40-24-80-6q42-6 80 6Z"/>
+      <path d="M0 0q-24-40-62-46q34 18 62 46Z"/>
+      <path d="M0 0q16-44 54-50q-30 22-54 50Z"/>
+      <path d="M0 0q44-20 80 0q-42-6-80 0Z"/>
+      <path d="M0 0q34 8 52 44q-26-28-52-44Z"/>
+      <circle cx="-4" cy="6" r="5"/><circle cx="6" cy="8" r="5"/>
+    </g>
+  </g>
+  <use href="#c" transform="translate(-40 40) scale(.8)"/>
+  <!-- jangada -->
+  <path d="M250 236h70l-8 8h-54Z"/>
+  <path d="M284 236V160q30 30 20 76Z"/>
+</svg>

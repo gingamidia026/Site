@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- Sul: araucárias sobre os campos -->
+  <path d="M0 260Q100 225 200 250T400 245V300H0Z"/>
+  <g id="a">
+    <rect x="96" y="120" width="8" height="140"/>
+    <path d="M40 140q60-30 120 0q-60-14-120 0Z"/>
+    <path d="M50 118q50-26 100 0q-50-12-100 0Z"/>
+    <path d="M62 98q38-20 76 0q-38-10-76 0Z"/>
+    <path d="M76 80q24-14 48 0q-24-8-48 0Z"/>
+  </g>
+  <use href="#a" transform="translate(150 30) scale(.8)"/>
+  <use href="#a" transform="translate(250 -10) scale(1.05)"/>
+  <use href="#a" transform="translate(-60 70) scale(.7)"/>
+</svg>

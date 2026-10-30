@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="#1D233B">
+  <!-- skyline de São Paulo: prédios, antena, Copan e MASP -->
+  <rect x="0" y="170" width="40" height="130"/>
+  <rect x="44" y="120" width="34" height="180"/>
+  <path d="M58 120V80h6v40Z"/>
+  <path d="M84 300V150q30-30 60 0v150Z"/>
+  <path d="M150 300V100h44v200Z"/>
+  <path d="M168 100V60h8v40Z"/>
+  <rect x="200" y="150" width="30" height="150"/>
+  <rect x="236" y="130" width="40" height="170"/>
+  <rect x="282" y="185" width="36" height="115"/>
+  <rect x="324" y="110" width="30" height="190"/>
+  <rect x="358" y="160" width="42" height="140"/>
+  <!-- janelas -->
+  <g fill="#F2E8DC" opacity=".55">
+    <rect x="50" y="135" width="6" height="8"/><rect x="64" y="135" width="6" height="8"/>
+    <rect x="50" y="155" width="6" height="8"/><rect x="64" y="175" width="6" height="8"/>
+    <rect x="158" y="115" width="8" height="8"/><rect x="176" y="115" width="8" height="8"/>
+    <rect x="158" y="140" width="8" height="8"/><rect x="176" y="165" width="8" height="8"/>
+    <rect x="244" y="145" width="8" height="8"/><rect x="260" y="170" width="8" height="8"/>
+    <rect x="332" y="125" width="6" height="8"/><rect x="332" y="150" width="6" height="8"/>
+  </g>
+  <!-- ondas do Copan -->
+  <path d="M96 170q24-10 48 0M96 190q24-10 48 0M96 210q24-10 48 0" stroke="#F2E8DC" stroke-opacity=".55" stroke-width="4" fill="none"/>
+  <!-- chão -->
+  <rect y="290" width="400" height="10"/>
+</svg>

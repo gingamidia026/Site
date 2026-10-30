@@ -1,9 +1,511 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
-    <title>Ginga Mídia- anúncios, fotos, sites e muito mais</title>
-    <meta name="description" content="Ginga Mídia, especialista em marketing completo com produção de anúncios, sites, fotos e muito mais"
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Título -->
+    <title>Ginga Mídia | Fotos, Vídeos, Sites e Anúncios em Araraquara</title>
+
+    <!-- Descrição -->
+    <meta name="description" content="Fotos profissionais, vídeos, criação de sites e anúncios que vendem. Atendemos Araraquara e região. Orçamento sem compromisso pelo WhatsApp.">
+
+    <!-- Palavras chaves -->
+    <meta name="keywords" content="fotógrafo em Araraquara, fotos de produtos Araraquara, videomaker Araraquara, filmagem para empresas, criação de sites Araraquara, site para loja virtual, anúncios online, anúncios no Google, anúncios no Instagram, gestão de Instagram, social media Araraquara, quem cuida de redes sociais, gestor de tráfego, empresa de anúncios Araraquara">
+
+    <!-- Open Graph (pré-visualização ao compartilhar o link) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Ginga Mídia | Anúncios, Fotos, Vídeos e Sites em Araraquara">
+    <meta property="og:description" content="Mais anúncios, mais fotos e vídeos, mais sites. Peça seu orçamento pelo WhatsApp.">
+    <meta property="og:image" content="Imagens/Logo.png">
+    <meta name="theme-color" content="#F2E8DC">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="Imagens/Favicon-192.png">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="estilo/cores.css">
+    <link rel="stylesheet" href="estilo/fontes.css">
+    <link rel="stylesheet" href="estilo/styles.css">
+
+    <!-- Fonte -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+    <!-- Dados estruturados para o Google -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Ginga Mídia",
+      "description": "Fotos, vídeos, criação de sites e anúncios online em Araraquara e região.",
+      "telephone": "+55-16-99607-6565",
+      "areaServed": "Araraquara, SP",
+      "address": { "@type": "PostalAddress", "addressLocality": "Araraquara", "addressRegion": "SP", "addressCountry": "BR" }
+    }
+    </script>
 </head>
+<body>
+
+    <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+    <!-- ============ TOPO / MENU ============ -->
+    <header class="topo" id="topo">
+        <a class="topo-marca" href="#inicio" aria-label="Ginga Mídia, ir para o início">
+            <img src="Imagens/Logo-azul-escuro.webp" alt="Ginga Mídia" width="900" height="398">
+        </a>
+
+        <button class="menu-botao" id="menuBotao" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+            <span></span><span></span><span></span>
+        </button>
+
+        <nav class="menu" id="menu" aria-label="Navegação principal">
+            <a href="#servicos">Serviços</a>
+            <a href="#como-funciona">Como funciona</a>
+            <a href="#quem-somos">Quem somos</a>
+            <a href="#portfolio">Portfólio</a>
+            <a href="#sobre">Sobre</a>
+            <a class="menu-cta" href="#contato">Orçamento</a>
+        </nav>
+    </header>
+
+    <main id="conteudo">
+
+        <!-- ============ INÍCIO (HERO) ============ -->
+        <section class="hero" id="inicio">
+            <div class="decoracao" aria-hidden="true">
+                <img class="folhas folhas-esq" src="Imagens/Folhas-laranja.svg" alt="">
+                <img class="folhas folhas-dir" src="Imagens/Folhas-laranja.svg" alt="">
+                <div class="ave ave-tucano"><img src="Imagens/Ave-tucano.webp" alt=""></div>
+                <div class="ave ave-arara"><img src="Imagens/Ave-arara.webp" alt=""></div>
+            </div>
+
+            <div class="hero-centro">
+                <div class="sol" aria-hidden="true"></div>
+
+                <div class="logo">
+                    <img src="Imagens/Logo-azul-escuro.webp" alt="Ginga Mídia" width="900" height="398">
+                    <div class="divisoria"></div>
+                    <p class="logo-lista">+ Anúncios<br>+ Fotos &amp; vídeos<br>+ Sites</p>
+                </div>
+
+                <h1 class="hero-chamada fonte-titulo">Sua empresa <br>onde <span class="tarja"><span>importa</span><svg class="brilho" viewBox="0 0 40 40" aria-hidden="true"><path d="M20 0c1.6 11 7.4 17 20 20-12.6 3-18.4 9-20 20-1.6-11-7.4-17-20-20C12.6 17 18.4 11 20 0Z"/></svg></span></h1>
+                <p class="hero-sub">Fotos, vídeos, sites e anúncios em <strong>Araraquara e região</strong>.</p>
+
+                <svg class="carimbo-giro" viewBox="0 0 120 120" aria-hidden="true">
+                    <defs><path id="circuloCarimbo" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+                    <circle cx="60" cy="60" r="57" class="carimbo-fundo"/>
+                    <circle cx="60" cy="60" r="31" class="carimbo-linha"/>
+                    <text class="carimbo-texto"><textPath href="#circuloCarimbo">GINGA MÍDIA • ARARAQUARA • SP •</textPath></text>
+                    <text class="carimbo-centro" x="60" y="57" text-anchor="middle">CEP</text>
+                    <text class="carimbo-centro" x="60" y="73" text-anchor="middle">14800</text>
+                </svg>
+            </div>
+
+            <div class="grade-tres">
+                    <article class="selo selo-laranja revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre Anúncios">
+                        <div class="selo-face tema-nordeste">
+                            <div class="selo-topo">
+                                <span class="selo-icone" aria-hidden="true">+</span>
+                                <span class="selo-valor">01</span>
+                            </div>
+                            <!-- Troque o bloco abaixo por: <img src="Imagens/servico.jpg" alt="descrição"> -->
+                            <div class="selo-imagem"><span>Imagem</span></div>
+                            <h3 class="selo-nome fonte-titulo">Anúncios</h3>
+                            <p>Campanhas no Google e no Instagram feitas para trazer clientes de verdade, não só curtidas.</p>
+                            <ul>
+                                <li>Anúncios no Google e Instagram</li>
+                                <li>Gestão de tráfego pago</li>
+                                <li>Gestão de redes sociais</li>
+                                <li>Relatórios simples de entender</li>
+                            </ul>
+                            <div class="selo-mais" hidden>
+                                <p>Criamos, acompanhamos e ajustamos suas campanhas toda semana. Você define quanto quer investir e nós cuidamos do resto: público, criativos, textos e orçamento, sempre de olho em quem realmente vira cliente.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20an%C3%BAncios." target="_blank" rel="noopener">Quero anunciar</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="selo selo-amarelo selo-contorno-claro revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre Fotos &amp; vídeos">
+                        <div class="selo-face tema-sp">
+                            <div class="selo-topo">
+                                <span class="selo-icone" aria-hidden="true">+</span>
+                                <span class="selo-valor">02</span>
+                            </div>
+                            <!-- Troque o bloco abaixo por: <img src="Imagens/servico.jpg" alt="descrição"> -->
+                            <div class="selo-imagem"><span>Imagem</span></div>
+                            <h3 class="selo-nome fonte-titulo">Fotos &amp; vídeos</h3>
+                            <p>Imagens profissionais que mostram o melhor do seu produto, do seu espaço e da sua equipe.</p>
+                            <ul>
+                                <li>Fotos de produtos</li>
+                                <li>Filmagem para empresas</li>
+                                <li>Vídeos curtos para redes sociais</li>
+                                <li>Cobertura de eventos</li>
+                            </ul>
+                            <div class="selo-mais" hidden>
+                                <p>Vamos até a sua empresa ou produzimos em estúdio. Planejamos o roteiro com você, cuidamos da luz, da edição e entregamos tudo pronto para o site, as redes sociais e os anúncios.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20fotos%20e%20v%C3%ADdeos." target="_blank" rel="noopener">Quero fotos e vídeos</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="selo selo-vermelho revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre Sites">
+                        <div class="selo-face tema-amazonia">
+                            <div class="selo-topo">
+                                <span class="selo-icone" aria-hidden="true">+</span>
+                                <span class="selo-valor">03</span>
+                            </div>
+                            <!-- Troque o bloco abaixo por: <img src="Imagens/servico.jpg" alt="descrição"> -->
+                            <div class="selo-imagem"><span>Imagem</span></div>
+                            <h3 class="selo-nome fonte-titulo">Sites</h3>
+                            <p>Sites rápidos, bonitos e fáceis de achar no Google, prontos para o celular de quem te procura.</p>
+                            <ul>
+                                <li>Sites institucionais</li>
+                                <li>Lojas virtuais</li>
+                                <li>Páginas de captura e vendas</li>
+                                <li>Otimização para o Google</li>
+                            </ul>
+                            <div class="selo-mais" hidden>
+                                <p>Do domínio à publicação: criamos o layout com a cara da sua marca, escrevemos textos que vendem, deixamos o site rápido no celular e preparado para aparecer no Google.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20saber%20mais%20sobre%20cria%C3%A7%C3%A3o%20de%20sites." target="_blank" rel="noopener">Quero um site</a>
+                            </div>
+                        </div>
+                    </article>
+            </div>
+
+            <div class="hero-botoes">
+                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+                    Pedir orçamento no WhatsApp
+                </a>
+                <a class="botao botao-secundario" href="#como-funciona">Ver como funciona</a>
+            </div>
+        </section>
+
+        <!-- ============ SERVIÇOS ============ -->
+
+        <section class="secao" id="servicos">
+            <div class="conteudo">
+                <h2 class="cartaz-justificado fonte-titulo" data-justificar>
+                    <span>Três frentes,</span>
+                    <span>um só time</span>
+                </h2>
+                <p class="secao-intro">
+                    Você não precisa contratar um fotógrafo, um programador e um gestor de tráfego separados.
+                    A Ginga Mídia cuida de tudo para a sua empresa aparecer e vender mais.
+                </p>
+            </div>
+        </section>
+
+        <!-- ============ COMO FUNCIONA ============ -->
+        <div class="faixa-correio" aria-hidden="true"></div>
+        <section class="secao secao-azul" id="como-funciona">
+            <div class="conteudo">
+                <h2 class="titulo-correio fonte-titulo">Do primeiro contato ao resultado</h2>
+
+                <ol class="passos" id="passos">
+                    <li class="selo selo-amarelo revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre a etapa Conversa"><div class="selo-face tema-bahia">
+                        <span class="passo-numero fonte-titulo">1</span>
+                        <h3 class="selo-nome">Conversa</h3>
+                        <p>Você conta sobre o seu negócio pelo WhatsApp. Sem compromisso e sem enrolação.</p>
+                        <div class="selo-mais" hidden>
+                            <p>Pode mandar áudio, texto ou foto do seu negócio. A gente escuta o que você precisa, tira suas dúvidas e já indica o melhor caminho.</p>
+                        </div>
+                    </div></li>
+                    <li class="selo selo-amarelo revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre a etapa Proposta"><div class="selo-face tema-brasilia">
+                        <span class="passo-numero fonte-titulo">2</span>
+                        <h3 class="selo-nome">Proposta</h3>
+                        <p>Montamos um plano e um orçamento claros, do tamanho da sua necessidade.</p>
+                        <div class="selo-mais" hidden>
+                            <p>Você recebe por escrito o que vamos fazer, os prazos e o valor. Nada de letras miúdas: se quiser ajustar algo, ajustamos juntos.</p>
+                        </div>
+                    </div></li>
+                    <li class="selo selo-amarelo revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre a etapa Produção"><div class="selo-face tema-rio">
+                        <span class="passo-numero fonte-titulo">3</span>
+                        <h3 class="selo-nome">Produção</h3>
+                        <p>Fotografamos, filmamos, criamos o site e configuramos os anúncios.</p>
+                        <div class="selo-mais" hidden>
+                            <p>Marcamos as gravações, criamos as peças e te mostramos tudo antes de publicar. Você aprova cada etapa.</p>
+                        </div>
+                    </div></li>
+                    <li class="selo selo-amarelo revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre a etapa Resultado"><div class="selo-face tema-sul">
+                        <span class="passo-numero fonte-titulo">4</span>
+                        <h3 class="selo-nome">Resultado</h3>
+                        <p>Acompanhamos os números com você e ajustamos o que for preciso para crescer.</p>
+                        <div class="selo-mais" hidden>
+                            <p>Todo mês você recebe um resumo simples do que deu certo e do que vamos melhorar. O trabalho não para na entrega.</p>
+                        </div>
+                    </div></li>
+                </ol>
+            </div>
+        </section>
+        <div class="faixa-correio" aria-hidden="true"></div>
 
 
+        <!-- ============ QUEM SOMOS NÓS ============ -->
+        <section class="secao" id="quem-somos">
+            <div class="conteudo">
+                <h2 class="titulo-letreiro fonte-titulo">Duas pessoas, um só jeito de trabalhar</h2>
+                <p class="secao-intro">
+                    Por trás da Ginga Mídia tem gente de verdade, que atende você de perto
+                    e cuida de cada projeto como se fosse o próprio.
+                </p>
+
+                <div class="equipe">
+                    <article class="ficha ficha-laranja revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre a pessoa 1">
+                        <header class="ficha-topo">
+                            <span class="ficha-tag">Ginga Mídia</span>
+                            <h3 class="ficha-nome fonte-titulo">Nome da pessoa 1</h3>
+                            <div class="ficha-medalha" aria-hidden="true"><img src="Imagens/Tucano-ginga.webp" alt=""></div>
+                        </header>
+                        <p class="ficha-faixa">Uma frase curta que resume o trabalho dessa pessoa</p>
+                        <p class="ficha-titulo fonte-titulo">Fotos &amp; vídeos · Nome 1</p>
+
+                        <div class="ficha-corpo">
+                            <!-- Troque o span por: <img src="Imagens/Equipe/pessoa1.png" alt="Nome da pessoa 1">
+                                 Uma foto PNG sem fundo fica melhor por cima das ondas -->
+                            <figure class="ficha-foto"><span>Foto da pessoa 1</span></figure>
+
+                            <div class="ficha-lado">
+                            <div class="ficha-mini">
+                                <span class="ficha-rotulo">Fotos de produto</span>
+                                <div class="ficha-mini-img"><span>Foto</span></div>
+                            </div>
+                            <div class="ficha-mini">
+                                <span class="ficha-rotulo">Filmagem</span>
+                                <div class="ficha-mini-img"><span>Foto</span></div>
+                            </div>
+                            <div class="ficha-mini">
+                                <span class="ficha-rotulo">Eventos</span>
+                                <div class="ficha-mini-img"><span>Foto</span></div>
+                            </div>
+                                <div class="ficha-tipo">
+                                    <span class="ficha-rotulo">Câmera</span>
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M9 4 7.2 6H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3.2L15 4H9Zm3 4.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9Zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5Z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="ficha-texto">Escreva aqui um texto curto: a trajetória, o que ama fazer e o que entrega para os clientes.</p>
+
+                        <div class="selo-mais" hidden>
+                            <p>Espaço para contar mais: formação, quanto tempo de experiência, clientes que já atendeu, o que gosta de fazer fora do trabalho e por que escolheu essa área.</p>
+                            <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20falar%20com%20a%20pessoa%201." target="_blank" rel="noopener">Falar no WhatsApp</a>
+                        </div>
+
+                        <footer class="ficha-rodape">
+                            <span class="ficha-regiao">Araraquara · SP</span>
+                            <span class="ficha-marca">Ginga<small>Mídia</small></span>
+                            <span class="ficha-codigo" aria-hidden="true"></span>
+                            <span class="ficha-numero">001</span>
+                        </footer>
+                    </article>
+
+                    <article class="ficha ficha-vermelho revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ver mais sobre a pessoa 2">
+                        <header class="ficha-topo">
+                            <span class="ficha-tag">Ginga Mídia</span>
+                            <h3 class="ficha-nome fonte-titulo">Nome da pessoa 2</h3>
+                            <div class="ficha-medalha" aria-hidden="true"><img src="Imagens/Tucano-ginga.webp" alt=""></div>
+                        </header>
+                        <p class="ficha-faixa">Uma frase curta que resume o trabalho dessa pessoa</p>
+                        <p class="ficha-titulo fonte-titulo">Sites &amp; anúncios · Nome 2</p>
+
+                        <div class="ficha-corpo">
+                            <!-- Troque o span por: <img src="Imagens/Equipe/pessoa2.png" alt="Nome da pessoa 2">
+                                 Uma foto PNG sem fundo fica melhor por cima das ondas -->
+                            <figure class="ficha-foto"><span>Foto da pessoa 2</span></figure>
+
+                            <div class="ficha-lado">
+                            <div class="ficha-mini">
+                                <span class="ficha-rotulo">Sites</span>
+                                <div class="ficha-mini-img"><span>Foto</span></div>
+                            </div>
+                            <div class="ficha-mini">
+                                <span class="ficha-rotulo">Anúncios</span>
+                                <div class="ficha-mini-img"><span>Foto</span></div>
+                            </div>
+                            <div class="ficha-mini">
+                                <span class="ficha-rotulo">Redes sociais</span>
+                                <div class="ficha-mini-img"><span>Foto</span></div>
+                            </div>
+                                <div class="ficha-tipo">
+                                    <span class="ficha-rotulo">Digital</span>
+                                    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M4 3h16a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-6v2h3v2H7v-2h3v-2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Zm0 2v10h16V5H4Zm3 2h6v2H7V7Zm0 3h10v2H7v-2Z"/></svg>
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="ficha-texto">Escreva aqui um texto curto: a trajetória, o que ama fazer e o que entrega para os clientes.</p>
+
+                        <div class="selo-mais" hidden>
+                            <p>Espaço para contar mais: formação, quanto tempo de experiência, clientes que já atendeu, o que gosta de fazer fora do trabalho e por que escolheu essa área.</p>
+                            <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20quero%20falar%20com%20a%20pessoa%202." target="_blank" rel="noopener">Falar no WhatsApp</a>
+                        </div>
+
+                        <footer class="ficha-rodape">
+                            <span class="ficha-regiao">Araraquara · SP</span>
+                            <span class="ficha-marca">Ginga<small>Mídia</small></span>
+                            <span class="ficha-codigo" aria-hidden="true"></span>
+                            <span class="ficha-numero">002</span>
+                        </footer>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ PORTFÓLIO ============ -->
+        <section class="secao" id="portfolio">
+            <div class="conteudo">
+                <h2 class="titulo-grande">Alguns<br>trabalhos</h2>
+                <p class="secao-intro">
+                    Cada projeto é pensado de forma única para a marca do cliente.
+                    Chame no WhatsApp para ver mais exemplos.
+                </p>
+
+                <div class="grade-portfolio">
+                    <!-- Troque cada <span>Foto N</span> por <img src="Imagens/Portfolio/foto1.jpg" alt="descrição"> -->
+                    <figure class="selo selo-laranja revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ampliar: Fotografia de produto">
+                        <div class="selo-face tema-minas">
+                            <div class="foto-espaco"><span>Foto 1</span></div>
+                            <figcaption><span class="selo-nome fonte-titulo">Fotografia de produto</span><span class="selo-valor">01</span></figcaption>
+                            <div class="selo-mais" hidden>
+                                <p>Cliente: nome do cliente. Escreva aqui um resumo do projeto: o que o cliente precisava, o que foi feito e o resultado.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vi%20no%20portf%C3%B3lio%20do%20site%20o%20trabalho%20%22Fotografia%20de%20produto%22%20e%20quero%20algo%20parecido." target="_blank" rel="noopener">Quero algo assim</a>
+                            </div>
+                        </div>
+                    </figure>
+                    <figure class="selo selo-vermelho revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ampliar: Vídeo institucional">
+                        <div class="selo-face tema-pantanal">
+                            <div class="foto-espaco"><span>Foto 2</span></div>
+                            <figcaption><span class="selo-nome fonte-titulo">Vídeo institucional</span><span class="selo-valor">02</span></figcaption>
+                            <div class="selo-mais" hidden>
+                                <p>Cliente: nome do cliente. Escreva aqui um resumo do projeto: o que o cliente precisava, o que foi feito e o resultado.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vi%20no%20portf%C3%B3lio%20do%20site%20o%20trabalho%20%22V%C3%ADdeo%20institucional%22%20e%20quero%20algo%20parecido." target="_blank" rel="noopener">Quero algo assim</a>
+                            </div>
+                        </div>
+                    </figure>
+                    <figure class="selo selo-amarelo revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ampliar: Site para loja virtual">
+                        <div class="selo-face tema-cerrado">
+                            <div class="foto-espaco"><span>Foto 3</span></div>
+                            <figcaption><span class="selo-nome fonte-titulo">Site para loja virtual</span><span class="selo-valor">03</span></figcaption>
+                            <div class="selo-mais" hidden>
+                                <p>Cliente: nome do cliente. Escreva aqui um resumo do projeto: o que o cliente precisava, o que foi feito e o resultado.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vi%20no%20portf%C3%B3lio%20do%20site%20o%20trabalho%20%22Site%20para%20loja%20virtual%22%20e%20quero%20algo%20parecido." target="_blank" rel="noopener">Quero algo assim</a>
+                            </div>
+                        </div>
+                    </figure>
+                    <figure class="selo selo-laranja revelar" role="button" tabindex="0" aria-haspopup="dialog" data-ampliar aria-label="Ampliar: Campanha no Instagram">
+                        <div class="selo-face tema-carnaval">
+                            <div class="foto-espaco"><span>Foto 4</span></div>
+                            <figcaption><span class="selo-nome fonte-titulo">Campanha no Instagram</span><span class="selo-valor">04</span></figcaption>
+                            <div class="selo-mais" hidden>
+                                <p>Cliente: nome do cliente. Escreva aqui um resumo do projeto: o que o cliente precisava, o que foi feito e o resultado.</p>
+                                <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vi%20no%20portf%C3%B3lio%20do%20site%20o%20trabalho%20%22Campanha%20no%20Instagram%22%20e%20quero%20algo%20parecido." target="_blank" rel="noopener">Quero algo assim</a>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ SOBRE ============ -->
+        <section class="secao secao-sobre" id="sobre">
+            <div class="conteudo sobre-grade">
+                <div class="sobre-figura revelar" aria-hidden="true">
+                    <div class="sobre-sol"></div>
+                    <img src="Imagens/Tucano-ginga.webp" alt="" loading="lazy">
+                    <div class="sobre-estampa"></div>
+                </div>
+                <div class="sobre-texto revelar">
+                    <h2 class="titulo-contorno fonte-titulo">Comunicação brasileira, <span>com jogo de cintura</span></h2>
+                    <p>
+                        Ginga é movimento, é criatividade, é achar o caminho certo com leveza.
+                        É assim que trabalhamos: entendemos o seu negócio, criamos o que ele precisa
+                        e acompanhamos de perto até dar resultado.
+                    </p>
+                    <p>
+                        Somos de Araraquara e conhecemos o comércio e as empresas da região.
+                        Atendemos desde pequenos negócios até empresas que querem ir além.
+                    </p>
+                    <ul class="sobre-lista">
+                        <li>Atendimento próximo e direto no WhatsApp</li>
+                        <li>Fotos, vídeos, site e anúncios no mesmo lugar</li>
+                        <li>Orçamento sem compromisso</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ CONTATO ============ -->
+        <section class="secao secao-contato" id="contato">
+            <div class="conteudo contato-grade">
+                <div class="contato-texto revelar">
+                    <h2 class="titulo-correio fonte-titulo">Vamos conversar sobre o seu projeto?</h2>
+                    <div class="contato-bloco">
+                        <p>
+                            Conte o que você precisa e receba um orçamento sem compromisso.
+                            Respondemos pelo WhatsApp.
+                        </p>
+                        <a class="botao botao-amarelo" href="https://wa.me/5516996076565" target="_blank" rel="noopener">
+                            Chamar no WhatsApp
+                        </a>
+                        <p class="contato-regiao">Araraquara e região, SP</p>
+                    </div>
+                </div>
+
+                <form class="formulario envelope revelar" id="formContato" novalidate>
+                    <div class="selo selo-amarelo selo-colado" aria-hidden="true">
+                        <div class="selo-face"><img src="Imagens/Tucano-ginga.webp" alt=""></div>
+                    </div>
+                    <p class="envelope-para"><strong>Para:</strong> Ginga Mídia, Araraquara · SP</p>
+
+                    <label for="nome">Seu nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Como podemos te chamar?" autocomplete="name" required>
+
+                    <fieldset class="opcoes">
+                        <legend>O que você procura?</legend>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Anúncios"><span>Anúncios</span></label>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Fotos e vídeos"><span>Fotos &amp; vídeos</span></label>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Criação de site"><span>Site</span></label>
+                    </fieldset>
+
+                    <label for="mensagem">Conte um pouco sobre o seu negócio</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Ex.: tenho uma loja de roupas e quero vender mais pelo Instagram"></textarea>
+
+                    <button type="submit" class="botao botao-escuro">Enviar pelo WhatsApp</button>
+                    <p class="form-aviso" id="formAviso" role="status"></p>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ============ SELO AMPLIADO ============ -->
+    <dialog class="modal-selo" id="modalSelo" aria-label="Detalhes">
+        <button class="modal-fechar" id="modalFechar" type="button" aria-label="Fechar">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        </button>
+        <div class="modal-conteudo selo" id="modalConteudo"></div>
+    </dialog>
+
+    <!-- ============ RODAPÉ ============ -->
+    <footer class="rodape">
+        <div class="rodape-conteudo">
+            <img class="rodape-logo" src="Imagens/Logo-creme.webp" alt="Ginga Mídia">
+            <p>+ Anúncios &nbsp;+ Fotos &amp; vídeos &nbsp;+ Sites</p>
+            <p><a href="https://wa.me/5516996076565" target="_blank" rel="noopener">Fale com a gente no WhatsApp</a></p>
+            <p class="rodape-copy">© <span id="ano">2026</span> Ginga Mídia. Araraquara, SP.</p>
+        </div>
+    </footer>
+
+    <!-- Botão flutuante do WhatsApp -->
+    <a class="whats-flutuante" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+        <svg viewBox="0 0 32 32" width="30" height="30" aria-hidden="true" fill="currentColor">
+            <path d="M16.04 3C9.4 3 4 8.4 4 15.03c0 2.12.55 4.19 1.6 6.01L4 29l8.14-1.56a12 12 0 0 0 3.9.65C22.67 28.09 28 22.7 28 16.07 28 9.4 22.67 3 16.04 3Zm0 22.07c-1.2 0-2.38-.24-3.48-.7l-.5-.2-4.83.93.95-4.7-.22-.5a9.04 9.04 0 0 1-1.4-4.87c0-5.02 4.1-9.1 9.14-9.1 5.02 0 9.1 4.1 9.1 9.1 0 5.03-4.1 9.04-9.1 9.04Zm5-6.77c-.27-.14-1.62-.8-1.87-.9-.25-.09-.43-.14-.62.14-.18.27-.7.9-.86 1.08-.16.18-.32.2-.6.07-.27-.14-1.15-.42-2.2-1.35-.8-.72-1.35-1.6-1.5-1.87-.16-.27-.02-.42.12-.55.12-.12.27-.32.4-.48.14-.16.18-.27.27-.45.1-.18.05-.34-.02-.48-.07-.14-.62-1.5-.85-2.05-.22-.54-.45-.46-.62-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.3 0 1.35.98 2.66 1.12 2.84.14.18 1.93 2.95 4.67 4.14.65.28 1.16.45 1.56.58.65.2 1.25.18 1.72.11.52-.08 1.62-.66 1.85-1.3.23-.64.23-1.19.16-1.3-.07-.12-.25-.2-.52-.34Z"/>
+        </svg>
+    </a>
+
+    <script src="script.js"></script>
+</body>
 </html>

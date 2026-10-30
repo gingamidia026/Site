@@ -1,0 +1,54 @@
+/*
+
+Cores Ginga mídia
+Vermelho: #BF471B
+Branco: #F2E8DC
+Laranja: #D97D0D
+Verde: #6F6F2F
+Azul: #03588C
+Azul escuro: #1D233B
+Amarelo: #F2AE30
+
+*/
+
+@property --azul {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #03588C;
+}
+
+@property --azule {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #1D233B;
+}
+
+@property --verde {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #6F6F2F;
+}
+
+@property --amarelo {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #F2AE30;
+}
+
+@property --laranja {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #D97D0D;
+}
+
+@property --branco {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #F2E8DC;
+}
+
+@property --vermelho {
+  syntax: '<color>';
+  inherits: false;
+  initial-value: #BF471B;
+}
