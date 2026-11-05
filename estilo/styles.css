@@ -327,6 +327,10 @@ a { color: inherit; }
     margin: 24px auto 0;
     max-width: 520px;
     font-size: 18px;
+    text-wrap: balance; /* linhas parecidas: a primeira não encosta nas aves no celular */
+}
+@media (max-width: 767px) {
+    .hero-sub { padding-inline: 4vw; } /* respiro entre o texto e as aves */
 }
 
 .sol {
@@ -1304,3 +1308,38 @@ body.modal-aberto { overflow: hidden; }
     .contato-grade { grid-template-columns: 1fr 1.1fr; gap: 56px; }
 }
 .sem-quebra { white-space: nowrap; }
+
+/* ================= ENFEITES DAS SEÇÕES (ilustrações recortadas, atrás do conteúdo) ================= */
+.secao { position: relative; }
+.secao > .conteudo { position: relative; z-index: 1; }
+.enfeites {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+.enfeite { position: absolute; height: auto; }
+/* celular: pequenos, no respiro de cima da seção, encostados na borda */
+.enfeite-berimbau { width: 34px; right: 70px; top: -52px; transform: rotate(80deg); }
+.enfeite-pandeiro { width: 96px; right: -14px; top: 12px; transform: rotate(-10deg); }
+.enfeite-onca     { width: 50px; right: 8px; top: 2px; }
+.enfeite-caxixi   { width: 40px; right: 64px; top: 22px; transform: rotate(-12deg); }
+.enfeite-ganza    { width: 54px; right: 6px; top: 14px; transform: rotate(14deg); }
+.enfeite-atabaque { width: 52px; right: 10px; top: 6px; }
+
+@media (min-width: 768px) {
+    .enfeite-berimbau { width: 46px; right: 12vw; top: -74px; transform: rotate(80deg); }
+    .enfeite-pandeiro { width: 180px; right: 3vw; top: 34px; }
+    .enfeite-onca     { width: 96px; right: 4vw; top: 12px; }
+    .enfeite-caxixi   { width: 64px; right: calc(4vw + 100px); top: 60px; }
+    .enfeite-ganza    { width: 90px; right: 4vw; top: 40px; }
+    .enfeite-atabaque { width: 96px; right: 3vw; top: 30px; }
+}
+@media (min-width: 1100px) {
+    .enfeite-berimbau { width: 60px; right: 10vw; top: -96px; transform: rotate(80deg); }
+    .enfeite-pandeiro { width: 230px; right: 5vw; }
+    .enfeite-onca     { width: 210px; right: 5vw; top: 40px; }
+    .enfeite-caxixi   { width: 80px; right: calc(5vw + 130px); top: 70px; }
+    .enfeite-ganza    { width: 116px; right: 5vw; top: 46px; }
+    .enfeite-atabaque { width: 84px; right: auto; left: 7vw; top: 28px; transform: rotate(-8deg); }
+}
