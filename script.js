@@ -8,11 +8,17 @@ botao.addEventListener('click', () => {
   botao.setAttribute('aria-label', aberto ? 'Fechar menu' : 'Abrir menu');
 });
 
-menu.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    menu.classList.remove('aberto');
-    botao.setAttribute('aria-expanded', 'false');
-  });
+const fecharMenu = () => {
+  menu.classList.remove('aberto');
+  botao.setAttribute('aria-expanded', 'false');
+  botao.setAttribute('aria-label', 'Abrir menu');
+};
+menu.querySelectorAll('a').forEach(link => link.addEventListener('click', fecharMenu));
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && menu.classList.contains('aberto')) {
+    fecharMenu();
+    botao.focus();
+  }
 });
 
 // Topo ganha fundo ao rolar
@@ -99,8 +105,9 @@ const abrirSelo = (selo) => {
   // ficha da equipe: copia a ficha inteira; selos: copia só a face colorida
   const copia = (ehFicha ? selo : selo.querySelector('.selo-face')).cloneNode(true);
   copia.querySelectorAll('[hidden]').forEach(el => el.removeAttribute('hidden'));
+  copia.querySelectorAll('.ver-mais').forEach(el => el.remove());
   copia.querySelectorAll('[id]').forEach(el => el.removeAttribute('id'));
-  ['role', 'tabindex', 'aria-haspopup', 'aria-label', 'data-ampliar'].forEach(a => copia.removeAttribute(a));
+  copia.removeAttribute('data-ampliar');
   copia.classList.remove('revelar', 'visivel');
 
   if (ehFicha) {
@@ -135,14 +142,9 @@ const fecharSelo = () => {
   }
 };
 
+// o selo inteiro abre com o mouse; no teclado, o botão "Ver mais" de cada selo
 document.querySelectorAll('[data-ampliar]').forEach(selo => {
   selo.addEventListener('click', () => abrirSelo(selo));
-  selo.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      abrirSelo(selo);
-    }
-  });
 });
 
 // Janela do formulário: todo link para o WhatsApp abre o envelope do contato,
@@ -209,7 +211,8 @@ modal.addEventListener('cancel', (e) => {
 
 modal.addEventListener('close', () => {
   document.body.classList.remove('modal-aberto');
-  if (seloAberto) seloAberto.focus();
+  // o foco volta ao botão "Ver mais" do selo (ou ao link do WhatsApp que abriu a janela)
+  if (seloAberto) (seloAberto.querySelector('.ver-mais') || seloAberto).focus();
 });
 
 // Linha tracejada ligando os passos: curvas e uma volta entre cada cartão

@@ -50,6 +50,7 @@ body::after {
     pointer-events: none;
     z-index: 100;
     opacity: .07;
+    transform: translateZ(0);
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
 }
 
@@ -72,7 +73,7 @@ main > section,
     z-index: 1;
 }
 
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
 
 /* barra de rolagem com as cores da Ginga */
 ::-webkit-scrollbar { width: 14px; height: 14px; }
@@ -160,9 +161,10 @@ a { color: inherit; }
 .selo {
     --furo: 7px;
     --face: var(--laranja);
-    --texto: var(--branco);
-    --valor: var(--branco);
-    --fundo: color-mix(in srgb, var(--face) 62%, #12162A);
+    /* face na cor pura da paleta; texto grande azul escuro (creme só no vermelho) e o pequeno no bloco creme */
+    --texto: var(--azule);
+    --valor: var(--azule);
+    --fundo: var(--face);
     padding: calc(var(--furo) * 2 - 4px);
     background:
         radial-gradient(var(--furo), #0000 98%, var(--fundo)) round
@@ -171,37 +173,21 @@ a { color: inherit; }
     filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 10px 16px rgba(29, 35, 59, .14));
     transition: transform .25s;
 }
-.selo-vermelho { --face: var(--vermelho); --texto: var(--branco); --valor: var(--amarelo); }
-.selo-amarelo { --face: var(--amarelo); --texto: var(--branco); --valor: var(--vermelho); }
-/* amarelo escurecido como os outros vira um marrom igual ao laranja: aqui ele fica claro, com texto azul escuro */
-.selo-amarelo { --fundo: color-mix(in srgb, var(--face) 90%, #12162A); --texto: var(--azule); --valor: var(--azule); }
-.selo-amarelo .selo-face,
-.selo-amarelo .selo-face :is(.selo-nome, .selo-valor, .passo-numero, .selo-imagem, .foto-espaco),
-.selo-amarelo .selo-face li::before { color: var(--azule); text-shadow: none; }
-/* selo de Fotos & vídeos: toda a escrita com contorno claro */
-.selo-amarelo.selo-contorno-claro .selo-face,
-.selo-amarelo.selo-contorno-claro .selo-face *,
-.selo-amarelo.selo-contorno-claro .selo-face li::before {
-    --c: var(--branco);
-    text-shadow:
-        1px 0 var(--c), -1px 0 var(--c), 0 1px var(--c), 0 -1px var(--c),
-        1px 1px var(--c), -1px -1px var(--c), 1px -1px var(--c), -1px 1px var(--c);
-}
-.selo-amarelo.selo-contorno-claro .selo-face .botao { text-shadow: none; }
-/* no fundo claro a ilustração escura disputaria com o texto pequeno */
+.selo-vermelho { --face: var(--vermelho); --texto: var(--branco); --valor: var(--branco); }
+.selo-amarelo { --face: var(--amarelo); }
+/* no fundo claro a ilustração escura disputaria com o texto */
 .selo-amarelo .selo-face[class*="tema-"]::before { opacity: .14; }
 
-/* texto dos selos: tudo branco, com um contorno escuro discreto */
-.selo-face {
-    --c: rgba(29, 35, 59, .7);
-    color: var(--branco);
-    text-shadow:
-        1px 0 var(--c), -1px 0 var(--c), 0 1px var(--c), 0 -1px var(--c),
-        1px 1px var(--c), -1px -1px var(--c), 1px -1px var(--c), -1px 1px var(--c);
+.selo-face :is(.selo-nome, .selo-valor) { color: var(--texto); }
+
+/* bloco sólido para o texto pequeno: fica por cima da ilustração regional (regra texto-sobre-estampa) */
+.selo-texto {
+    background-color: var(--branco);
+    color: var(--azule);
+    border: 2px solid var(--azule);
+    border-radius: 4px;
+    padding: 12px 14px;
 }
-.selo-face :is(.selo-nome, .selo-valor, .passo-numero, .selo-imagem, .foto-espaco) { color: var(--branco); }
-.selo-face li::before { color: var(--branco); }
-.selo-face .botao { text-shadow: none; }
 
 .selo-face {
     position: relative;
@@ -254,8 +240,7 @@ a { color: inherit; }
     font-size: 40px;
     line-height: 1;
     letter-spacing: -.03em;
-    color: var(--branco);
-    text-shadow: 2px 2px 0 rgba(29, 35, 59, .35);
+    color: var(--valor);
 }
 .selo-nome {
     text-transform: uppercase;
@@ -297,7 +282,7 @@ a { color: inherit; }
 }
 
 .logo-lista {
-    font-size: 11px;
+    font-size: 16px;
     font-weight: 700;
     white-space: nowrap;
     line-height: 1.5;
@@ -522,10 +507,10 @@ a { color: inherit; }
     display: grid;
     place-items: center;
     font-family: var(--fonte-titulo);
-    font-size: 22px;
+    font-size: 30px;
     line-height: 1;
     background-color: var(--branco);
-    color: var(--face);
+    color: var(--azule);
     box-shadow: -10px 0 0 var(--amarelo);
     margin-left: 10px;
 }
@@ -536,22 +521,22 @@ a { color: inherit; }
     display: grid;
     place-items: center;
     overflow: hidden;
-    border: 2px dashed currentColor;
-    background-color: rgba(29, 35, 59, .18);
+    border: 2px dashed var(--azule);
+    background-color: var(--branco);
+    color: var(--azule);
     font-family: var(--fonte-titulo);
     font-size: 16px;
-    opacity: .9;
 }
 .selo-imagem img { width: 100%; height: 100%; object-fit: cover; }
 
 .grade-tres .selo-nome { font-size: 24px; margin: 16px 0 8px; }
-.grade-tres p { font-size: 15px; }
+.grade-tres p { font-size: 16px; }
 .grade-tres ul {
-    margin-top: 14px;
-    padding-top: 12px;
+    margin-top: 12px;
+    padding-top: 10px;
     border-top: 2px solid currentColor;
     list-style: none;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 700;
 }
 .grade-tres li { margin-bottom: 4px; padding-left: 20px; position: relative; }
@@ -559,7 +544,6 @@ a { color: inherit; }
     content: "+";
     position: absolute;
     left: 0;
-    color: var(--branco);
 }
 
 /* ================= PASSOS (selos amarelos) ================= */
@@ -618,7 +602,7 @@ a { color: inherit; }
     margin-bottom: 14px;
 }
 .passos h3 { font-family: var(--fonte-titulo); font-weight: 400; font-size: 32px; line-height: 1; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .01em; }
-.passos p { font-size: 16px; }
+.passos .selo-texto p { font-size: 16px; }
 /* título dos passos em branco; no amarelo claro precisa de contorno azul escuro para ser lido */
 .passos .selo-amarelo .selo-face .selo-nome {
     --c: var(--azule);
@@ -648,8 +632,9 @@ a { color: inherit; }
     width: 100%;
     display: grid;
     place-items: center;
-    border: 2px dashed currentColor;
-    background-color: rgba(29, 35, 59, .18);
+    border: 2px dashed var(--azule);
+    background-color: var(--branco);
+    color: var(--azule);
     font-family: var(--fonte-titulo);
     font-size: 18px;
     overflow: hidden;
@@ -660,13 +645,18 @@ a { color: inherit; }
     position: relative;
     z-index: 1;
     margin-top: 10px;
+    background-color: var(--branco);
+    color: var(--azule);
+    border: 2px solid var(--azule);
+    border-radius: 4px;
+    padding: 6px 8px;
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
     gap: 8px;
 }
 .grade-portfolio .selo { min-width: 0; }
-.grade-portfolio .selo-nome { font-size: 9px; }
+.grade-portfolio .selo-nome { font-size: 16px; color: var(--azule); letter-spacing: .02em; }
 .grade-portfolio .selo-valor { display: none; }
 
 /* ================= SOBRE (cartaz) ================= */
@@ -701,6 +691,7 @@ a { color: inherit; }
 /* a ficha também é um selo: papel picotado em volta */
 .ficha {
     --cor: var(--laranja);
+    --sobre-cor: var(--azule);
     --borda: 3px solid var(--azule);
     --furo: 9px;
     --papel: #FFFAF2;
@@ -714,7 +705,7 @@ a { color: inherit; }
     flex-direction: column;
     gap: 14px;
 }
-.ficha-vermelho { --cor: var(--vermelho); }
+.ficha-vermelho { --cor: var(--vermelho); --sobre-cor: var(--branco); }
 
 .ficha-rotulo,
 .ficha-tag,
@@ -722,7 +713,7 @@ a { color: inherit; }
 .ficha-regiao,
 .ficha-numero {
     text-transform: uppercase;
-    letter-spacing: .14em;
+    letter-spacing: .06em;
     font-weight: 700;
 }
 
@@ -740,14 +731,14 @@ a { color: inherit; }
     top: -16px; left: 18px;
     background-color: var(--azule);
     color: var(--branco);
-    font-size: 13px;
-    padding: 5px 18px;
+    font-size: 16px;
+    padding: 4px 18px;
     border-radius: 6px 6px 0 0;
     transform: skewX(-12deg);
 }
 .ficha-nome {
     font-size: clamp(26px, 5.5vw, 54px);
-    color: var(--branco);
+    color: var(--sobre-cor);
     text-transform: uppercase;
     letter-spacing: .04em;
     overflow-wrap: anywhere;
@@ -769,7 +760,7 @@ a { color: inherit; }
 .ficha-faixa {
     background-color: var(--azule);
     color: var(--branco);
-    font-size: 12px;
+    font-size: 16px;
     padding: 7px 14px;
     border-radius: 4px;
     text-align: center;
@@ -797,7 +788,7 @@ a { color: inherit; }
 .ficha-foto span {
     margin-bottom: 40%;
     align-self: center;
-    background-color: var(--cor);
+    background-color: var(--azule);
     color: var(--branco);
     font-family: var(--fonte-titulo);
     font-size: 18px;
@@ -824,11 +815,16 @@ a { color: inherit; }
     position: absolute;
     top: -12px; left: 50%;
     transform: translateX(-50%);
-    white-space: nowrap;
-    background-color: var(--cor);
+    width: max-content;
+    max-width: calc(100% - 4px);
+    text-align: center;
+    line-height: 1.2;
+    background-color: var(--azule);
     color: var(--branco);
-    font-size: 10px;
-    padding: 3px 10px;
+    font-size: 16px;
+    letter-spacing: .02em;
+    text-transform: none;
+    padding: 2px 10px;
     border-radius: 4px;
     z-index: 1;
 }
@@ -840,7 +836,7 @@ a { color: inherit; }
     display: grid;
     place-items: center;
     font-family: var(--fonte-titulo);
-    font-size: 14px;
+    font-size: 16px;
     overflow: hidden;
 }
 .ficha-mini-img img { width: 100%; height: 100%; object-fit: cover; }
@@ -850,7 +846,6 @@ a { color: inherit; }
     display: grid;
     place-items: center;
 }
-.ficha-tipo .ficha-rotulo { background-color: var(--azule); }
 .ficha-tipo svg { width: 58px; height: 58px; }
 
 .ficha-texto { font-size: 16px; }
@@ -864,8 +859,8 @@ a { color: inherit; }
 .ficha-regiao {
     background-color: var(--azule);
     color: var(--branco);
-    font-size: 12px;
-    padding: 7px 14px;
+    font-size: 16px;
+    padding: 6px 14px;
     border-radius: 4px;
     white-space: nowrap;
 }
@@ -891,8 +886,8 @@ a { color: inherit; }
     border: 2px solid var(--azule);
     border-radius: 999px;
     padding: 4px 14px;
-    font-size: 13px;
-    letter-spacing: .08em;
+    font-size: 16px;
+    letter-spacing: .06em;
 }
 
 /* ================= CONTATO (envelope) ================= */
@@ -981,7 +976,7 @@ a { color: inherit; }
 .rodape-conteudo { display: flex; flex-direction: column; gap: 10px; align-items: center; }
 .rodape-logo { height: 48px; width: auto; }
 .rodape a { color: var(--amarelo); }
-.rodape-copy { font-size: 13px; opacity: .7; margin-top: 10px; }
+.rodape-copy { font-size: 16px; margin-top: 10px; }
 
 /* ================= WHATSAPP FLUTUANTE ================= */
 .whats-flutuante {
@@ -1003,20 +998,38 @@ a { color: inherit; }
 /* ================= SELO AMPLIADO ================= */
 /* selos clicáveis: cursor e um selinho de "ampliar" no canto */
 [data-ampliar] { cursor: pointer; position: relative; }
-[data-ampliar]:focus-visible { outline: 3px solid var(--azule); outline-offset: 6px; }
-[data-ampliar]::after {
-    content: "";
+/* botão de verdade (teclado e leitor de tela), com o ícone de ampliar */
+.ver-mais {
     position: absolute;
     z-index: 2;
-    right: 6px; bottom: 6px;
-    width: 30px; height: 30px;
-    border-radius: 50%;
-    background: var(--branco) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D233B' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7'/%3E%3C/svg%3E") center / 15px no-repeat;
+    right: 10px; bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 44px;
+    padding: 6px 14px 6px 10px;
+    border: 2px solid var(--azule);
+    border-radius: 999px;
+    background: var(--branco);
+    color: var(--azule);
+    font: 700 16px/1 var(--fonte-texto);
+    cursor: pointer;
     box-shadow: 0 2px 6px rgba(29, 35, 59, .3);
     transition: transform .2s;
 }
-[data-ampliar]:hover::after { transform: scale(1.15); }
-.grade-portfolio [data-ampliar]::after { top: 6px; bottom: auto; }
+.ver-mais::before {
+    content: "";
+    width: 16px; height: 16px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231D233B' stroke-width='2.6' stroke-linecap='round'%3E%3Cpath d='M14 4h6v6M10 20H4v-6M20 4l-7 7M4 20l7-7'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+[data-ampliar]:hover .ver-mais { transform: scale(1.06); }
+.ver-mais:focus-visible { outline: 3px solid var(--azule); outline-offset: 3px; }
+.secao-azul .ver-mais:focus-visible { outline-color: var(--amarelo); }
+/* o botão fica na faixa de baixo de cada selo, sem cobrir texto */
+.grade-tres .selo-face { padding-bottom: 72px; }
+.passos .selo-face { padding-bottom: 72px; }
+.grade-portfolio .ver-mais { top: 10px; bottom: auto; right: 10px; }
+.ficha .ver-mais { position: static; align-self: flex-start; }
 
 .selo-mais { display: none; }
 
@@ -1177,7 +1190,7 @@ body.modal-aberto { overflow: hidden; }
     .hero-centro { padding: 56px 0 0; }
     .logo img { height: 120px; }
     .divisoria { height: 84px; }
-    .logo-lista { font-size: 14px; }
+    .logo-lista { font-size: 18px; }
     .sol { top: 186px; max-width: min(340px, 30vw); }
     .carimbo-giro { display: block; width: 130px; height: 130px; top: 40px; left: -40px; }
     .hero-chamada { font-size: clamp(60px, 8.4vw, 108px); }
@@ -1194,7 +1207,8 @@ body.modal-aberto { overflow: hidden; }
     .secao { padding: 110px 6vw; }
     #servicos .conteudo { grid-template-columns: 1.2fr 1fr; }
 
-    .grade-tres { max-width: 1000px; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .grade-tres { max-width: 720px; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+    .grade-tres .selo:nth-child(3) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 14px); }
     .grade-tres .selo:nth-child(1) { transform: rotate(-1.5deg); }
     .grade-tres .selo:nth-child(3) { transform: rotate(1.5deg); }
     .grade-tres .selo:hover { transform: translateY(-6px) rotate(0); }
@@ -1205,14 +1219,14 @@ body.modal-aberto { overflow: hidden; }
     .grade-portfolio .selo:nth-child(4n+2) { transform: rotate(1.5deg) translateY(10px); }
     .grade-portfolio .selo:nth-child(4n+3) { transform: rotate(-1deg); }
     .grade-portfolio .selo:nth-child(4n+4) { transform: rotate(2deg) translateY(8px); }
-    .grade-portfolio .selo-nome { font-size: 13px; }
-    .grade-portfolio .selo-valor { display: inline; font-size: 30px; }
+    .grade-portfolio .selo-nome { font-size: 18px; }
+    .grade-portfolio .selo-valor { display: inline; font-size: 30px; color: var(--azule); }
     .sobre-grade { grid-template-columns: 1fr 1.4fr; gap: 64px; }
 
     .ficha { gap: 16px; }
     .ficha-topo { padding: 34px 150px 20px 28px; }
     .ficha-medalha { width: 140px; height: 140px; right: -20px; }
-    .ficha-faixa { font-size: 14px; }
+    .ficha-faixa { font-size: 17px; }
     .ficha-corpo { grid-template-columns: 1fr 230px; gap: 22px; }
     .ficha-mini-img { aspect-ratio: 16 / 10; }
     .ficha-foto { min-height: 0; }
@@ -1283,6 +1297,8 @@ body.modal-aberto { overflow: hidden; }
     .folhas-dir { right: -4vw; top: 380px; }
     .carimbo-giro { width: 110px; height: 110px; top: 50px; left: -10px; }
 
+    .grade-tres { max-width: 1000px; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grade-tres .selo:nth-child(3) { grid-column: auto; width: auto; }
     .passos { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 72px; }
     .grade-portfolio { grid-template-columns: repeat(4, 1fr); }
     .contato-grade { grid-template-columns: 1fr 1.1fr; gap: 56px; }
