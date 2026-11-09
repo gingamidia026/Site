@@ -1,0 +1,17 @@
+# Dominique-Oliveira-ChatGPT🤖💚 — hospedagem estática com HTTPS e cabeçalhos.
+# Não é aplicado pelo GitHub Pages. Usar somente no servidor que servir o domínio.
+{$DOMINIO} {
+  root * /srv/ginga
+  @interno path /infra/* /.git/* /*.md /*.csv
+  respond @interno 404
+  header {
+    -Server
+    Strict-Transport-Security "max-age=31536000"
+    X-Content-Type-Options nosniff
+    X-Frame-Options DENY
+    Referrer-Policy strict-origin-when-cross-origin
+    Permissions-Policy "camera=(), microphone=(), geolocation=()"
+    Content-Security-Policy "frame-ancestors 'none'"
+  }
+  file_server
+}
