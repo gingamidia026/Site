@@ -173,11 +173,30 @@
         <section class="secao equipe" aria-labelledby="titulo-equipe">
             <h2 id="titulo-equipe" class="titulo">Quem vai cuidar da sua clínica</h2>
 
+            <p class="texto-largo">Você conversa com a Dominique e com a Ana, da equipe da Ginga, do primeiro contato ao resumo da semana.</p>
+
+            <!-- Fichas da equipe: as duas no mesmo nível, sem cargo.
+                 Quando a foto chegar, troque o bloco da inicial por
+                 <figure class="ficha-time-foto"><img src="../Imagens/Equipe/dominique.webp" alt="Dominique Oliveira" width="800" height="1000" loading="lazy"></figure>
+                 e a frase entra logo abaixo de .ficha-time-equipe, em <p class="ficha-time-frase">. -->
+            <ul class="time">
+                <li class="ficha-time ficha-time-azul">
+                    <div class="ficha-time-inicial" aria-hidden="true">D</div>
+                    <div class="ficha-time-texto">
+                        <h3 class="ficha-time-nome">Dominique Oliveira</h3>
+                        <p class="ficha-time-equipe">Equipe da Ginga Mídia · Araraquara, SP</p>
+                    </div>
+                </li>
+                <li class="ficha-time ficha-time-amarela">
+                    <div class="ficha-time-inicial" aria-hidden="true">A</div>
+                    <div class="ficha-time-texto">
+                        <h3 class="ficha-time-nome">Ana Damaceno</h3>
+                        <p class="ficha-time-equipe">Equipe da Ginga Mídia · Araraquara, SP</p>
+                    </div>
+                </li>
+            </ul>
+
             <div class="equipe-linha">
-                <ul class="pessoas">
-                    <li class="pessoa pessoa-dominique"><span class="pessoa-nome">Dominique Oliveira</span><span class="pessoa-funcao">Direção da Ginga Mídia</span></li>
-                    <li class="pessoa pessoa-ana"><span class="pessoa-nome">Ana Damaceno</span><span class="pessoa-funcao">Equipe Ginga Mídia</span></li>
-                </ul>
                 <svg class="carimbo" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
                     <defs><path id="circuloCarimbo" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
                     <circle cx="60" cy="60" r="57" class="carimbo-fundo"/>
@@ -186,9 +205,8 @@
                     <text class="carimbo-centro" x="60" y="57" text-anchor="middle">CEP</text>
                     <text class="carimbo-centro" x="60" y="73" text-anchor="middle">14800</text>
                 </svg>
+                <p class="equipe-local">Somos de Araraquara. Você fala direto com a gente pelo WhatsApp e a gravação é feita na sua clínica.</p>
             </div>
-
-            <p class="texto-largo">Somos de Araraquara. Você fala direto com a gente pelo WhatsApp e a gravação é feita na sua clínica.</p>
 
             <div class="caixa-frente">
                 <p class="caixa-titulo">Clínica odontológica é frente nova na Ginga.</p>
