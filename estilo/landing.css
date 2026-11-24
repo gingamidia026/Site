@@ -223,29 +223,62 @@ a { color: inherit; }
 /* ================= #2 QUEM FAZ O QUÊ (duas listas com fios) ================= */
 .proposta { padding-top: calc(clamp(40px, 5vw, 56px) + var(--respiro) * .6); }
 
-.envelope { margin-top: 40px; }
+/* o envelope de correio aéreo da identidade anterior: aba aberta e borda listrada vermelho, creme e azul */
+:root {
+    --listras: repeating-linear-gradient(-45deg,
+        var(--vermelho) 0 14px, var(--branco) 14px 22px,
+        var(--azul) 22px 36px, var(--branco) 36px 44px);
+}
+.envelope {
+    --aba: clamp(64px, 15vw, 132px);
+    position: relative;
+    margin-top: calc(var(--aba) + 28px);
+}
+
+/* aba aberta do envelope: triângulo listrado com o miolo azul escuro */
+.envelope-aba {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 100%;
+    height: var(--aba);
+    background: var(--listras);
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+.envelope-aba::after {
+    content: "";
+    position: absolute;
+    inset: 12px 20px 0;
+    background: var(--cor-texto);
+    clip-path: polygon(0 100%, 50% 0, 100% 100%);
+}
+
+/* corpo: borda listrada de correio aéreo e o fundo azul escuro de dentro */
+.envelope-corpo {
+    position: relative;
+    border: 10px solid transparent;
+    background:
+        linear-gradient(var(--cor-texto), var(--cor-texto)) padding-box,
+        var(--listras) border-box;
+    padding: 0 8px 12px;
+}
+
+/* a folha creme sai do envelope por cima da aba */
 .folha {
+    position: relative;
+    z-index: 1;
+    margin-top: calc(var(--aba) * -0.62);
+    padding: 26px 20px 28px;
+    background: var(--cor-fundo);
+    border: 2px solid var(--cor-texto);
     display: grid;
-    gap: 32px;
+    gap: 30px;
     align-items: start;
 }
 
-/* cada lista é um selo serrilhado (picote da identidade antiga): face colorida e bloco creme com fios */
-.lista-lado {
-    --furo: 7px;
-    --fundo: var(--campo-laranja);
-    padding: calc(var(--furo) * 2 - 4px);
-    background:
-        radial-gradient(var(--furo), #0000 98%, var(--fundo)) round
-            calc(var(--furo) * -1.5) calc(var(--furo) * -1.5) / calc(var(--furo) * 3) calc(var(--furo) * 3),
-        linear-gradient(var(--fundo) 0 0) no-repeat 50% / calc(100% - var(--furo) * 3) calc(100% - var(--furo) * 3);
-    filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 6px 10px rgba(29, 35, 59, .12));
-}
-.lista-clinica { --fundo: var(--campo-amarelo); }
-
-/* janela do selo postal com foto de banco de imagens (Imagens/Fotos dos selos), moldura fina como a do bloco creme */
+/* foto de banco de imagens (Imagens/Fotos dos selos) no alto de cada lista, com moldura fina */
 .lista-lado .selo-imagem {
-    margin: 4px 4px 0;
+    margin: 0 0 16px;
     aspect-ratio: 16 / 10;
     overflow: hidden;
     border: 2px solid var(--cor-texto);
@@ -254,22 +287,34 @@ a { color: inherit; }
 }
 .lista-lado .selo-imagem img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
-.lista-titulo { padding: 14px 14px 12px; color: var(--cor-texto); }
-
-.lista-lado ul {
-    list-style: none;
-    display: grid;
-    margin: 0 4px 4px;
-    padding: 4px 16px;
-    background: var(--cor-papel);
-    border: 2px solid var(--cor-texto);
-    border-radius: var(--raio-pequeno);
+.lista-titulo {
+    font-size: clamp(1.75rem, 1.2rem + 2.4vw, 2.25rem);
+    line-height: 1.05;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--cor-texto);
+    color: var(--cor-texto);
 }
-.lista-lado li { padding: 12px 0; border-bottom: 1px solid var(--cor-fio); }
-.lista-lado li:last-child { border-bottom: 0; }
+
+.lista-lado ul { list-style: none; margin-top: 14px; display: grid; gap: 12px; }
+.lista-lado li { position: relative; padding-left: 24px; }
+.lista-lado li::before {
+    content: "+";
+    position: absolute;
+    left: 0;
+    top: -.06em;
+    font-weight: 600;
+    font-size: 1.15em;
+}
 
 @media (min-width: 760px) {
-    .folha { grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 96px); }
+    .folha {
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        padding: 36px 34px 38px;
+    }
+    .lista-lado:first-child { padding-right: 30px; }
+    .lista-clinica { padding-left: 30px; border-left: 2px dashed var(--cor-texto); }
+    .envelope-corpo { padding: 0 26px 26px; }
 }
 
 /* ================= #3 PASSOS (campo escuro) ================= */
@@ -457,58 +502,57 @@ a { color: inherit; }
 .resumo-ajuste dd { font: 400 var(--t-texto)/var(--entrelinha-texto) var(--fonte-texto); margin-top: 4px; }
 
 /* ================= #6 QUEM ATENDE ================= */
-/* as duas fichas no mesmo nível, sem cargo: linhas editoriais com fio, foto em campo de cor */
+/* fichas grandes da equipe da Ginga: as duas no mesmo nível, sem cargo, em cartão com sombra deslocada */
 .time {
     list-style: none;
-    margin-top: 40px;
+    margin-top: 34px;
     display: grid;
-    gap: 32px;
+    gap: 22px;
 }
 
 .ficha-time {
     display: flex;
     flex-direction: column;
-    gap: 16px;
-    padding-top: 20px;
-    border-top: 2px solid var(--cor-fio-forte);
+    border: 3px solid var(--cor-texto);
+    box-shadow: 6px 6px 0 var(--cor-texto);
     min-width: 0;
 }
+.ficha-time-azul { background: var(--cor-texto); color: var(--cor-fundo); }
+.ficha-time-amarela { background: var(--campo-amarelo); color: var(--cor-texto); }
 
 /* inicial do nome no lugar da foto, enquanto a foto não chega */
 .ficha-time-inicial {
     aspect-ratio: 3 / 2;
-    max-height: 260px;
-    border-radius: var(--raio);
+    margin: 14px 14px 0;
     display: grid;
     place-items: center;
     font-family: var(--fonte-titulo);
     font-stretch: 62.5%;
     font-weight: 900;
-    font-size: var(--t-cartaz);
+    font-size: clamp(7rem, 34vw, 11rem);
     line-height: 1;
 }
-.ficha-time-azul .ficha-time-inicial { background: var(--campo-escuro); color: var(--sobre-campo-escuro); }
-.ficha-time-amarela .ficha-time-inicial { background: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
+.ficha-time-azul .ficha-time-inicial { background: var(--campo-amarelo); color: var(--cor-texto); }
+.ficha-time-amarela .ficha-time-inicial { background: var(--cor-texto); color: var(--campo-amarelo); }
 
-.ficha-time-foto { aspect-ratio: 1 / 1; border-radius: var(--raio); overflow: hidden; }
+.ficha-time-foto { aspect-ratio: 1 / 1; margin: 14px 14px 0; }
 .ficha-time-foto img { width: 100%; height: 100%; object-fit: cover; }
 
+.ficha-time-texto { padding: 18px 20px 24px; }
 .ficha-time-nome {
     font-family: var(--fonte-titulo);
     font-stretch: 62.5%;
     font-weight: 900;
     text-transform: uppercase;
-    font-size: var(--t-titulo);
-    line-height: var(--entrelinha-titulo);
-    letter-spacing: .005em;
+    font-size: clamp(2.25rem, 1.4rem + 3.6vw, 3.25rem);
+    line-height: 1;
 }
-.ficha-time-equipe { margin-top: 8px; font-size: var(--t-rotulo); font-weight: 600; color: var(--cor-texto-suave); }
-.ficha-time-frase { margin-top: 12px; }
+.ficha-time-equipe { margin-top: 8px; font-size: var(--t-texto); font-weight: 600; }
+.ficha-time-frase { margin-top: 12px; font-size: var(--t-texto); }
 
 @media (min-width: 640px) {
-    .time { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .time { grid-template-columns: 1fr 1fr; gap: 28px; }
     .ficha-time-foto { aspect-ratio: 4 / 5; }
-    .ficha-time-inicial { max-height: none; aspect-ratio: 16 / 9; }
 }
 
 .equipe { padding-top: calc(clamp(40px, 5vw, 56px) + var(--respiro) * .6); }
@@ -525,8 +569,26 @@ a { color: inherit; }
 }
 @media (min-width: 1200px) { .equipe::after { display: block; } }
 
-.equipe-linha { margin-top: 48px; }
-.equipe-local { max-width: var(--leitura); font-size: var(--t-destaque); }
+.equipe-linha {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 18px 24px;
+}
+.equipe-local { max-width: 52ch; font-size: var(--t-destaque); }
+
+/* carimbo de Araraquara, parado (o mesmo do site da Ginga) */
+.carimbo {
+    width: 116px;
+    height: 116px;
+    flex: 0 0 auto;
+    color: var(--cor-texto);
+    transform: rotate(-12deg);
+}
+.carimbo-fundo { fill: var(--cor-fundo); stroke: currentColor; stroke-width: 3; }
+.carimbo-linha { fill: none; stroke: currentColor; stroke-width: 3; }
+.carimbo-texto { font: 600 10.5px var(--fonte-texto); letter-spacing: 1.6px; fill: currentColor; }
+.carimbo-centro { font: 900 15px var(--fonte-titulo); font-stretch: 62.5%; fill: currentColor; }
 
 .caixa-frente {
     margin-top: 40px;
