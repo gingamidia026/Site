@@ -1,0 +1,508 @@
+/* Landing pages da Ginga Mídia (odonto e estética) · identidade "Cartaz editorial" (24/11/2026)
+   Compartilhado pelas duas páginas; o que é só de uma fica no estilo.css da pasta dela.
+   Mesma base do site: creme, azul escuro, vermelho de ação, Archivo em cinco tamanhos,
+   texto à esquerda, listas com fios finos, botões de 8 px e movimento só de transform e opacity.
+   Tokens em cores.css e fontes.css. Elemento ousado único: o título de abertura em cartaz. */
+
+*,
+*::before,
+*::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+    --largura: 1120px;
+    --margem: clamp(20px, 5vw, 56px);
+    --respiro: clamp(56px, 9vw, 112px);
+}
+
+html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+}
+
+/* nunca rolar para o lado (regra rolagem-lateral) */
+html, body { overflow-x: clip; }
+
+body {
+    background: var(--cor-fundo);
+    color: var(--cor-texto);
+}
+
+img, svg { display: block; max-width: 100%; height: auto; }
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--cor-foco); outline-offset: 3px; }
+.passos :focus-visible,
+.final :focus-visible,
+.rodape :focus-visible { outline-color: var(--cor-papel); }
+
+.pular {
+    position: absolute;
+    left: 16px;
+    top: -80px;
+    z-index: 200;
+    padding: 12px 18px;
+    background: var(--cor-texto);
+    color: var(--cor-fundo);
+    font-weight: 600;
+    border-radius: var(--raio-pequeno);
+}
+.pular:focus { top: 12px; }
+
+/* ================= TÍTULOS E TEXTOS ================= */
+.titulo,
+.hero-titulo,
+.lista-titulo,
+.subtitulo,
+.caixa-titulo,
+.passos h3,
+.peca-chamada {
+    font-family: var(--fonte-titulo);
+    font-stretch: 75%;
+    font-weight: 800;
+    text-transform: none;
+    line-height: var(--entrelinha-titulo);
+    letter-spacing: -.02em;
+}
+
+.titulo {
+    font-size: var(--t-titulo);
+    max-width: 16em;
+    text-wrap: balance;
+}
+
+.texto-largo {
+    margin-top: 20px;
+    max-width: var(--leitura);
+    font-size: var(--t-destaque);
+}
+
+.linha-pequena {
+    margin-top: 24px;
+    max-width: var(--leitura);
+    font-size: var(--t-rotulo);
+    color: var(--cor-texto-suave);
+}
+
+.subtitulo,
+.lista-titulo,
+.caixa-titulo,
+.passos h3 {
+    font-size: var(--t-destaque);
+    font-weight: 700;
+    letter-spacing: -.01em;
+}
+.subtitulo { margin-top: 48px; }
+
+/* ================= BOTÕES ================= */
+.botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    max-width: 100%;
+    margin-top: 32px;
+    padding: 12px 28px;
+    border: 0;
+    border-radius: var(--raio);
+    background: var(--cor-acao);
+    color: var(--cor-acao-texto);
+    font: 600 var(--t-texto)/1.25 var(--fonte-texto);
+    text-align: center;
+    text-decoration: none;
+    box-shadow: var(--sombra-leve);
+    transition: transform var(--duracao) var(--ease-saida);
+}
+@media (hover: hover) { .botao:hover { transform: translateY(-1px); } }
+.botao:active { transform: scale(.97); }
+
+/* ================= #1 TOPO ================= */
+.topo {
+    padding: 20px var(--margem) 0;
+    max-width: var(--largura);
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.logo img { height: 52px; width: auto; }
+.divisoria { width: 1px; height: 46px; background: var(--cor-fio-forte); }
+.logo-cidade { font-size: var(--t-rotulo); font-weight: 600; white-space: nowrap; }
+
+.hero {
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: clamp(40px, 7vw, 88px) var(--margem) var(--respiro);
+}
+
+/* o título de abertura é o cartaz: condensada 800 no maior tamanho da escala */
+.hero-titulo {
+    font-size: var(--t-cartaz);
+    letter-spacing: -.025em;
+    max-width: 11em;
+    text-wrap: balance;
+}
+
+.hero-apoio {
+    margin-top: 28px;
+    max-width: 34em;
+    font-size: var(--t-destaque);
+    text-wrap: pretty;
+}
+
+.hero .botao { margin-top: 32px; }
+
+.hero-linha {
+    margin-top: 24px;
+    max-width: var(--leitura);
+    font-size: var(--t-texto);
+    color: var(--cor-texto-suave);
+    text-wrap: pretty;
+}
+
+/* ================= SEÇÕES ================= */
+.secao {
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding: var(--respiro) var(--margem);
+}
+
+/* ================= #2 QUEM FAZ O QUÊ (duas listas com fios) ================= */
+.proposta { padding-top: 0; }
+
+/* a seção abre com um fio forte; o envelope de correio aéreo saiu */
+.envelope { margin-top: 40px; border-top: 2px solid var(--cor-fio-forte); }
+.folha {
+    display: grid;
+    gap: 40px;
+    padding-top: 32px;
+}
+
+.lista-titulo {
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--cor-fio-forte);
+}
+
+.lista-lado ul { list-style: none; display: grid; }
+.lista-lado li { padding: 14px 0; border-bottom: 1px solid var(--cor-fio); }
+
+@media (min-width: 760px) {
+    .folha { grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 96px); }
+}
+
+/* ================= #3 PASSOS (campo escuro) ================= */
+.passos {
+    max-width: none;
+    background: var(--campo-escuro);
+    color: var(--sobre-campo-escuro);
+}
+.passos > * { max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
+
+.passos-lista {
+    list-style: none;
+    margin-top: 48px;
+    display: grid;
+    gap: 0 32px;
+}
+
+.passos-lista li {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+    gap: 16px;
+    align-items: start;
+    padding: 24px 0 28px;
+    border-top: 1px solid rgba(242, 232, 220, .4);
+}
+
+.passo-numero {
+    font-family: var(--fonte-titulo);
+    font-stretch: 75%;
+    font-weight: 800;
+    font-size: var(--t-titulo);
+    line-height: var(--entrelinha-titulo);
+    letter-spacing: -.02em;
+}
+
+.passos p { margin-top: 8px; }
+
+@media (min-width: 900px) {
+    .passos-lista { grid-template-columns: repeat(4, 1fr); }
+    .passos-lista li { grid-template-columns: 1fr; gap: 12px; align-content: start; }
+}
+
+/* ================= #4 REGRAS E MODELO DE PEÇA ================= */
+.modelo {
+    position: relative;
+    margin: 48px 0 0;
+    max-width: 380px;
+}
+
+.peca {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    display: flex;
+    flex-direction: column;
+    background: var(--campo-escuro);
+    color: var(--sobre-campo-escuro);
+    border-radius: var(--raio);
+    overflow: hidden;
+    box-shadow: var(--sombra-media);
+}
+
+.peca-faixa {
+    padding: 10px 16px;
+    background: var(--campo-amarelo);
+    color: var(--sobre-campo-amarelo);
+    font-size: var(--t-rotulo);
+    font-weight: 600;
+}
+
+.peca-desenho { width: 100%; margin-top: 14px; flex: 1 1 auto; min-height: 0; }
+
+.peca-texto { padding: 12px 18px 16px; }
+.peca-chamada { font-size: var(--t-destaque); }
+.peca-acao { margin-top: 6px; font-size: var(--t-rotulo); font-weight: 600; }
+
+.peca-rodape {
+    padding: 10px 16px;
+    border-top: 1px solid rgba(242, 232, 220, .35);
+    font-size: var(--t-rotulo);
+}
+
+/* anotações: no celular, lista abaixo da peça */
+.anotacoes {
+    list-style: none;
+    margin-top: 20px;
+    display: grid;
+    border-top: 1px solid var(--cor-fio-forte);
+}
+.anotacoes li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--cor-fio);
+    font-size: var(--t-rotulo);
+    font-weight: 600;
+}
+.anotacoes li::before { content: "↑ "; color: var(--cor-acao); font-weight: 600; }
+
+/* no PC as anotações ficam ao lado da peça, alinhadas à esquerda */
+@media (min-width: 1000px) {
+    .regras .modelo { max-width: none; display: grid; grid-template-columns: 380px minmax(0, 1fr); gap: 56px; align-items: start; }
+    .anotacoes { margin-top: 0; align-self: center; max-width: 320px; }
+}
+
+.lista-confere {
+    margin-top: 20px;
+    max-width: var(--leitura);
+    padding-left: 1.3em;
+    display: grid;
+    gap: 10px;
+}
+.lista-confere li { max-width: var(--leitura); }
+.lista-confere li::marker { content: "+  "; font-weight: 600; }
+
+/* ================= #5 RESUMO DA SEMANA ================= */
+.folha-resumo {
+    margin-top: 40px;
+    max-width: 640px;
+    background: var(--cor-papel);
+    border-radius: var(--raio);
+    box-shadow: var(--sombra-media);
+    overflow: hidden;
+}
+
+.folha-faixa {
+    padding: 12px 20px;
+    background: var(--campo-escuro);
+    color: var(--sobre-campo-escuro);
+    font-weight: 600;
+    font-size: var(--t-rotulo);
+}
+
+/* aviso de exemplo: texto em espaço próprio, sem cobrir nenhum número */
+.carimbo-exemplo {
+    display: block;
+    margin: 20px 20px 0;
+    font-size: var(--t-rotulo);
+    color: var(--cor-texto-suave);
+}
+.carimbo-exemplo strong {
+    display: inline;
+    font: 600 var(--t-rotulo)/1.4 var(--fonte-texto);
+    letter-spacing: .04em;
+    margin-right: 6px;
+    color: var(--cor-acao);
+}
+
+.resumo-linhas { padding: 8px 20px 20px; }
+.resumo-linhas > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--cor-fio);
+}
+.resumo-linhas dd {
+    flex: 0 0 auto;
+    font: 800 var(--t-destaque)/1 var(--fonte-titulo);
+    font-stretch: 75%;
+    font-variant-numeric: tabular-nums;
+}
+.resumo-linhas > .resumo-ajuste { display: block; border-bottom: 0; }
+.resumo-ajuste dt { font-weight: 600; }
+.resumo-ajuste dd { font: 400 var(--t-texto)/var(--entrelinha-texto) var(--fonte-texto); margin-top: 4px; }
+
+/* ================= #6 QUEM ATENDE ================= */
+/* as duas fichas no mesmo nível, sem cargo: linhas editoriais com fio, foto em campo de cor */
+.time {
+    list-style: none;
+    margin-top: 40px;
+    display: grid;
+    gap: 32px;
+}
+
+.ficha-time {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding-top: 20px;
+    border-top: 2px solid var(--cor-fio-forte);
+    min-width: 0;
+}
+
+/* inicial do nome no lugar da foto, enquanto a foto não chega */
+.ficha-time-inicial {
+    aspect-ratio: 3 / 2;
+    max-height: 260px;
+    border-radius: var(--raio);
+    display: grid;
+    place-items: center;
+    font-family: var(--fonte-titulo);
+    font-stretch: 75%;
+    font-weight: 800;
+    font-size: var(--t-cartaz);
+    line-height: 1;
+}
+.ficha-time-azul .ficha-time-inicial { background: var(--campo-escuro); color: var(--sobre-campo-escuro); }
+.ficha-time-amarela .ficha-time-inicial { background: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
+
+.ficha-time-foto { aspect-ratio: 1 / 1; border-radius: var(--raio); overflow: hidden; }
+.ficha-time-foto img { width: 100%; height: 100%; object-fit: cover; }
+
+.ficha-time-nome {
+    font-family: var(--fonte-titulo);
+    font-stretch: 75%;
+    font-weight: 800;
+    text-transform: none;
+    font-size: var(--t-titulo);
+    line-height: var(--entrelinha-titulo);
+    letter-spacing: -.02em;
+}
+.ficha-time-equipe { margin-top: 8px; font-size: var(--t-rotulo); font-weight: 600; color: var(--cor-texto-suave); }
+.ficha-time-frase { margin-top: 12px; }
+
+@media (min-width: 640px) {
+    .time { grid-template-columns: 1fr 1fr; gap: 48px; }
+    .ficha-time-foto { aspect-ratio: 4 / 5; }
+    .ficha-time-inicial { max-height: none; aspect-ratio: 4 / 3; }
+}
+
+.equipe-linha { margin-top: 48px; }
+.equipe-local { max-width: var(--leitura); font-size: var(--t-destaque); }
+
+.caixa-frente {
+    margin-top: 40px;
+    max-width: 760px;
+    padding: 24px 0 0;
+    border-top: 1px solid var(--cor-fio-forte);
+}
+.caixa-titulo { color: var(--cor-texto); }
+.caixa-frente p + p { margin-top: 12px; }
+
+/* ================= #7 DÚVIDAS ================= */
+.duvidas-lista { margin-top: 32px; max-width: 780px; border-top: 2px solid var(--cor-fio-forte); }
+
+.duvidas details { border-bottom: 1px solid var(--cor-fio); }
+
+.duvidas summary {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 60px;
+    padding: 14px 48px 14px 0;
+    font-size: var(--t-texto);
+    font-weight: 600;
+    line-height: 1.35;
+    cursor: pointer;
+    list-style: none;
+}
+.duvidas summary::-webkit-details-marker { display: none; }
+.duvidas summary::after {
+    content: "+";
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    font: 600 var(--t-destaque)/1 var(--fonte-texto);
+}
+.duvidas details[open] summary::after { content: "−"; }
+.duvidas details p { padding: 0 0 20px; }
+
+/* ================= #8 CHAMADA FINAL E RODAPÉ ================= */
+.final {
+    max-width: none;
+    background: var(--campo-vermelho);
+    color: var(--sobre-campo-vermelho);
+}
+.final > * { max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
+.final .botao { background: var(--cor-papel); color: var(--cor-texto); }
+
+.rodape {
+    background: var(--campo-escuro);
+    color: var(--sobre-campo-escuro);
+    padding: 32px var(--margem) 110px;
+    font-size: var(--t-rotulo);
+}
+.rodape p { max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
+.rodape a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: inherit;
+    font-weight: 600;
+    text-underline-offset: 4px;
+}
+
+/* ================= WHATSAPP FLUTUANTE ================= */
+.whats-flutuante {
+    position: fixed;
+    right: 14px;
+    bottom: 14px;
+    z-index: 60;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 52px;
+    padding: 0 18px 0 14px;
+    border-radius: var(--raio);
+    background: var(--cor-acao);
+    color: var(--cor-acao-texto);
+    font: 600 var(--t-texto)/1 var(--fonte-texto);
+    text-decoration: none;
+    box-shadow: var(--sombra-media);
+    transition: transform var(--duracao) var(--ease-saida);
+}
+@media (hover: hover) { .whats-flutuante:hover { transform: translateY(-2px); } }
+.whats-flutuante:active { transform: scale(.97); }
+
+/* ================= MOVIMENTO REDUZIDO ================= */
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+    .botao:hover, .botao:active, .whats-flutuante:hover, .whats-flutuante:active { transform: none; }
+}
+
+/* faixas e cartões de modelo ocupam a largura toda do cartão */
+.folha-resumo p, .peca p, .conferida p { max-width: none; }

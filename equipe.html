@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Dominique-Oliveira-ChatGPT🤖💚: política compatível com hospedagem estática. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' ; style-src 'self' https://fonts.googleapis.com 'sha256-wRr10lslVk5YXGwQ8UcaK9XvJgF5KzJ+qdgd4t0L/EI='; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' ; style-src 'self' 'sha256-LzEPbbIB5Cu59AO/WzI03DZDU4CsobNCHwM9XgK1vgA='; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,20 +11,24 @@
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#1D233B">
     <link rel="icon" href="Imagens/Favicon-192.png">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cantarell:wght@400;700&display=swap">
+    <link rel="preload" href="estilo/fontes/Archivo-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="estilo/fontes/ArchivoCondensed-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="estilo/cores.css">
+    <link rel="stylesheet" href="estilo/fontes.css">
     <style>
-        :root { --creme:#F2E8DC; --azule:#1D233B; --vermelho:#BF471B; --amarelo:#F2AE30; }
-        * { box-sizing: border-box; }
-        body { margin:0; min-height:100vh; display:grid; place-items:center; background:var(--azule); color:var(--creme); font-family:Cantarell, system-ui, sans-serif; font-size:17px; line-height:1.5; padding:24px 16px; }
-        main { max-width:440px; width:100%; }
-        img { width:160px; height:auto; display:block; margin-bottom:16px; }
-        h1 { font-family:Anton, Impact, sans-serif; font-weight:400; font-size:44px; line-height:1.05; margin:0 0 12px; color:var(--amarelo); }
-        a.entrar { display:block; text-align:center; background:var(--vermelho); color:var(--creme); font-weight:700; text-decoration:none; padding:16px; border-radius:4px; min-height:44px; margin:24px 0; }
-        a.entrar:focus-visible { outline:3px solid var(--amarelo); outline-offset:3px; }
-        ol { padding-left:20px; }
-        small { opacity:.8; }
+        * { box-sizing: border-box; margin: 0; }
+        body { min-height: 100vh; display: grid; place-items: center; background: var(--campo-escuro); color: var(--sobre-campo-escuro); padding: 24px 16px; }
+        main { max-width: 440px; width: 100%; }
+        img { width: 160px; height: auto; display: block; margin-bottom: 24px; }
+        h1 { font-size: var(--t-titulo); margin-bottom: 12px; }
+        p { margin-top: 12px; }
+        a.entrar { display: block; text-align: center; background: var(--cor-acao); color: var(--cor-acao-texto); font-weight: 600; text-decoration: none; padding: 16px; border-radius: var(--raio); min-height: 48px; margin: 24px 0; box-shadow: var(--sombra-leve); transition: transform var(--duracao) var(--ease-saida); }
+        a.entrar:active { transform: scale(.97); }
+        a.entrar:focus-visible { outline: 2px solid var(--cor-papel); outline-offset: 3px; }
+        ol { padding-left: 20px; margin-top: 8px; }
+        li { margin-top: 6px; }
+        small { font-size: var(--t-rotulo); }
+        @media (prefers-reduced-motion: reduce) { a.entrar { transition: none; } a.entrar:active { transform: none; } }
     </style>
 </head>
 <body>

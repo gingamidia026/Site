@@ -72,25 +72,6 @@ const enviarFormulario = (e) => {
 };
 form.addEventListener('submit', enviarFormulario);
 
-// Cartaz justificado: cada linha ganha o tamanho que a faz ocupar a largura do bloco
-const justificar = () => {
-  document.querySelectorAll('[data-justificar]').forEach(titulo => {
-    const largura = titulo.clientWidth;
-    titulo.querySelectorAll('span').forEach(linha => {
-      linha.style.fontSize = '100px';
-      const tamanho = Math.min(100 * largura / linha.scrollWidth, 150);
-      linha.style.fontSize = tamanho.toFixed(1) + 'px';
-    });
-  });
-};
-document.fonts.ready.then(justificar);
-window.addEventListener('load', justificar);
-let espera;
-window.addEventListener('resize', () => {
-  clearTimeout(espera);
-  espera = setTimeout(justificar, 120);
-});
-
 // Selo ampliado: clicar num selo abre ele na tela toda
 const modal = document.getElementById('modalSelo');
 const modalConteudo = document.getElementById('modalConteudo');
@@ -214,56 +195,6 @@ modal.addEventListener('close', () => {
   // o foco volta ao botão "Ver mais" do selo (ou ao link do WhatsApp que abriu a janela)
   if (seloAberto) (seloAberto.querySelector('.ver-mais') || seloAberto).focus();
 });
-
-// Linha tracejada ligando os passos: curvas e uma volta entre cada cartão
-const passos = document.getElementById('passos');
-const desenharLinha = () => {
-  if (!passos) return;
-  let svg = passos.querySelector('.passos-linha');
-  if (!svg) {
-    svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.classList.add('passos-linha');
-    svg.setAttribute('aria-hidden', 'true');
-    svg.appendChild(document.createElementNS('http://www.w3.org/2000/svg', 'path'));
-    passos.prepend(svg);
-  }
-  const base = passos.getBoundingClientRect();
-  const caixas = [...passos.querySelectorAll(':scope > .selo')].map(c => {
-    const r = c.getBoundingClientRect();
-    return { x: r.left - base.left, y: r.top - base.top, l: r.width, a: r.height };
-  });
-  const p = (n) => n.toFixed(1);
-  let d = '';
-  for (let i = 0; i < caixas.length - 1; i++) {
-    const c = caixas[i], prox = caixas[i + 1];
-    const mesmaLinha = Math.abs(prox.y - c.y) < c.a / 2;
-    let x1, y1, x2, y2;
-    const r = 13;
-    if (mesmaLinha) {
-      // sai pela direita, faz uma volta por cima e entra pela esquerda do próximo
-      x1 = c.x + c.l - 4; y1 = c.y + c.a * .4; x2 = prox.x + 4; y2 = prox.y + prox.a * .6;
-      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-      d += `M${p(x1)},${p(y1)} C${p(x1 + 30)},${p(y1 + 40)} ${p(mx - 24)},${p(my + 24)} ${p(mx)},${p(my)} ` +
-        `a${r},${r} 0 1,0 0,${-2 * r} a${r},${r} 0 1,0 0,${2 * r} ` +
-        `C${p(mx + 24)},${p(my - 24)} ${p(x2 - 30)},${p(y2 - 40)} ${p(x2)},${p(y2)} `;
-    } else {
-      // sai por baixo de um lado, faz uma volta e entra por cima do outro lado do próximo
-      const lado = i % 2 ? -1 : 1;
-      x1 = c.x + c.l * (lado > 0 ? .3 : .7); y1 = c.y + c.a - 4;
-      x2 = prox.x + prox.l * (lado > 0 ? .7 : .3); y2 = prox.y + 4;
-      const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-      d += `M${p(x1)},${p(y1)} C${p(x1)},${p(y1 + 40)} ${p(mx - lado * 40)},${p(my + 6)} ${p(mx)},${p(my)} ` +
-        `a${r},${r} 0 1,${lado > 0 ? 0 : 1} ${p(lado * 2 * r)},0 a${r},${r} 0 1,${lado > 0 ? 0 : 1} ${p(-lado * 2 * r)},0 ` +
-        `C${p(mx + lado * 40)},${p(my - 6)} ${p(x2)},${p(y2 - 40)} ${p(x2)},${p(y2)} `;
-    }
-  }
-  svg.firstChild.setAttribute('d', d);
-};
-document.fonts.ready.then(desenharLinha);
-window.addEventListener('load', desenharLinha);
-window.addEventListener('resize', () => requestAnimationFrame(desenharLinha));
-// os cartões entram deslizando: redesenha quando param
-if (passos) passos.addEventListener('transitionend', desenharLinha);
 
 // Ano no rodapé
 document.getElementById('ano').textContent = new Date().getFullYear();
