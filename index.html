@@ -35,7 +35,7 @@
 
     <!-- Fonte: Archivo, local (estilo/fontes.css) -->
     <link rel="preload" href="estilo/fontes/Archivo-Regular.woff2" as="font" type="font/woff2" crossorigin>
-    <link rel="preload" href="estilo/fontes/ArchivoCondensed-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="estilo/fontes/ArchivoExtraCondensed-Black.woff2" as="font" type="font/woff2" crossorigin>
 
     <!-- Dados estruturados para o Google -->
     <script type="application/ld+json">
@@ -88,8 +88,20 @@
 
         <!-- ============ INÍCIO (HERO) ============ -->
         <section class="hero" id="inicio">
+            <div class="decoracao" aria-hidden="true">
+                <div class="ave ave-tucano"><img src="Imagens/Ave-tucano.webp" alt="" width="720" height="1080"></div>
+                <div class="ave ave-arara"><img src="Imagens/Ave-arara.webp" alt="" width="720" height="1080"></div>
+            </div>
+
             <div class="hero-centro">
-                <div class="ave ave-arara" aria-hidden="true"><img src="Imagens/Ave-arara.webp" alt="" width="720" height="1080" loading="lazy"></div>
+                <svg class="carimbo-giro" viewBox="0 0 120 120" aria-hidden="true">
+                    <defs><path id="circuloCarimbo" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+                    <circle cx="60" cy="60" r="57" class="carimbo-fundo"/>
+                    <circle cx="60" cy="60" r="31" class="carimbo-linha"/>
+                    <text class="carimbo-texto"><textPath href="#circuloCarimbo">GINGA MÍDIA • ARARAQUARA • SP •</textPath></text>
+                    <text class="carimbo-centro" x="60" y="57" text-anchor="middle">CEP</text>
+                    <text class="carimbo-centro" x="60" y="73" text-anchor="middle">14800</text>
+                </svg>
 
                 <div class="logo">
                     <img src="Imagens/Logo-azul-escuro.webp" alt="Ginga Mídia" width="900" height="398">
@@ -186,8 +198,12 @@
         </section>
 
         <!-- ============ SERVIÇOS ============ -->
+        <div class="faixa-estampa faixa-ondas" aria-hidden="true"></div>
 
-        <section class="secao" id="servicos">
+        <section class="secao secao-amarelo" id="servicos">
+            <div class="enfeites" aria-hidden="true">
+                <img class="enfeite enfeite-folhas" src="Imagens/Folhas-dir.webp" alt="" width="690" height="795" loading="lazy">
+            </div>
             <div class="conteudo">
                 <h2 class="cartaz-justificado fonte-titulo">
                     <span>Três frentes,</span>
@@ -201,7 +217,11 @@
         </section>
 
         <!-- ============ COMO FUNCIONA ============ -->
+        <div class="faixa-estampa faixa-mosaico" aria-hidden="true"></div>
         <section class="secao secao-azul" id="como-funciona">
+            <div class="enfeites" aria-hidden="true">
+                <div class="sol"></div>
+            </div>
             <div class="conteudo">
                 <h2 class="titulo-correio fonte-titulo">Do primeiro contato ao resultado</h2>
 
@@ -245,6 +265,9 @@
 
         <!-- ============ QUEM SOMOS NÓS ============ -->
         <section class="secao" id="quem-somos">
+            <div class="enfeites" aria-hidden="true">
+                <img class="enfeite enfeite-onca" src="Imagens/Enfeite-Onca.webp" alt="" width="326" height="540" loading="lazy">
+            </div>
             <div class="conteudo">
                 <h2 class="titulo-letreiro fonte-titulo">Quem vai cuidar da sua empresa</h2>
                 <p class="secao-intro">
@@ -412,10 +435,14 @@
         </section>
 
         <!-- ============ SOBRE ============ -->
+        <div class="faixa-estampa faixa-ondas-laranja" aria-hidden="true"></div>
         <section class="secao secao-sobre" id="sobre">
+            <div class="enfeites" aria-hidden="true">
+                <img class="enfeite enfeite-arara" src="Imagens/Ave-arara.webp" alt="" width="720" height="1080" loading="lazy">
+            </div>
             <div class="conteudo sobre-grade">
-                <div class="sobre-figura revelar" aria-hidden="true">
-                    <img src="Imagens/Tucano-ginga.webp" alt="" width="449" height="466" loading="lazy">
+                <div class="sobre-figura selo selo-creme revelar" aria-hidden="true">
+                    <div class="selo-face"><img src="Imagens/Tucano-ginga.webp" alt="" width="449" height="466" loading="lazy"></div>
                 </div>
                 <div class="sobre-texto revelar">
                     <h2 class="titulo-contorno fonte-titulo">Comunicação brasileira, <span>com jogo de cintura</span></h2>

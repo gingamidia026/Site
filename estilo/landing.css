@@ -1,8 +1,10 @@
-/* Landing pages da Ginga Mídia (odonto e estética) · identidade "Cartaz editorial" (24/11/2026)
+/* Landing pages da Ginga Mídia (odonto e estética) · identidade "meio-termo" (24/11/2026)
    Compartilhado pelas duas páginas; o que é só de uma fica no estilo.css da pasta dela.
-   Mesma base do site: creme, azul escuro, vermelho de ação, Archivo em cinco tamanhos,
-   texto à esquerda, listas com fios finos, botões de 8 px e movimento só de transform e opacity.
-   Tokens em cores.css e fontes.css. Elemento ousado único: o título de abertura em cartaz. */
+   Mesma base do site: Archivo em cinco tamanhos, títulos em caixa alta na extracondensada Black,
+   campos de cor (amarelo, azul escuro, vermelho) alternando com o creme, faixas de estampa,
+   selo serrilhado nas listas, uma ou duas ilustrações por seção, listas com fios finos,
+   botões sólidos de 8 px e movimento só de transform e opacity.
+   Tokens em cores.css e fontes.css. Tudo é feito por CSS: o HTML das páginas não muda. */
 
 *,
 *::before,
@@ -57,11 +59,11 @@ a { color: inherit; }
 .passos h3,
 .peca-chamada {
     font-family: var(--fonte-titulo);
-    font-stretch: 75%;
-    font-weight: 800;
-    text-transform: none;
+    font-stretch: 62.5%;
+    font-weight: 900;
+    text-transform: uppercase;
     line-height: var(--entrelinha-titulo);
-    letter-spacing: -.02em;
+    letter-spacing: .005em;
 }
 
 .titulo {
@@ -88,9 +90,12 @@ a { color: inherit; }
 .caixa-titulo,
 .passos h3 {
     font-size: var(--t-destaque);
-    font-weight: 700;
-    letter-spacing: -.01em;
+    font-stretch: 75%;
+    font-weight: 800;
+    letter-spacing: .01em;
 }
+/* frase longa e rótulo de peça ficam em caixa normal, só em negrito condensado */
+.caixa-titulo, .subtitulo, .peca-chamada { text-transform: none; }
 .subtitulo { margin-top: 48px; }
 
 /* ================= BOTÕES ================= */
@@ -102,7 +107,7 @@ a { color: inherit; }
     max-width: 100%;
     margin-top: 32px;
     padding: 12px 28px;
-    border: 0;
+    border: 2px solid var(--cor-texto);
     border-radius: var(--raio);
     background: var(--cor-acao);
     color: var(--cor-acao-texto);
@@ -116,10 +121,16 @@ a { color: inherit; }
 .botao:active { transform: scale(.97); }
 
 /* ================= #1 TOPO ================= */
+/* o topo e o início formam um só campo amarelo de borda a borda */
 .topo {
+    position: relative;
     padding: 20px var(--margem) 0;
     max-width: var(--largura);
     margin: 0 auto;
+    background: var(--campo-amarelo);
+    color: var(--sobre-campo-amarelo);
+    box-shadow: 0 0 0 100vmax var(--campo-amarelo);
+    clip-path: inset(0 -100vmax);
 }
 
 .logo {
@@ -132,18 +143,37 @@ a { color: inherit; }
 .logo-cidade { font-size: var(--t-rotulo); font-weight: 600; white-space: nowrap; }
 
 .hero {
+    position: relative;
     max-width: var(--largura);
     margin: 0 auto;
     padding: clamp(40px, 7vw, 88px) var(--margem) var(--respiro);
+    background: var(--campo-amarelo);
+    color: var(--sobre-campo-amarelo);
+    box-shadow: 0 0 0 100vmax var(--campo-amarelo);
+    clip-path: inset(0 -100vmax);
 }
+/* arara na borda de baixo à direita, só onde há espaço ao lado do texto */
+.hero::before {
+    content: "";
+    display: none;
+    position: absolute;
+    right: 0; bottom: 0;
+    width: 220px; height: 330px;
+    background: url("../Imagens/Ave-arara.webp") right bottom / contain no-repeat;
+    pointer-events: none;
+}
+.hero > * { position: relative; }
+@media (min-width: 1000px) { .hero::before { display: block; } }
 
 /* o título de abertura é o cartaz: condensada 800 no maior tamanho da escala */
 .hero-titulo {
     font-size: var(--t-cartaz);
-    letter-spacing: -.025em;
     max-width: 11em;
     text-wrap: balance;
 }
+
+/* no PC o título longo da landing usa o tamanho de seção, para fechar em duas linhas */
+@media (min-width: 900px) { .hero-titulo { font-size: var(--t-titulo); max-width: 15em; } }
 
 .hero-apoio {
     margin-top: 28px;
@@ -158,35 +188,74 @@ a { color: inherit; }
     margin-top: 24px;
     max-width: var(--leitura);
     font-size: var(--t-texto);
-    color: var(--cor-texto-suave);
+    color: var(--sobre-campo-amarelo);
     text-wrap: pretty;
 }
 
 /* ================= SEÇÕES ================= */
 .secao {
+    position: relative;
     max-width: var(--largura);
     margin: 0 auto;
     padding: var(--respiro) var(--margem);
 }
 
-/* ================= #2 QUEM FAZ O QUÊ (duas listas com fios) ================= */
-.proposta { padding-top: 0; }
+/* faixas de estampa de borda a borda no começo de algumas seções (Imagens/Estampas) */
+.proposta::before,
+.passos::before,
+.equipe::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100vw;
+    margin-left: -50vw;
+    height: clamp(40px, 5vw, 56px);
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: 260px auto;
+    pointer-events: none;
+}
+.proposta::before { background-image: url("../Imagens/Estampas/ondas.webp"); }
+.passos::before { z-index: 2; background-image: url("../Imagens/Estampas/mosaico.webp"); }
+.equipe::before { background-image: url("../Imagens/Estampas/ondas-laranja.webp"); }
 
-/* a seção abre com um fio forte; o envelope de correio aéreo saiu */
-.envelope { margin-top: 40px; border-top: 2px solid var(--cor-fio-forte); }
+/* ================= #2 QUEM FAZ O QUÊ (duas listas com fios) ================= */
+.proposta { padding-top: calc(clamp(40px, 5vw, 56px) + var(--respiro) * .6); }
+
+.envelope { margin-top: 40px; }
 .folha {
     display: grid;
-    gap: 40px;
-    padding-top: 32px;
+    gap: 32px;
+    align-items: start;
 }
 
-.lista-titulo {
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--cor-fio-forte);
+/* cada lista é um selo serrilhado (picote da identidade antiga): face colorida e bloco creme com fios */
+.lista-lado {
+    --furo: 7px;
+    --fundo: var(--campo-laranja);
+    padding: calc(var(--furo) * 2 - 4px);
+    background:
+        radial-gradient(var(--furo), #0000 98%, var(--fundo)) round
+            calc(var(--furo) * -1.5) calc(var(--furo) * -1.5) / calc(var(--furo) * 3) calc(var(--furo) * 3),
+        linear-gradient(var(--fundo) 0 0) no-repeat 50% / calc(100% - var(--furo) * 3) calc(100% - var(--furo) * 3);
+    filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 6px 10px rgba(29, 35, 59, .12));
 }
+.lista-clinica { --fundo: var(--campo-amarelo); }
 
-.lista-lado ul { list-style: none; display: grid; }
-.lista-lado li { padding: 14px 0; border-bottom: 1px solid var(--cor-fio); }
+.lista-titulo { padding: 14px 14px 12px; color: var(--cor-texto); }
+
+.lista-lado ul {
+    list-style: none;
+    display: grid;
+    margin: 0 4px 4px;
+    padding: 4px 16px;
+    background: var(--cor-papel);
+    border: 2px solid var(--cor-texto);
+    border-radius: var(--raio-pequeno);
+}
+.lista-lado li { padding: 12px 0; border-bottom: 1px solid var(--cor-fio); }
+.lista-lado li:last-child { border-bottom: 0; }
 
 @media (min-width: 760px) {
     .folha { grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 96px); }
@@ -195,8 +264,22 @@ a { color: inherit; }
 /* ================= #3 PASSOS (campo escuro) ================= */
 .passos {
     max-width: none;
+    padding-top: calc(clamp(40px, 5vw, 56px) + var(--respiro) * .6);
     background: var(--campo-escuro);
     color: var(--sobre-campo-escuro);
+    overflow: clip;
+}
+.passos > * { position: relative; z-index: 1; }
+/* o sol, única ilustração desta seção, no canto de cima */
+.passos::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    right: -70px; top: calc(clamp(40px, 5vw, 56px) - 60px);
+    width: clamp(150px, 20vw, 260px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--campo-amarelo);
 }
 .passos > * { max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
 
@@ -218,11 +301,11 @@ a { color: inherit; }
 
 .passo-numero {
     font-family: var(--fonte-titulo);
-    font-stretch: 75%;
-    font-weight: 800;
+    font-stretch: 62.5%;
+    font-weight: 900;
     font-size: var(--t-titulo);
     line-height: var(--entrelinha-titulo);
-    letter-spacing: -.02em;
+    color: var(--campo-amarelo);
 }
 
 .passos p { margin-top: 8px; }
@@ -302,7 +385,15 @@ a { color: inherit; }
 .lista-confere li { max-width: var(--leitura); }
 .lista-confere li::marker { content: "+  "; font-weight: 600; }
 
-/* ================= #5 RESUMO DA SEMANA ================= */
+/* ================= #5 RESUMO DA SEMANA (campo amarelo, folha creme por cima) ================= */
+.resumo {
+    max-width: none;
+    padding-inline: max(var(--margem), calc((100% - var(--largura)) / 2 + var(--margem)));
+    background: var(--campo-amarelo);
+    color: var(--sobre-campo-amarelo);
+}
+.resumo .linha-pequena { color: var(--sobre-campo-amarelo); }
+
 .folha-resumo {
     margin-top: 40px;
     max-width: 640px;
@@ -380,8 +471,8 @@ a { color: inherit; }
     display: grid;
     place-items: center;
     font-family: var(--fonte-titulo);
-    font-stretch: 75%;
-    font-weight: 800;
+    font-stretch: 62.5%;
+    font-weight: 900;
     font-size: var(--t-cartaz);
     line-height: 1;
 }
@@ -393,12 +484,12 @@ a { color: inherit; }
 
 .ficha-time-nome {
     font-family: var(--fonte-titulo);
-    font-stretch: 75%;
-    font-weight: 800;
-    text-transform: none;
+    font-stretch: 62.5%;
+    font-weight: 900;
+    text-transform: uppercase;
     font-size: var(--t-titulo);
     line-height: var(--entrelinha-titulo);
-    letter-spacing: -.02em;
+    letter-spacing: .005em;
 }
 .ficha-time-equipe { margin-top: 8px; font-size: var(--t-rotulo); font-weight: 600; color: var(--cor-texto-suave); }
 .ficha-time-frase { margin-top: 12px; }
@@ -406,8 +497,22 @@ a { color: inherit; }
 @media (min-width: 640px) {
     .time { grid-template-columns: 1fr 1fr; gap: 48px; }
     .ficha-time-foto { aspect-ratio: 4 / 5; }
-    .ficha-time-inicial { max-height: none; aspect-ratio: 4 / 3; }
+    .ficha-time-inicial { max-height: none; aspect-ratio: 16 / 9; }
 }
+
+.equipe { padding-top: calc(clamp(40px, 5vw, 56px) + var(--respiro) * .6); }
+/* a onça, única ilustração desta seção, embaixo à direita (só onde há espaço ao lado do texto) */
+.equipe::after {
+    content: "";
+    display: none;
+    position: absolute;
+    right: var(--margem);
+    bottom: var(--respiro);
+    width: 150px; height: 248px;
+    background: url("../Imagens/Enfeite-Onca.webp") center / contain no-repeat;
+    pointer-events: none;
+}
+@media (min-width: 1200px) { .equipe::after { display: block; } }
 
 .equipe-linha { margin-top: 48px; }
 .equipe-local { max-width: var(--leitura); font-size: var(--t-destaque); }
@@ -418,7 +523,7 @@ a { color: inherit; }
     padding: 24px 0 0;
     border-top: 1px solid var(--cor-fio-forte);
 }
-.caixa-titulo { color: var(--cor-texto); }
+.caixa-titulo { color: var(--cor-texto); line-height: 1.15; }
 .caixa-frente p + p { margin-top: 12px; }
 
 /* ================= #7 DÚVIDAS ================= */
@@ -453,11 +558,24 @@ a { color: inherit; }
 /* ================= #8 CHAMADA FINAL E RODAPÉ ================= */
 .final {
     max-width: none;
+    overflow: clip;
     background: var(--campo-vermelho);
     color: var(--sobre-campo-vermelho);
 }
-.final > * { max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
-.final .botao { background: var(--cor-papel); color: var(--cor-texto); }
+.final > * { position: relative; z-index: 1; max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
+/* sobre o vermelho o botão é amarelo, sólido, com texto azul escuro */
+.final .botao { background: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
+/* folhas na borda direita, única ilustração da chamada final (a lateral reta fica fora da tela) */
+.final::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    right: -40px; bottom: -20px;
+    width: clamp(150px, 26vw, 330px); aspect-ratio: 690 / 795;
+    background: url("../Imagens/Folhas-dir.webp") center / contain no-repeat;
+    transform: scaleX(-1);
+    pointer-events: none;
+}
 
 .rodape {
     background: var(--campo-escuro);

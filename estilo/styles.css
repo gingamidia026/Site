@@ -1,8 +1,10 @@
-/* Site da Ginga Mídia · identidade "Cartaz editorial" (24/11/2026)
-   Creme de fundo, azul escuro de texto, uma cor de ação (vermelho) e as outras cores
-   só em campos de seção inteiros. Uma família de fonte (Archivo), cinco tamanhos de texto
-   (fontes.css), texto alinhado à esquerda numa grade de 1200 px e listas com fios finos.
-   Movimento só de transform e opacity, em até 300 ms. Tokens em cores.css e fontes.css. */
+/* Site da Ginga Mídia · identidade "meio-termo" (24/11/2026)
+   Parte do Cartaz editorial (uma família de fonte, Archivo; cinco tamanhos de texto; contraste AA)
+   e traz de volta o calor do Correio da Ginga: campos de cor alternando com o creme, faixas de
+   estampa, selo serrilhado, tucano, arara, sol e folhas (no máximo dois por seção), carimbo e
+   arco laranja no início, títulos em caixa alta na Archivo extracondensada Black e botões sólidos.
+   Fora: outras famílias de fonte, destaque trocando de fonte, tarja inclinada, brilho, contorno de
+   texto e degradê. Movimento só de transform e opacity. Tokens em cores.css e fontes.css. */
 
 *{
     margin: 0;
@@ -61,7 +63,7 @@ a { color: inherit; }
     min-height: var(--altura-topo);
     padding: 8px max(var(--margem), calc((100% - var(--largura)) / 2));
     background: var(--cor-fundo);
-    border-bottom: 1px solid var(--cor-fio);
+    border-bottom: 2px solid var(--cor-fio-forte);
 }
 .topo.rolou { box-shadow: 0 1px 0 var(--cor-fio), 0 6px 16px rgba(29, 35, 59, .08); }
 .topo-marca img { height: 38px; width: auto; }
@@ -115,7 +117,7 @@ a { color: inherit; }
 .menu .menu-cta {
     background: var(--cor-acao);
     color: var(--cor-acao-texto);
-    border: 0;
+    border: 2px solid var(--cor-texto);
     border-radius: var(--raio);
     padding: 14px 18px;
     text-align: center;
@@ -126,14 +128,30 @@ a { color: inherit; }
 .menu .menu-cta:hover { text-decoration: none; }
 .menu .menu-cta:active { transform: scale(.97); }
 
-/* ================= HERO (abertura em cartaz) ================= */
+/* ================= HERO (abertura em cartaz, centrada como no Correio da Ginga) ================= */
 .hero {
     position: relative;
-    padding: clamp(32px, 6vw, 72px) var(--margem) clamp(56px, 8vw, 104px);
+    overflow: hidden;
+    text-align: center;
+    padding: clamp(48px, 6vw, 72px) var(--margem) clamp(64px, 8vw, 112px);
+}
+
+/* arco laranja suave de fundo: fica atrás de tudo e abaixo do menu fixo */
+.hero::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 14px; bottom: 0;
+    left: var(--margem); right: var(--margem);
+    border: 3px solid var(--arco);
+    border-bottom: 0;
+    border-radius: 999px 999px 0 0;
+    pointer-events: none;
 }
 
 .hero-centro {
     position: relative;
+    z-index: 2;
     max-width: var(--largura);
     margin: 0 auto;
 }
@@ -141,6 +159,7 @@ a { color: inherit; }
 .logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 16px;
 }
 .logo img { height: 56px; width: auto; }
@@ -160,36 +179,64 @@ a { color: inherit; }
 }
 
 .hero-chamada {
-    margin-top: clamp(40px, 8vw, 88px);
+    margin: clamp(28px, 5vw, 56px) auto 0;
     font-size: var(--t-cartaz);
     line-height: var(--entrelinha-titulo);
-    letter-spacing: -.025em;
     color: var(--cor-texto);
-    max-width: 9em;
+    max-width: 10em;
 }
 /* destaque por cor de ação, na mesma família e no mesmo peso */
 .tarja { color: var(--cor-acao); }
 .tarja > span { display: inline; }
 
 .hero-sub {
-    margin-top: 28px;
-    max-width: 30em;
+    margin: 24px auto 0;
+    max-width: 26em;
     font-size: var(--t-destaque);
     line-height: var(--entrelinha-texto);
-    text-wrap: pretty;
+    text-wrap: balance;
 }
 
-/* a arara é a única ilustração da abertura: só aparece onde há espaço ao lado do texto */
-.ave { display: none; }
+/* aves nas bordas, atrás do texto: tucano à esquerda e arara à direita (as duas ilustrações do início) */
+.decoracao {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+}
+.ave { position: absolute; width: 22vw; top: 64px; }
+.ave img { width: 100%; height: auto; }
+.ave-tucano { left: -8vw; }
+/* o desenho da arara acaba em 86% da imagem: a asa encosta na borda e passa um pouco */
+.ave-arara { right: -8vw; }
 
-/* ================= BOTÕES ================= */
+/* carimbo redondo: só no computador, ao lado do logo */
+.carimbo-giro {
+    display: none;
+    position: absolute;
+    z-index: 3;
+    top: -6px;
+    left: 0;
+    width: 112px;
+    height: 112px;
+    color: var(--cor-texto);
+    animation: girar 28s linear infinite;
+}
+.carimbo-fundo { fill: var(--cor-papel); stroke: currentColor; stroke-width: 3; }
+.carimbo-linha { fill: none; stroke: currentColor; stroke-width: 3; }
+.carimbo-texto { font: 600 10.5px var(--fonte-texto); letter-spacing: 1.6px; fill: currentColor; }
+.carimbo-centro { font: 900 15px var(--fonte-titulo); font-stretch: 62.5%; fill: currentColor; }
+@keyframes girar { to { transform: rotate(360deg); } }
+
+/* ================= BOTÕES (sólidos, com mais cor) ================= */
 .botao {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-height: 48px;
-    padding: 12px 24px;
-    border: 0;
+    min-height: 52px;
+    padding: 12px 26px;
+    border: 2px solid var(--cor-texto);
     border-radius: var(--raio);
     max-width: 100%;
     text-align: center;
@@ -206,20 +253,23 @@ a { color: inherit; }
 .botao-principal { background: var(--cor-acao); color: var(--cor-acao-texto); }
 .botao-secundario { background: transparent; color: var(--cor-texto); box-shadow: inset 0 0 0 1px var(--cor-fio-forte); }
 .botao-escuro { background: var(--cor-texto); color: var(--cor-fundo); }
-/* sobre campo vermelho a ação vira creme, para o botão não sumir no fundo */
-.botao-amarelo { background: var(--cor-papel); color: var(--cor-texto); }
+/* sobre campo vermelho o botão vira amarelo, sólido e com texto azul escuro */
+.botao-amarelo { background: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
 
 .hero-botoes {
+    position: relative;
+    z-index: 2;
     max-width: var(--largura);
     margin: clamp(40px, 6vw, 64px) auto 0;
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 12px;
 }
 
 /* ================= SEÇÕES ================= */
-.secao { position: relative; padding: clamp(64px, 9vw, 128px) var(--margem); }
-.conteudo { max-width: var(--largura); margin: 0 auto; position: relative; }
+.secao { position: relative; overflow: clip; padding: clamp(64px, 9vw, 128px) var(--margem); }
+.conteudo { max-width: var(--largura); margin: 0 auto; position: relative; z-index: 1; }
 
 .secao-intro {
     font-size: var(--t-destaque);
@@ -228,7 +278,7 @@ a { color: inherit; }
     text-wrap: pretty;
 }
 
-/* título de seção: condensada 800, caixa normal, alinhado à esquerda */
+/* título de seção: extracondensada Black, caixa alta, alinhado à esquerda */
 .cartaz-justificado,
 .titulo-correio,
 .titulo-letreiro,
@@ -241,35 +291,107 @@ a { color: inherit; }
 .cartaz-justificado { display: block; }
 .cartaz-justificado span { display: block; }
 .cartaz-justificado span:last-child { color: var(--cor-acao); }
-.titulo-contorno span { display: block; color: var(--cor-acao); }
+.titulo-contorno span { display: block; }
 .titulo-correio { margin-bottom: clamp(40px, 6vw, 72px); }
 
+/* campos de cor de seção inteira, alternando com o creme */
+.secao-amarelo,
+.secao-sobre { background-color: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
+/* o vermelho de destaque não tem contraste no amarelo: nele o destaque é o tamanho do título */
+.secao-amarelo .cartaz-justificado span:last-child,
+.secao-sobre .titulo-contorno span { color: inherit; }
 .secao-azul { background-color: var(--campo-escuro); color: var(--sobre-campo-escuro); }
 .secao-azul h2, .secao-azul h3 { color: inherit; }
 
 .sem-quebra { white-space: nowrap; }
 
-/* ================= SERVIÇOS: lista com fios finos ================= */
-#servicos .secao-intro { margin-bottom: 0; }
-.grade-tres {
-    max-width: var(--largura);
-    margin: clamp(56px, 8vw, 104px) auto 0;
-    border-top: 2px solid var(--cor-fio-forte);
+/* faixas de estampa entre as seções (Imagens/Estampas) */
+.faixa-estampa {
+    height: clamp(40px, 5vw, 64px);
+    background-repeat: repeat-x;
+    background-position: center;
+    background-size: 280px auto;
 }
-.grade-tres .selo {
-    position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-    padding: 28px 0 32px;
-    border-bottom: 1px solid var(--cor-fio);
-}
-/* a face entra na grade do próprio item (na janela ampliada ela volta a ser um bloco) */
-.grade-tres .selo-face,
-.passos .selo-face,
-.grade-portfolio .selo-face { display: contents; }
+.faixa-ondas { background-image: url("../Imagens/Estampas/ondas.webp"); }
+.faixa-mosaico { background-image: url("../Imagens/Estampas/mosaico.webp"); }
+.faixa-ondas-laranja { background-image: url("../Imagens/Estampas/ondas-laranja.webp"); }
 
-.selo-topo { display: none; }
+/* ilustrações de fundo das seções (no máximo duas por seção) */
+.enfeites { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.enfeite { position: absolute; max-width: none; }
+
+#servicos .conteudo { padding-bottom: 110px; }
+.enfeite-folhas { right: -10vw; bottom: -4vw; width: 44vw; max-width: 380px; transform: scaleX(-1); }
+
+.sol {
+    position: absolute;
+    right: -64px; top: -64px;
+    width: clamp(170px, 22vw, 300px);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--campo-amarelo);
+}
+
+.enfeite-onca, .enfeite-arara { display: none; }
+
+/* ================= SELO SERRILHADO (picote da identidade antiga) =================
+   Borda picotada na cor do selo; por dentro, uma face na mesma cor e um bloco creme com o texto. */
+:where(.grade-tres > .selo, .passos > .selo, .grade-portfolio > .selo, .sobre-figura.selo, .modal-conteudo.selo) {
+    --face: var(--campo-laranja);
+    --texto: var(--cor-texto);
+}
+.grade-tres > .selo,
+.passos > .selo,
+.grade-portfolio > .selo,
+.sobre-figura.selo,
+.modal-conteudo.selo {
+    --furo: 7px;
+    --fundo: var(--face);
+    padding: calc(var(--furo) * 2 - 4px);
+    background:
+        radial-gradient(var(--furo), #0000 98%, var(--fundo)) round
+            calc(var(--furo) * -1.5) calc(var(--furo) * -1.5) / calc(var(--furo) * 3) calc(var(--furo) * 3),
+        linear-gradient(var(--fundo) 0 0) no-repeat 50% / calc(100% - var(--furo) * 3) calc(100% - var(--furo) * 3);
+    filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 6px 10px rgba(29, 35, 59, .12));
+}
+.selo-laranja { --face: var(--campo-laranja); }
+.selo-amarelo { --face: var(--campo-amarelo); }
+.selo-vermelho { --face: var(--campo-vermelho); --texto: var(--cor-vermelho-texto); }
+.selo-creme { --face: var(--cor-papel); }
+
+.selo-face {
+    position: relative;
+    height: 100%;
+    padding: 18px 18px 72px;
+    background-color: var(--fundo);
+    color: var(--texto);
+}
+/* retícula de serigrafia bem leve por cima da cor */
+.selo-face::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(rgba(29, 35, 59, .5) 1px, transparent 1.4px) 0 0 / 5px 5px;
+    opacity: .07;
+    pointer-events: none;
+}
+.selo-face > * { position: relative; z-index: 1; }
+.grade-tres > .selo, .passos > .selo, .grade-portfolio > .selo { display: flex; flex-direction: column; }
+.grade-tres > .selo > .selo-face,
+.passos > .selo > .selo-face,
+.grade-portfolio > .selo > .selo-face { flex: 1 1 auto; }
+
+.selo-topo { display: flex; justify-content: flex-start; margin-bottom: 4px; }
+.selo-icone { display: none; }
+.selo-valor {
+    font-family: var(--fonte-titulo);
+    font-stretch: 62.5%;
+    font-weight: 900;
+    font-size: var(--t-destaque);
+    line-height: 1;
+    color: var(--texto);
+}
+.selo-face :is(.selo-nome, .passo-numero) { color: var(--texto); }
 
 .selo-imagem,
 .foto-espaco,
@@ -286,36 +408,68 @@ a { color: inherit; }
 .selo-imagem img, .foto-espaco img, .ficha-foto img { width: 100%; height: 100%; object-fit: cover; }
 /* o espaço reservado "Imagem" só aparece quando já tem foto dentro */
 .selo-imagem:not(:has(img)) { display: none; }
-.selo-imagem { aspect-ratio: 16 / 10; }
+.selo-imagem { aspect-ratio: 16 / 10; margin-bottom: 14px; }
 
 .selo-nome {
     font-family: var(--fonte-titulo);
-    font-stretch: 75%;
-    font-weight: 800;
+    font-stretch: 62.5%;
+    font-weight: 900;
     font-size: var(--t-titulo);
     line-height: var(--entrelinha-titulo);
-    letter-spacing: -.02em;
-    text-transform: none;
+    letter-spacing: .005em;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
 }
 
-.selo-texto p { font-size: var(--t-texto); }
-.selo-texto ul {
-    list-style: none;
-    margin-top: 16px;
-    border-top: 1px solid var(--cor-fio);
+/* bloco creme para o texto pequeno, com fios finos entre os itens da lista */
+.selo-texto {
+    margin-top: 14px;
+    background-color: var(--cor-papel);
+    color: var(--cor-texto);
+    border: 2px solid var(--cor-texto);
+    border-radius: var(--raio-pequeno);
+    padding: 14px 16px 6px;
 }
-.selo-texto li { padding: 10px 0; border-bottom: 1px solid var(--cor-fio); font-weight: 600; }
+.selo-texto p { font-size: var(--t-texto); max-width: none; padding-bottom: 10px; }
+.selo-texto ul { list-style: none; border-top: 1px solid var(--cor-fio-forte); }
+.selo-texto li { padding: 9px 0; border-bottom: 1px solid var(--cor-fio); font-weight: 600; }
 .selo-texto li:last-child { border-bottom: 0; }
 
-@media (min-width: 900px) {
-    .grade-tres .selo {
-        grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-        column-gap: clamp(32px, 6vw, 96px);
-        padding: 44px 0 48px;
+/* "Ver mais": botão sólido no canto de baixo do selo */
+.selo > .ver-mais {
+    position: absolute;
+    right: 20px; bottom: 20px;
+    z-index: 2;
+    padding: 0 16px;
+    background: var(--cor-papel);
+    color: var(--cor-texto);
+    border: 2px solid var(--cor-texto);
+    border-radius: var(--raio);
+    text-decoration: none;
+}
+
+/* ================= SERVIÇOS: três selos no início ================= */
+.grade-tres {
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    margin: clamp(40px, 6vw, 72px) auto 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
+    text-align: left;
+}
+
+@media (min-width: 1200px) {
+    .grade-tres {
+        max-width: var(--largura);
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 28px;
+        align-items: start;
     }
-    .grade-tres .selo-nome { grid-column: 1; grid-row: 1 / span 2; }
-    .grade-tres .selo-texto { grid-column: 2; grid-row: 1; }
-    .grade-tres .ver-mais { grid-column: 2; grid-row: 2; }
+    /* o selo do meio desce um pouco para a fila não ficar em linha reta */
+    .grade-tres > .selo:nth-child(2) { margin-top: 56px; }
+    .grade-tres .selo-nome { font-size: var(--t-titulo); }
 }
 
 /* ================= PASSOS (campo escuro) ================= */
@@ -323,84 +477,66 @@ a { color: inherit; }
     list-style: none;
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    gap: 0 40px;
+    gap: 28px 24px;
 }
-.passos > .selo {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    padding: 24px 0 32px;
-    border-top: 1px solid rgba(242, 232, 220, .4);
-}
+.passos > .selo.selo:nth-child(even) { --face: var(--campo-laranja); }
 .passo-numero {
+    display: block;
     font-family: var(--fonte-titulo);
-    font-stretch: 75%;
-    font-weight: 800;
+    font-stretch: 62.5%;
+    font-weight: 900;
     font-size: var(--t-titulo);
     line-height: var(--entrelinha-titulo);
-    letter-spacing: -.02em;
 }
-.passos .selo-nome { font-size: var(--t-destaque); font-weight: 700; letter-spacing: -.01em; }
-.passos .selo-texto p { font-size: var(--t-texto); }
-.passos .ver-mais { margin-top: auto; }
+.passos .selo-nome { font-size: var(--t-destaque); font-stretch: 75%; font-weight: 800; margin-top: 4px; letter-spacing: .01em; }
+.passos .selo-texto { margin-top: 12px; }
 
 @media (min-width: 640px) {
     .passos { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (min-width: 1024px) {
     .passos { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .passos > .selo:nth-child(even) { margin-top: 32px; }
 }
 
 /* ================= PORTFÓLIO ================= */
 .grade-portfolio {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 40px 16px;
+    gap: 28px 14px;
     align-items: start;
 }
-.grade-portfolio .selo {
-    min-width: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-.foto-espaco { aspect-ratio: 4 / 5; width: 100%; }
-.grade-portfolio figcaption { padding-top: 4px; border-top: 2px solid var(--cor-fio-forte); }
-.grade-portfolio .selo-nome { font-size: var(--t-destaque); font-weight: 700; letter-spacing: -.01em; }
-.grade-portfolio .selo-valor { display: none; }
-.selo-valor, .selo-icone { display: none; }
+.grade-portfolio > .selo { min-width: 0; }
+.grade-portfolio .selo-face { padding: 12px 12px 68px; display: flex; flex-direction: column; gap: 10px; }
+.foto-espaco { aspect-ratio: 4 / 5; width: 100%; border: 2px solid var(--cor-texto); background-color: var(--cor-papel); }
+.grade-portfolio figcaption { display: flex; flex-direction: column; gap: 4px; }
+.grade-portfolio .selo-nome { font-size: var(--t-texto); font-stretch: 75%; font-weight: 800; letter-spacing: .01em; overflow-wrap: break-word; }
+.grade-portfolio .selo-valor { font-size: var(--t-rotulo); }
+.grade-portfolio > .selo > .ver-mais { right: 14px; bottom: 14px; padding: 0 12px; }
 
 @media (min-width: 900px) {
-    .grade-portfolio { grid-template-columns: 1.35fr 1fr 1fr 1fr; gap: 56px 24px; }
+    .grade-portfolio { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px 24px; }
+    .grade-portfolio .selo-nome { font-size: var(--t-destaque); }
     /* um pouco de ritmo vertical, sem inclinar nada */
-    .grade-portfolio .selo:nth-child(even) { margin-top: 56px; }
+    .grade-portfolio > .selo:nth-child(even) { margin-top: 48px; }
 }
 
-/* ================= SOBRE ================= */
-.secao-sobre { background-color: transparent; }
-
+/* ================= SOBRE (campo amarelo) ================= */
 .sobre-grade {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
     gap: 48px;
-    align-items: end;
+    align-items: center;
 }
-/* única ilustração da seção: o tucano da Ginga sobre um campo de cor inteiro */
-.sobre-figura {
-    position: relative;
-    aspect-ratio: 4 / 5;
-    max-width: 420px;
-    width: 100%;
-    background: var(--campo-amarelo);
-    border-radius: var(--raio);
-    overflow: hidden;
-}
-.sobre-figura img { position: absolute; width: 82%; left: 9%; bottom: 0; }
+/* o tucano da Ginga num selo serrilhado creme (ilustração 1 da seção; a arara é a 2) */
+.sobre-figura.selo { --face: var(--cor-papel); max-width: min(380px, 80%); width: 100%; }
+.sobre-figura .selo-face { padding: 20px 20px 8px; }
+.sobre-figura .selo-face::after { display: none; }
+.sobre-figura img { width: 100%; }
 .sobre-texto p { margin-top: 16px; }
 .sobre-texto .titulo-contorno { margin-bottom: 8px; }
 .sobre-lista { list-style: none; padding: 0; margin: 32px 0 0; border-top: 2px solid var(--cor-fio-forte); }
-.sobre-lista li { border-bottom: 1px solid var(--cor-fio); padding: 14px 0; font-weight: 600; }
+.sobre-lista li { border-bottom: 1px solid var(--cor-fio-forte); padding: 14px 0; font-weight: 600; }
 
 @media (min-width: 900px) {
     .sobre-grade { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(48px, 7vw, 112px); }
@@ -419,7 +555,8 @@ a { color: inherit; }
     padding: 28px 0 40px;
     border-top: 2px solid var(--cor-fio-forte);
 }
-.ficha-vermelho { --cor: var(--campo-vermelho); --sobre-cor: var(--sobre-campo-vermelho); }
+.ficha { --estampa: url("../Imagens/Estampas/ondas-laranja.webp"); }
+.ficha-vermelho { --cor: var(--campo-vermelho); --sobre-cor: var(--sobre-campo-vermelho); --estampa: url("../Imagens/Estampas/mosaico.webp"); }
 
 /* a ficha vira uma linha editorial; rótulos repetidos e enfeites de pôster ficam fora */
 .ficha-tag, .ficha-titulo, .ficha-medalha,
@@ -427,7 +564,7 @@ a { color: inherit; }
 .ficha-marca, .ficha-codigo, .ficha-numero { display: none; }
 
 .ficha-topo { display: block; }
-.ficha-nome { font-size: var(--t-titulo); letter-spacing: -.02em; overflow-wrap: anywhere; }
+.ficha-nome { font-size: var(--t-titulo); overflow-wrap: anywhere; }
 
 .ficha-faixa {
     font-size: var(--t-rotulo);
@@ -441,10 +578,12 @@ a { color: inherit; }
     aspect-ratio: 3 / 2;
     max-height: 300px;
     width: 100%;
-    background-color: var(--cor);
-    color: var(--sobre-cor);
+    background: var(--cor) var(--estampa) center / 200px;
+    color: var(--cor-texto);
     border-radius: var(--raio);
 }
+/* o aviso de foto fica num bloco creme sólido por cima da estampa */
+.ficha-foto > span { background: var(--cor-papel); padding: 8px 14px; border-radius: var(--raio-pequeno); }
 .ficha-foto img { height: 100%; width: 100%; object-fit: cover; }
 
 .ficha-lado { display: flex; flex-wrap: wrap; gap: 4px 0; }
@@ -638,6 +777,10 @@ body.modal-aberto { overflow: hidden; }
     box-shadow: var(--sombra-media);
     animation: ampliar .22s var(--ease-saida);
 }
+/* a janela dos selos também é um selo serrilhado, com o miolo creme */
+.modal-conteudo.selo { border-radius: 0; box-shadow: none; --texto: var(--cor-texto); }
+.modal-conteudo.selo > .selo-face { background-color: var(--cor-papel); height: auto; padding-bottom: clamp(24px, 4vw, 40px); }
+.modal-conteudo.selo > .selo-face::after { display: none; }
 .modal-selo.fechando .modal-conteudo { animation: reduzir .18s var(--ease-saida) forwards; }
 
 .modal-conteudo .selo-face {
@@ -650,7 +793,8 @@ body.modal-aberto { overflow: hidden; }
 .modal-conteudo .selo-imagem:not(:has(img)) { display: none; }
 .modal-conteudo .selo-imagem { aspect-ratio: 16 / 10; width: 100%; }
 .modal-conteudo .foto-espaco { aspect-ratio: 4 / 5; max-height: 50vh; width: 100%; }
-.modal-conteudo .selo-nome { font-size: var(--t-titulo); margin: 0; }
+.modal-conteudo .selo-nome { font-size: var(--t-titulo); font-stretch: 62.5%; font-weight: 900; margin: 0; }
+.modal-conteudo .selo-texto { margin-top: 0; }
 .modal-conteudo .selo-texto ul { margin-top: 16px; }
 .modal-conteudo figcaption { border: 0; padding: 0; }
 .modal-conteudo .selo-mais { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; padding-top: 8px; }
@@ -713,6 +857,7 @@ body.modal-aberto { overflow: hidden; }
     .menu-botao span, .botao, .ver-mais, .whats-flutuante, .menu .menu-cta, .modal-fechar { transition: none; }
     .botao:hover, .botao:active, .whats-flutuante:hover, .whats-flutuante:active { transform: none; }
     .modal-conteudo, .modal-selo::backdrop { animation-duration: .01ms; }
+    .carimbo-giro { animation: none; }
 }
 
 /* ================= TABLET / COMPUTADOR ================= */
@@ -721,18 +866,16 @@ body.modal-aberto { overflow: hidden; }
     .logo img { height: 96px; }
     .divisoria { height: 72px; }
     .logo-lista { font-size: var(--t-texto); }
-    .grade-portfolio { gap: 48px 20px; }
-
-    /* arara encostada na borda direita, ao lado do título */
-    .ave {
-        display: block;
-        position: absolute;
-        right: calc(var(--margem) * -1);
-        bottom: -8px;
-        width: min(26vw, 340px);
-        pointer-events: none;
-    }
-    .ave img { width: 100%; height: auto; }
+    .ave { width: 17vw; top: 56px; }
+    .ave-tucano { left: -4vw; }
+    .ave-arara { right: -4vw; }
+}
+/* no PC as aves descem para os lados do título, e o carimbo aparece */
+@media (min-width: 1100px) {
+    .ave { width: min(20vw, 290px); top: 172px; }
+    .ave-tucano { left: -3vw; }
+    .ave-arara { right: -3vw; }
+    .carimbo-giro { display: block; }
 }
 
 /* no tablet o menu completo quebrava em duas linhas: ele só abre inline no PC */
@@ -750,7 +893,13 @@ body.modal-aberto { overflow: hidden; }
         box-shadow: none;
     }
     .menu a { padding: 10px 14px; min-height: 0; white-space: nowrap; border: 0; }
-    .menu .menu-cta { margin: 0 0 0 8px; padding: 10px 20px; }
+    .menu .menu-cta { margin: 0 0 0 8px; padding: 10px 20px; border: 2px solid var(--cor-texto); }
     .contato-grade { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); gap: 72px; }
-    .hero-chamada { max-width: 8.5em; }
+    #servicos .conteudo { padding-bottom: 0; }
+    .enfeite-folhas { right: -3vw; bottom: -40px; width: 30vw; }
+    .enfeite-onca { display: block; right: 3vw; top: 56px; width: 150px; }
+}
+@media (min-width: 1280px) {
+    .enfeite-arara { display: block; right: -2vw; bottom: 0; width: 180px; }
+    .sobre-texto { padding-right: 120px; }
 }

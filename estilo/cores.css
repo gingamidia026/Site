@@ -53,9 +53,9 @@ Amarelo: #F2AE30
   initial-value: #BF471B;
 }
 
-/* ===== Tokens semânticos (identidade "Cartaz editorial", 24/11/2026) =====
-   Creme de fundo, azul escuro de texto e uma só cor de ação (vermelho).
-   As outras cores da paleta só entram em campos de cor inteiros de seção.
+/* ===== Tokens semânticos (identidade "meio-termo", 24/11/2026) =====
+   Creme de fundo e azul escuro de texto, vermelho como cor de ação e as outras cores da paleta
+   em campos de seção inteiros, no picote dos selos e nas faixas de estampa.
    Sem degradê, brilho ou sombra colorida. */
 :root {
     --cor-fundo: #F2E8DC;           /* creme: fundo da página */
@@ -76,6 +76,10 @@ Amarelo: #F2AE30
     --campo-amarelo: #F2AE30;       --sobre-campo-amarelo: #1D233B;
     --campo-laranja: #D97D0D;       --sobre-campo-laranja: #1D233B;
     --campo-azul: #03588C;          --sobre-campo-azul: #F2E8DC;
+
+    /* identidade meio-termo (24/11/2026): arco e picote da identidade antiga, só em cor de paleta */
+    --arco: rgba(217, 125, 13, .5);  /* arco laranja suave de fundo do início */
+    --cor-vermelho-texto: #FFFAF2;   /* texto sobre selo vermelho (4,9:1) */
 
     /* forma e movimento */
     --raio: 8px;
