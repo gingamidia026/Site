@@ -26,4 +26,10 @@
     for (var i = 0; i < links.length; i++) {
         links[i].setAttribute('href', endereco);
     }
+
+    // o formulário em carta leva o mesmo código na mensagem
+    var formularios = document.querySelectorAll('form[data-codigo]');
+    for (var j = 0; j < formularios.length; j++) {
+        formularios[j].setAttribute('data-codigo', codigo);
+    }
 })();

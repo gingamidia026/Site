@@ -688,6 +688,141 @@ a { color: inherit; }
 @media (hover: hover) { .whats-flutuante:hover { transform: translateY(-2px); } }
 .whats-flutuante:active { transform: scale(.97); }
 
+/* ================= FORMULÁRIO EM CARTA ================= */
+/* A mesma carta de correio aéreo do início (estilo/styles.css), no bloco da chamada final e na janela do
+   WhatsApp. Só Archivo, sem tarja inclinada, estrelinha ou contorno. O número nunca aparece na tela. */
+.final > .final-carta { margin-top: 72px; }
+.formulario {
+    position: relative;
+    max-width: 620px;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
+    padding: 30px 28px 26px;
+    border: 16px solid transparent;
+    border-image: repeating-linear-gradient(-45deg,
+        var(--vermelho) 0 18px, var(--branco) 18px 27px,
+        var(--azul) 27px 45px, var(--branco) 45px 54px) 16;
+    background-clip: padding-box;
+    box-shadow: 10px 10px 0 var(--cor-texto);
+    display: flex;
+    flex-direction: column;
+}
+/* selo colado: picote amarelo com o tucano, torto no canto da carta */
+.selo-colado {
+    --furo: 5px;
+    --fundo: var(--campo-amarelo);
+    position: absolute;
+    top: -40px; right: -10px;
+    width: 92px;
+    padding: calc(var(--furo) * 2 - 4px);
+    background:
+        radial-gradient(var(--furo), #0000 98%, var(--fundo)) round
+            calc(var(--furo) * -1.5) calc(var(--furo) * -1.5) / calc(var(--furo) * 3) calc(var(--furo) * 3),
+        linear-gradient(var(--fundo) 0 0) no-repeat 50% / calc(100% - var(--furo) * 3) calc(100% - var(--furo) * 3);
+    filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 6px 10px rgba(29, 35, 59, .12));
+    transform: rotate(7deg);
+}
+.selo-colado .selo-face { display: block; padding: 8px; background-color: var(--fundo); }
+.selo-colado img { width: 100%; }
+
+.envelope-para { padding: 0 100px 14px 0; margin-bottom: 20px; border-bottom: 3px dashed var(--cor-texto); }
+.formulario label, .formulario legend { font-weight: 600; margin-bottom: 6px; }
+
+.opcoes { border: 0; padding: 0; margin: 0 0 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.opcoes legend { padding: 0; margin-bottom: 10px; }
+.formulario .opcao { position: relative; margin: 0; display: inline-flex; cursor: pointer; }
+.formulario .opcao input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.formulario .opcao span {
+    display: inline-flex; align-items: center; min-height: 44px;
+    padding: 8px 16px;
+    border: 3px solid var(--cor-texto);
+    border-radius: 999px;
+    font-weight: 600;
+    transition: transform var(--duracao) var(--ease-saida);
+}
+.formulario .opcao:active span { transform: scale(.97); }
+.formulario .opcao input:checked + span { background: var(--campo-amarelo); }
+.formulario .opcao input:checked + span::before { content: "✓ "; white-space: pre; }
+.formulario .opcao input:focus-visible + span { outline: 3px solid var(--cor-texto); outline-offset: 3px; }
+.formulario input[type="text"],
+.formulario textarea {
+    font: 400 var(--t-texto)/1.4 var(--fonte-texto);
+    color: var(--cor-texto);
+    background: var(--cor-papel);
+    border: 3px solid var(--cor-texto);
+    border-radius: var(--raio-pequeno);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    min-height: 48px;
+}
+.final .formulario :focus-visible,
+.formulario :focus-visible { outline-color: var(--cor-foco); }
+.formulario ::placeholder { color: #5b6077; }
+.formulario .botao,
+.final .formulario .botao {
+    align-self: flex-start;
+    margin-top: 0;
+    background: var(--cor-texto);
+    color: var(--cor-fundo);
+}
+.form-aviso { margin: 12px 0 0; font-weight: 600; min-height: 1.5em; color: var(--vermelho); }
+
+/* janela do WhatsApp: a mesma carta, sobre o fundo escurecido */
+body.modal-aberto { overflow: hidden; }
+.modal-selo {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    padding: 16px;
+    border: 0;
+    background: transparent;
+    overflow: hidden;
+}
+.modal-selo[open] { display: grid; place-items: center; }
+.modal-selo::backdrop {
+    background-color: rgba(29, 35, 59, .72);
+    animation: aparecer .2s var(--ease-saida);
+}
+.modal-selo.fechando::backdrop { animation: sumir .18s var(--ease-saida) forwards; }
+.modal-conteudo {
+    position: relative;
+    display: block;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    max-height: calc(100vh - 32px);
+    max-height: calc(100dvh - 32px);
+    animation: ampliar .22s var(--ease-saida);
+}
+.modal-selo.fechando .modal-conteudo { animation: reduzir .18s var(--ease-saida) forwards; }
+.modal-formulario { width: min(620px, 100%); padding: 64px 24px 40px 0; }
+.modal-formulario .selo-colado { top: auto; bottom: -34px; right: -6px; }
+.modal-formulario .formulario { padding: 22px 24px 20px; max-width: none; }
+.modal-formulario .envelope-para { padding-right: 0; padding-bottom: 10px; margin-bottom: 14px; }
+.modal-formulario .formulario input[type="text"], .modal-formulario .formulario textarea { margin-bottom: 14px; }
+.modal-formulario .opcoes { margin-bottom: 14px; }
+.modal-fechar {
+    position: absolute;
+    z-index: 5;
+    top: 16px; right: 16px;
+    width: 44px; height: 44px;
+    border-radius: var(--raio);
+    border: 1px solid var(--cor-fio-forte);
+    background-color: var(--cor-papel);
+    color: var(--cor-texto);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: transform var(--duracao) var(--ease-saida);
+}
+.modal-fechar:active { transform: scale(.97); }
+.modal-fechar:focus-visible { outline: 2px solid var(--cor-papel); outline-offset: 3px; }
+@keyframes ampliar { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+@keyframes reduzir { to { opacity: 0; transform: scale(.97); } }
+@keyframes aparecer { from { opacity: 0; } }
+@keyframes sumir { to { opacity: 0; } }
+
 /* ================= MOVIMENTO REDUZIDO ================= */
 @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }

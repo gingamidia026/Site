@@ -251,10 +251,42 @@
         <section class="secao final" aria-labelledby="titulo-final">
             <h2 id="titulo-final" class="titulo">Conte o que a sua clínica precisa</h2>
             <p class="texto-largo">A gente responde pelo WhatsApp e manda a proposta por escrito.</p>
-            <a class="botao botao-final zap" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Tenho%20uma%20cl%C3%ADnica%20odontol%C3%B3gica%20e%20quero%20uma%20proposta%20da%20Ginga.%20%28c%C3%B3digo%20odonto%29" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+            <div class="final-carta">
+                <form class="formulario" id="formContato" data-origem="página de clínicas odontológicas" data-codigo="odonto" novalidate>
+                    <div class="selo-colado" aria-hidden="true">
+                        <div class="selo-face"><img src="../Imagens/Tucano-ginga.webp" alt="" width="449" height="466"></div>
+                    </div>
+                    <p class="envelope-para"><strong>Para:</strong> Ginga Mídia, Araraquara · SP</p>
+
+                    <label for="nome">Seu nome</label>
+                    <input type="text" id="nome" name="nome" placeholder="Nome e sobrenome" autocomplete="name" required>
+
+                    <fieldset class="opcoes">
+                        <legend>O que a clínica procura?</legend>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Anúncios"><span>Anúncios</span></label>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Fotos e vídeos da clínica"><span>Fotos &amp; vídeos da clínica</span></label>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Site"><span>Site</span></label>
+                        <label class="opcao"><input type="checkbox" name="servico" value="Redes sociais"><span>Redes sociais</span></label>
+                    </fieldset>
+
+                    <label for="mensagem">Conte um pouco sobre a clínica</label>
+                    <textarea id="mensagem" name="mensagem" rows="4" placeholder="Ex.: clínica com dois consultórios em Araraquara, que quer divulgar a equipe e o espaço."></textarea>
+
+                    <button type="submit" class="botao botao-escuro">Enviar pelo WhatsApp</button>
+                    <p class="form-aviso" id="formAviso" role="status"></p>
+                </form>
+            </div>
         </section>
 
     </main>
+
+    <!-- Janela da carta: abre em todo link para o WhatsApp, sem mostrar o número -->
+    <dialog class="modal-selo" id="modalSelo" aria-label="Pedir proposta">
+        <button class="modal-fechar" id="modalFechar" type="button" aria-label="Fechar">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg>
+        </button>
+        <div class="modal-conteudo modal-formulario" id="modalConteudo"></div>
+    </dialog>
 
     <footer class="rodape">
         <p>Ginga Mídia · Araraquara, SP · Instagram <a href="https://www.instagram.com/gingamidiaofc/" target="_blank" rel="noopener">@gingamidiaofc</a></p>
@@ -268,6 +300,7 @@
     </a>
 
     <script src="script.js"></script>
+    <script src="../landing-formulario.js"></script>
 </body>
 </html>
 <!-- Dominique-Oliveira-Claude🤖🧡 · landing page odonto · 12/11/2026 -->
