@@ -243,6 +243,17 @@ a { color: inherit; }
 }
 .lista-clinica { --fundo: var(--campo-amarelo); }
 
+/* janela do selo postal com foto de banco de imagens (Imagens/Fotos dos selos), moldura fina como a do bloco creme */
+.lista-lado .selo-imagem {
+    margin: 4px 4px 0;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    border: 2px solid var(--cor-texto);
+    border-radius: var(--raio-pequeno);
+    background-color: var(--cor-papel);
+}
+.lista-lado .selo-imagem img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
 .lista-titulo { padding: 14px 14px 12px; color: var(--cor-texto); }
 
 .lista-lado ul {
