@@ -52,3 +52,36 @@ Amarelo: #F2AE30
   inherits: false;
   initial-value: #BF471B;
 }
+
+/* ===== Tokens semânticos (identidade "Cartaz editorial", 24/11/2026) =====
+   Creme de fundo, azul escuro de texto e uma só cor de ação (vermelho).
+   As outras cores da paleta só entram em campos de cor inteiros de seção.
+   Sem degradê, brilho ou sombra colorida. */
+:root {
+    --cor-fundo: #F2E8DC;           /* creme: fundo da página */
+    --cor-papel: #FFFAF2;           /* superfície mais clara: formulário e janela */
+    --cor-texto: #1D233B;           /* azul escuro: texto e fios */
+    --cor-texto-suave: #4A5068;     /* texto de apoio (contraste 6,6:1 no creme) */
+    --cor-acao: #BF471B;            /* vermelho: botão principal e uma palavra de destaque */
+    --cor-acao-texto: #FFFAF2;      /* texto sobre o vermelho (contraste 4,9:1) */
+    --cor-fio: rgba(29, 35, 59, .28);        /* fio fino entre itens */
+    --cor-fio-forte: #1D233B;       /* fio de abertura de lista */
+    --cor-bloco: #E4D8C7;           /* bloco tonal de foto ainda não enviada */
+    --cor-borda-campo: #6B7086;     /* borda de campo de formulário (3:1 no papel) */
+    --cor-foco: #1D233B;            /* anel de foco no claro */
+
+    /* campos de cor inteiros de seção (texto sempre com contraste AA) */
+    --campo-escuro: #1D233B;        --sobre-campo-escuro: #F2E8DC;
+    --campo-vermelho: #BF471B;      --sobre-campo-vermelho: #FFFAF2;
+    --campo-amarelo: #F2AE30;       --sobre-campo-amarelo: #1D233B;
+    --campo-laranja: #D97D0D;       --sobre-campo-laranja: #1D233B;
+    --campo-azul: #03588C;          --sobre-campo-azul: #F2E8DC;
+
+    /* forma e movimento */
+    --raio: 8px;
+    --raio-pequeno: 6px;
+    --sombra-leve: 0 1px 2px rgba(29, 35, 59, .16), 0 2px 8px rgba(29, 35, 59, .10);
+    --sombra-media: 0 2px 4px rgba(29, 35, 59, .14), 0 12px 32px rgba(29, 35, 59, .18);
+    --ease-saida: cubic-bezier(.23, 1, .32, 1);
+    --duracao: .16s;
+}

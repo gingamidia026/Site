@@ -1,31 +1,81 @@
 /* Fontes Ginga Mídia
-   Anton: títulos, em caixa alta (identidade Correio da Ginga)
-   Cantarell: texto, logo e a palavra-chave da tarja (negrito itálico)
-   Limite: 2 fontes no site inteiro (regra fontes-demais) */
+   Uma família só: Archivo (Omnibus-Type, licença OFL, texto em fontes/OFL.txt).
+   Títulos na largura condensada (font-stretch: 75%), pesos 700 e 800, em caixa normal.
+   Texto em Regular 400; rótulos e botões em SemiBold 600.
+   Destaque nunca se faz trocando a fonte: só tamanho, peso ou posição. */
+
+@font-face {
+    font-family: 'Archivo';
+    src: url('fontes/Archivo-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-stretch: 100%;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Archivo';
+    src: url('fontes/Archivo-SemiBold.woff2') format('woff2');
+    font-weight: 600;
+    font-stretch: 100%;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Archivo';
+    src: url('fontes/ArchivoCondensed-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-stretch: 75%;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Archivo';
+    src: url('fontes/ArchivoCondensed-ExtraBold.woff2') format('woff2');
+    font-weight: 800;
+    font-stretch: 75%;
+    font-style: normal;
+    font-display: swap;
+}
 
 :root {
-    --fonte-titulo: 'Anton', 'Impact', sans-serif;
-    --fonte-texto: 'Cantarell', system-ui, sans-serif;
+    --fonte-titulo: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
+    --fonte-texto: 'Archivo', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    /* Escala curta: cinco tamanhos no site inteiro, todos em rem */
+    --t-rotulo: .875rem;                                  /* rótulos, legendas, rodapé */
+    --t-texto: 1.0625rem;                                 /* texto corrido, botões, formulário */
+    --t-destaque: 1.375rem;                               /* texto de abertura e subtítulos */
+    --t-titulo: clamp(2.25rem, 1.35rem + 3.6vw, 4rem);    /* título de seção */
+    --t-cartaz: clamp(3.25rem, 1.5rem + 8vw, 7.5rem);     /* título de abertura */
+
+    --entrelinha-texto: 1.5;
+    --entrelinha-titulo: 1.05;
+    --leitura: 65ch;
 }
 
 body {
-    font-family: 'Cantarell', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    font-size: 17px;
-    line-height: 1.6;
-}
-
-.fonte-titulo {
-    font-family: var(--fonte-titulo);
+    font-family: var(--fonte-texto);
     font-weight: 400;
-    text-transform: uppercase;
-    line-height: .95;
-    letter-spacing: .005em;
+    font-size: var(--t-texto);
+    line-height: var(--entrelinha-texto);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
 }
 
-h3, .etiqueta, .botao, label {
-    font-family: 'Cantarell', system-ui, sans-serif;
+/* Títulos: Archivo condensada, caixa normal, entrelinha 1,05 */
+.fonte-titulo,
+h1, h2, h3 {
+    font-family: var(--fonte-titulo);
+    font-stretch: 75%;
+    font-weight: 800;
+    text-transform: none;
+    line-height: var(--entrelinha-titulo);
+    letter-spacing: -.02em;
 }
+h3 { font-weight: 700; font-size: var(--t-destaque); letter-spacing: -.01em; }
 
-h3 {
-    font-weight: 700;
-}
+strong { font-weight: 600; }
+em { font-style: normal; font-weight: 600; }
+
+p, dd { max-width: var(--leitura); }
+.fonte-texto { font-family: var(--fonte-texto); }
