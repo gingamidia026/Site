@@ -99,6 +99,8 @@ const abrirSelo = (selo) => {
   }
   modalConteudo.replaceChildren(copia);
   modalConteudo.scrollTop = 0;
+  // a vitrine do início (vitrine.js) troca a prévia pela versão interativa
+  document.dispatchEvent(new CustomEvent('selo:aberto', { detail: { selo, copia, conteudo: modalConteudo } }));
 
   const nome = copia.querySelector('.selo-nome, .ficha-nome');
   modal.setAttribute('aria-label', nome ? nome.textContent : 'Detalhes');

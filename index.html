@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <!-- Dominique-Oliveira-ChatGPT🤖💚: política compatível com hospedagem estática. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-IHLTdnD8oGKshq+WXdUoFhfKSiJfWaJ47r+x6YT166k='; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-IHLTdnD8oGKshq+WXdUoFhfKSiJfWaJ47r+x6YT166k='; style-src 'self'; font-src 'self'; img-src 'self' data:; media-src 'self'; frame-src https://www.advogadasabrina.com.br; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -122,7 +122,7 @@
                                 <span class="selo-icone" aria-hidden="true">+</span>
                                 <span class="selo-valor">01</span>
                             </div>
-                            <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/anuncios-lojista-celular.webp" alt="Lojista sorrindo com o celular na mão, em uma loja de roupas" width="1200" height="724" loading="lazy"></div>
+                            <div class="selo-imagem" data-vitrine="relatorio"><img src="Imagens/Fotos%20dos%20selos/anuncios-lojista-celular.webp" alt="Lojista sorrindo com o celular na mão, em uma loja de roupas" width="1200" height="724" loading="lazy"></div>
                             <h2 class="selo-nome fonte-titulo">Anúncios</h2>
                             <div class="selo-texto">
                                 <p>Anúncios no Google e no Instagram para quem procura o que sua empresa oferece.</p>
@@ -146,7 +146,7 @@
                                 <span class="selo-icone" aria-hidden="true">+</span>
                                 <span class="selo-valor">02</span>
                             </div>
-                            <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/fotos-videos-gravando-celular.webp" alt="Três pessoas segurando produtos diante de um celular apoiado em suporte, gravando um vídeo" width="1200" height="750" loading="lazy"></div>
+                            <div class="selo-imagem" data-vitrine="portfolio"><img src="Imagens/Fotos%20dos%20selos/fotos-videos-gravando-celular.webp" alt="Três pessoas segurando produtos diante de um celular apoiado em suporte, gravando um vídeo" width="1200" height="750" loading="lazy"></div>
                             <h2 class="selo-nome fonte-titulo">Fotos &amp; vídeos</h2>
                             <div class="selo-texto">
                                 <p>Fotos e vídeos profissionais do seu produto, do seu espaço e da sua equipe.</p>
@@ -170,7 +170,7 @@
                                 <span class="selo-icone" aria-hidden="true">+</span>
                                 <span class="selo-valor">03</span>
                             </div>
-                            <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/sites-notebook-pagina-de-loja.webp" alt="Notebook aberto em uma página de compra de loja virtual" width="1200" height="741" loading="lazy"></div>
+                            <div class="selo-imagem" data-vitrine="site"><img src="Imagens/Fotos%20dos%20selos/sites-notebook-pagina-de-loja.webp" alt="Notebook aberto em uma página de compra de loja virtual" width="1200" height="741" loading="lazy"></div>
                             <h2 class="selo-nome fonte-titulo">Sites</h2>
                             <div class="selo-texto">
                                 <p>Sites com os serviços e o contato da sua empresa, preparados para consulta no celular.</p>
@@ -188,6 +188,7 @@
                         </div>
                     <button class="ver-mais" type="button" aria-haspopup="dialog" aria-label="Ver mais sobre Sites">Ver mais</button></article>
             </div>
+            <p class="vitrine-origem" data-vitrine-origem hidden></p>
 
             <div class="hero-botoes">
                 <a class="botao botao-principal" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Vim%20pelo%20site%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
@@ -544,5 +545,6 @@
     </a>
 
     <script src="script.js"></script>
+    <script src="vitrine.js"></script>
 </body>
 </html>
