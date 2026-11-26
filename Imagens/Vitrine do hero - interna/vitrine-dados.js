@@ -10,28 +10,49 @@ window.vitrineDados = {
     cliente: 'Advogada Sabrina Conrado',
     campanha: 'Trabalhista: sem carteira assinada',
     rede: 'Google Ads, rede de pesquisa',
-    periodo: 'Fim de julho a início de setembro de 2025',
+    periodo: '28/07 a 31/08/2025',
     lidoEm: '25/11/2026',
-    total: { custo: 533.99, cliques: 363, impressoes: 6259, contatos: 3, ctr: 5.80, cpc: 1.47 },
+    // Totais das cinco semanas completas (soma de `semanas`). A semana de 01/09/2025 ficou fora da análise
+    // a pedido de Dominique (26/11/2026): teve um dia só (R$ 3,10, 4 cliques, 42 impressões).
+    // Com ela o Google Ads marcava R$ 533,99, 363 cliques e 6.259 impressões.
+    // A tela mostra só investimento, cliques e impressões (pedido de Dominique, 26/11/2026).
+    total: { custo: 530.89, cliques: 359, impressoes: 6217, ctr: 5.77, cpc: 1.48 },
+    // ESTIMATIVA de quantos pedidos de atendimento os cliques podem ter rendido. Não é dado da campanha
+    // (regra dado-inventado): a tela mostra a fonte por escrito.
+    // taxaDePedidos tem fonte pública: média de conversão (clique que vira pedido de atendimento por telefone,
+    //    conversa, formulário ou e-mail) dos anúncios de pesquisa de "Attorneys & Legal Services", 5,55%,
+    //    no relatório da LocaliQ abaixo (página atualizada em 01/06/2026, lida em 26/11/2026).
+    //    A média é de campanhas de clientes da LocaliQ, empresa dos Estados Unidos, e não desta campanha.
+    // A hipótese de contratos (1 a cada 4 pedidos, sem fonte) saiu em 26/11/2026, por decisão de Dominique.
+    estimativa: {
+      taxaDePedidos: 5.55,
+      fonte: {
+        nome: 'LocaliQ',
+        relatorio: 'Search Advertising Benchmarks',
+        ano: 2026,
+        link: 'https://localiq.com/blog/search-advertising-benchmarks/'
+      }
+    },
     semanas: [
-      { rotulo: '28/07', custo: 145.50, cliques: 39, impressoes: 865, contatos: 0 },
-      { rotulo: '04/08', custo: 121.81, cliques: 68, impressoes: 1738, contatos: 0 },
-      { rotulo: '11/08', custo: 58.34, cliques: 41, impressoes: 787, contatos: 0 },
-      { rotulo: '18/08', custo: 108.65, cliques: 101, impressoes: 1419, contatos: 0 },
-      { rotulo: '25/08', custo: 96.59, cliques: 110, impressoes: 1408, contatos: 1 },
-      { rotulo: '01/09', custo: 3.10, cliques: 4, impressoes: 42, contatos: 2 }
+      { rotulo: '28/07', custo: 145.50, cliques: 39, impressoes: 865 },
+      { rotulo: '04/08', custo: 121.81, cliques: 68, impressoes: 1738 },
+      { rotulo: '11/08', custo: 58.34, cliques: 41, impressoes: 787 },
+      { rotulo: '18/08', custo: 108.65, cliques: 101, impressoes: 1419 },
+      { rotulo: '25/08', custo: 96.59, cliques: 110, impressoes: 1408 }
     ],
+    // Palavras-chave: não aparecem mais no relatório do site. Os números abaixo são do período inteiro
+    // do Google Ads (28/07 a 01/09/2025, com a semana de um dia só) e ficam guardados só como registro.
     palavras: [
-      { termo: 'trabalho sem carteira assinada', custo: 48.93, cliques: 7, impressoes: 165, contatos: 0 },
-      { termo: 'sem carteira assinada', custo: 21.37, cliques: 2, impressoes: 22, contatos: 0 },
-      { termo: 'não tenho carteira assinada e fui demitido', custo: 8.62, cliques: 2, impressoes: 54, contatos: 0 },
-      { termo: 'fui demitido sem registro', custo: 8.51, cliques: 1, impressoes: 4, contatos: 0 },
-      { termo: 'sem registro', custo: 8.19, cliques: 2, impressoes: 33, contatos: 0 },
-      { termo: 'direitos trabalhistas sem carteira assinada', custo: 7.16, cliques: 1, impressoes: 42, contatos: 0 },
-      { termo: 'direito trabalhista sem carteira assinada', custo: 7.05, cliques: 4, impressoes: 55, contatos: 0 },
-      { termo: 'direitos trabalhistas sem registro', custo: 5.83, cliques: 2, impressoes: 18, contatos: 0 },
-      { termo: 'advogado trabalhista', custo: 3.49, cliques: 5, impressoes: 52, contatos: 3 },
-      { termo: 'trabalho sem registro', custo: 1.26, cliques: 1, impressoes: 9, contatos: 0 }
+      { termo: 'trabalho sem carteira assinada', custo: 48.93, cliques: 7, impressoes: 165 },
+      { termo: 'sem carteira assinada', custo: 21.37, cliques: 2, impressoes: 22 },
+      { termo: 'não tenho carteira assinada e fui demitido', custo: 8.62, cliques: 2, impressoes: 54 },
+      { termo: 'fui demitido sem registro', custo: 8.51, cliques: 1, impressoes: 4 },
+      { termo: 'sem registro', custo: 8.19, cliques: 2, impressoes: 33 },
+      { termo: 'direitos trabalhistas sem carteira assinada', custo: 7.16, cliques: 1, impressoes: 42 },
+      { termo: 'direito trabalhista sem carteira assinada', custo: 7.05, cliques: 4, impressoes: 55 },
+      { termo: 'direitos trabalhistas sem registro', custo: 5.83, cliques: 2, impressoes: 18 },
+      { termo: 'advogado trabalhista', custo: 3.49, cliques: 5, impressoes: 52 },
+      { termo: 'trabalho sem registro', custo: 1.26, cliques: 1, impressoes: 9 }
     ],
     anuncio: {
       endereco: 'advogadasabrina.com.br/sem-registro',
@@ -58,6 +79,7 @@ window.vitrineDados = {
     cliente: 'Advogada Sabrina Conrado',
     endereco: 'https://www.advogadasabrina.com.br/',
     print: 'site-sabrina.webp',
+    printCelular: 'site-sabrina-celular.webp', // print do site em 390 px (26/11/2026), aparece no modo Celular até o site carregar
     alt: 'Início do site da advogada Sabrina Conrado, com a chamada "Advogada previdenciária em Matão/SP" e a foto dela'
   },
 

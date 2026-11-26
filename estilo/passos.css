@@ -1,0 +1,37 @@
+/* Bloco "Do primeiro contato ao resultado": ilustrações e trilha.
+   As ilustrações ficam em Imagens/Passos/ (SVG de formas chapadas, na paleta do site).
+   A trilha é um SVG criado pelo passos.js dentro do .conteudo (que já é position: relative),
+   antes da lista e atrás dos selos, aparecendo só nos vãos. */
+
+.passos { gap: 76px 24px; }
+.passos > .selo { position: relative; z-index: 1; }
+
+/* quadro da ilustração: fundo creme da própria ilustração, sem corte */
+.passos .selo-imagem { background-color: var(--cor-fundo); }
+.passos .selo-imagem img { object-fit: contain; }
+
+/* trilha tracejada que liga um passo ao outro */
+.trilha-passos {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+.trilha-passos path {
+    fill: none;
+    stroke: var(--campo-amarelo);
+    stroke-width: 3;
+    stroke-dasharray: 9 8;
+    stroke-linecap: round;
+}
+
+@media (min-width: 640px) {
+    .passos { gap: 76px 64px; }
+}
+@media (min-width: 1024px) {
+    .passos { gap: 76px 60px; }
+    .passos > .selo:nth-child(even) { margin-top: 48px; }
+}

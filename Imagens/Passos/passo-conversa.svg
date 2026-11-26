@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <!-- passo 1, conversa: dois balões sobre o sol amarelo -->
+  <rect width="320" height="200" fill="#F2E8DC"/>
+  <circle cx="160" cy="100" r="80" fill="#F2AE30"/>
+  <!-- balão de quem pergunta -->
+  <path fill="#1D233B" d="M72 30h116a14 14 0 0 1 14 14v52a14 14 0 0 1-14 14H112l-26 24v-24H72a14 14 0 0 1-14-14V44a14 14 0 0 1 14-14Z"/>
+  <path fill="none" stroke="#F2E8DC" stroke-width="7" stroke-linecap="round" d="M80 54h100M80 72h100M80 90h58"/>
+  <!-- balão de quem responde -->
+  <path fill="#BF471B" d="M150 100h98a14 14 0 0 1 14 14v36a14 14 0 0 1-14 14h-10v22l-24-22h-64a14 14 0 0 1-14-14v-36a14 14 0 0 1 14-14Z"/>
+  <g fill="#FFFAF2"><circle cx="174" cy="132" r="7"/><circle cx="199" cy="132" r="7"/><circle cx="224" cy="132" r="7"/></g>
+</svg>

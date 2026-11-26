@@ -1,0 +1,189 @@
+/* Vitrine do início, parte site (carrega depois do styles.css e pode sobrescrever a seção VITRINE dele)
+   Aqui também mora a dica "Clique aqui" dos três selos (criada pelo vitrine.js) e as molduras do site ao vivo. */
+
+/* ================= dica "Clique aqui" nos selos do início =================
+   Etiqueta postal colada no canto de cima à direita do selo: canhoto amarelo com o cursor, picote e o texto.
+   Ela mora na face do selo (irmã da .selo-imagem, que corta o que passa da borda) e sobrepõe a moldura da
+   prévia e o picote do selo. Fica na linha do número do selo, onde nenhuma das três prévias tem conteúdo
+   essencial: cobre só uma faixa fina do topo da prévia. */
+.selo-imagem.com-vitrine { position: relative; }
+.selo-face > .dica-clique {
+    position: absolute; top: 20px; right: -9px; z-index: 3;
+    display: flex; align-items: stretch;
+    background: var(--cor-papel); color: var(--cor-texto);
+    border: 1px solid var(--cor-texto); border-radius: var(--raio-pequeno); /* fio fino: a dica fica discreta */
+    box-shadow: var(--sombra-leve);
+    transform: rotate(-3deg); transform-origin: 100% 50%; /* colada à mão, como etiqueta de correio */
+    pointer-events: none; /* o clique segue para o selo */
+    animation: dica-etiqueta 3.6s var(--ease-saida) infinite;
+}
+/* na janela ampliada a dica não aparece (a janela copia a face do selo inteira) */
+.modal-conteudo .dica-clique { display: none; }
+
+.dica-clique-canhoto {
+    display: grid; place-items: center; padding: 3px 5px 3px 6px;
+    background: var(--campo-amarelo);
+    border-right: 1px dashed var(--cor-texto); /* picote entre o canhoto e a etiqueta */
+    border-radius: calc(var(--raio-pequeno) - 1px) 0 0 calc(var(--raio-pequeno) - 1px);
+}
+.dica-clique-icone { display: block; width: 22px; height: 22px; overflow: visible; }
+.dica-clique-cursor {
+    fill: var(--cor-papel); stroke: var(--cor-texto); stroke-width: 1.6; stroke-linejoin: round;
+    transform-box: fill-box; transform-origin: 0 0; /* aperta a partir da ponta */
+    animation: dica-cursor 3.6s var(--ease-saida) infinite;
+}
+.dica-clique-anel {
+    fill: none; stroke: var(--cor-acao); stroke-width: 1.6; opacity: 0;
+    transform-box: fill-box; transform-origin: center;
+    animation: dica-anel 3.6s var(--ease-saida) infinite;
+}
+.dica-clique-texto {
+    align-self: center; padding: 0 9px 0 8px;
+    font-family: var(--fonte-titulo); font-stretch: 75%; font-size: var(--t-rotulo); font-weight: 800;
+    line-height: 1; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap;
+}
+
+/* gesto de clique: o cursor desce até a etiqueta, aperta (encolhe a partir da ponta), o anel sai da ponta,
+   a etiqueta cede um pouco e tudo descansa até o próximo laço. Só transform e opacity. */
+@keyframes dica-cursor {
+    0%, 14%, 46%, 100% { transform: translate(0, 0) scale(1); }
+    22% { transform: translate(0, 2px) scale(1); }
+    27% { transform: translate(0, 2px) scale(.86); }
+    34% { transform: translate(0, 2px) scale(1); }
+}
+@keyframes dica-anel {
+    0%, 26% { opacity: 0; transform: scale(.3); }
+    28% { opacity: .95; transform: scale(.3); }
+    52%, 100% { opacity: 0; transform: scale(1.25); }
+}
+@keyframes dica-etiqueta {
+    0%, 23%, 38%, 100% { transform: rotate(-3deg) scale(1); }
+    28% { transform: rotate(-3deg) scale(.96); }
+}
+@media (prefers-reduced-motion: reduce) {
+    /* sem movimento: só a etiqueta parada */
+    .selo-face > .dica-clique, .dica-clique-cursor, .dica-clique-anel { animation: none; }
+    .dica-clique-anel { display: none; }
+}
+
+/* ================= site ao vivo na janela: moldura de computador ou de celular ================= */
+/* no celular, os botões Celular e Computador também aparecem (o styles.css os escondia abaixo de 640 px) */
+.vitrine-site .site-modos { display: flex; }
+
+.site-palco {
+    --barra-pc: 28px; --pe-pc: 34px; --tempo: .28s;
+    display: flex; flex-direction: column; align-items: center;
+    width: 100%; padding: 16px 0 14px;
+    background: var(--cor-bloco); border-radius: var(--raio-pequeno);
+    overflow-x: clip;
+}
+
+/* corpo do aparelho: escuro, com a tela dentro */
+.site-aparelho {
+    position: relative; max-width: 100%;
+    width: calc(var(--tela-l) + 2 * var(--borda-lados));
+    padding: var(--borda-topo) var(--borda-lados) var(--borda-base);
+    background: var(--campo-escuro);
+    border-radius: 12px;
+    box-shadow: var(--sombra-leve);
+}
+.site-palco[data-modo="celular"] .site-aparelho { border-radius: 30px; }
+
+/* tela: a janela de recorte do iframe */
+.site-vidro {
+    position: relative; overflow: hidden;
+    width: var(--tela-l); height: var(--tela-a);
+    background: var(--cor-papel);
+    border-radius: 0 0 4px 4px;
+}
+.site-palco[data-modo="celular"] .site-vidro { border-radius: 18px; }
+/* o site é desenhado no tamanho do aparelho (--iframe-l) e reduzido pela --escala (vitrine-site.js) */
+.site-iframe {
+    position: absolute; top: 0; left: 0;
+    width: var(--iframe-l); height: var(--iframe-a);
+    border: 0; background: var(--cor-papel);
+    transform: scale(var(--escala, 1)); transform-origin: top left;
+}
+
+/* barra de navegador (só no computador) */
+.site-navegador {
+    display: flex; align-items: center; gap: 10px;
+    height: var(--barra-pc); padding: 0 10px; overflow: hidden;
+    background: var(--cor-bloco);
+    border-radius: 5px 5px 0 0;
+    box-shadow: inset 0 -1px 0 var(--cor-fio-forte);
+}
+.site-navegador-bolinhas {
+    flex: none; width: 38px; height: 8px;
+    background:
+        radial-gradient(circle at 4px 4px, var(--campo-vermelho) 3.5px, transparent 4px),
+        radial-gradient(circle at 19px 4px, var(--campo-amarelo) 3.5px, transparent 4px),
+        radial-gradient(circle at 34px 4px, var(--campo-escuro) 3.5px, transparent 4px);
+}
+.site-navegador-endereco {
+    flex: 1; min-width: 0; max-width: 360px;
+    padding: 2px 10px; overflow: hidden;
+    background: var(--cor-papel); color: var(--cor-texto-suave);
+    border-radius: 4px;
+    font-size: var(--t-rotulo); font-weight: 600; line-height: 1.5;
+    text-overflow: ellipsis; white-space: nowrap;
+}
+.site-palco[data-modo="celular"] .site-navegador { height: 0; opacity: 0; box-shadow: none; }
+
+/* ilha do celular, na borda de cima */
+.site-ilha {
+    position: absolute; top: 6px; left: 50%; width: 76px; height: 18px;
+    margin-left: -38px; border-radius: 9px;
+    background: var(--campo-escuro); box-shadow: 0 0 0 1px var(--cor-texto-suave);
+    opacity: 0;
+}
+.site-palco[data-modo="celular"] .site-ilha { opacity: 1; }
+
+/* pé do monitor: haste e base */
+.site-pe {
+    display: flex; flex-direction: column; align-items: center;
+    width: 100%; height: var(--pe-pc); overflow: hidden;
+}
+.site-pe-haste { width: 88px; height: 24px; background: var(--campo-escuro); clip-path: polygon(14% 0, 86% 0, 100% 100%, 0 100%); }
+.site-pe-base { width: min(220px, 60%); height: 10px; background: var(--campo-escuro); border-radius: 5px 5px 2px 2px; }
+.site-palco[data-modo="celular"] .site-pe { height: 0; opacity: 0; }
+
+/* iframe de aquecimento (vitrine-site.js): carrega o site fora da vista, sem ocupar espaço */
+.site-aquecimento { position: fixed; left: 0; top: 0; width: 1px; height: 1px; border: 0; opacity: 0; pointer-events: none; }
+
+/* print do site por cima da tela, até o iframe terminar de carregar */
+.site-carregando {
+    position: absolute; inset: 0; z-index: 2;
+    background: var(--cor-papel);
+    transition: opacity .25s var(--ease-saida);
+}
+.site-carregando.some { opacity: 0; pointer-events: none; }
+.site-carregando img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+/* no celular o print (de computador) mostra só o começo da página, à esquerda, parecido com o que o site mostra no celular */
+.site-palco[data-modo="celular"] .site-print-computador,
+.site-palco:not([data-modo="celular"]) .site-print-celular { display: none; }
+.site-carregando-texto {
+    position: absolute; left: 8px; bottom: 8px;
+    padding: 3px 8px;
+    background: var(--cor-papel); color: var(--cor-texto);
+    border: 2px solid var(--cor-texto); border-radius: var(--raio-pequeno);
+    font-size: var(--t-rotulo); font-weight: 600;
+}
+
+/* troca curta entre os modos; só depois do primeiro ajuste, para a moldura não "crescer" ao abrir */
+.site-palco[data-pronto] .site-aparelho {
+    transition: width var(--tempo) var(--ease-saida), padding var(--tempo) var(--ease-saida), border-radius var(--tempo) var(--ease-saida);
+}
+.site-palco[data-pronto] .site-vidro {
+    transition: width var(--tempo) var(--ease-saida), height var(--tempo) var(--ease-saida), border-radius var(--tempo) var(--ease-saida);
+}
+.site-palco[data-pronto] .site-navegador { transition: height var(--tempo) var(--ease-saida), opacity var(--tempo) var(--ease-saida); }
+.site-palco[data-pronto] .site-pe { transition: height var(--tempo) var(--ease-saida), opacity var(--tempo) var(--ease-saida); }
+.site-palco[data-pronto] .site-ilha { transition: opacity var(--tempo) var(--ease-saida); }
+@media (prefers-reduced-motion: reduce) {
+    .site-palco, .site-palco * { transition: none !important; }
+}
+
+@media (max-width: 639px) {
+    .site-palco { padding-top: 12px; }
+}

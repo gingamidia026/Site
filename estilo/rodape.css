@@ -1,0 +1,137 @@
+/* Rodapé do início e das landings (rodada 2, 26/11/2026). Carregado depois do styles.css e do landing.css.
+   Visual "Correio da Ginga": faixa de correio aéreo no alto, blocos separados por fios finos
+   (colunas no PC, empilhados no celular) e carimbo redondo. Só Archivo e variáveis de cores.css e fontes.css.
+   Este arquivo substitui as regras .rodape* antigas de styles.css e landing.css. */
+
+.rodape {
+    --rodape-fio: color-mix(in srgb, var(--sobre-campo-escuro) 30%, transparent);
+    position: relative;
+    background: var(--campo-escuro);
+    color: var(--sobre-campo-escuro);
+    font-size: var(--t-texto);
+    /* 14 px da faixa + respiro; embaixo sobra espaço para o botão flutuante do WhatsApp */
+    padding: calc(14px + clamp(40px, 6vw, 64px)) var(--margem) 110px;
+}
+
+/* faixa de correio aéreo (Imagens/Estampas) na borda de cima */
+.rodape::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    height: 14px;
+    background: url("../Imagens/Estampas/correio-aereo.webp") left top / 140px auto repeat-x;
+}
+
+.rodape :focus-visible { outline: 2px solid var(--cor-papel); outline-offset: 3px; border-radius: var(--raio-pequeno); }
+
+.rodape p { max-width: none; margin-inline: 0; }
+
+.rodape-grade {
+    max-width: var(--largura);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+}
+
+/* celular: blocos empilhados, com um fio fino entre eles */
+.rodape-bloco {
+    min-width: 0;
+    padding: 24px 0;
+    border-top: 1px solid var(--rodape-fio);
+}
+.rodape-bloco:first-child { padding-top: 0; border-top: 0; }
+
+.rodape-logo { display: block; height: 52px; width: auto; max-width: 100%; }
+.rodape-servicos { margin-top: 16px; font-weight: 600; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.rodape-servicos li { white-space: nowrap; }
+
+.rodape-titulo {
+    font-size: var(--t-destaque);
+    color: inherit;
+    margin: 0 0 8px;
+}
+
+.rodape-lista { list-style: none; }
+/* navegação em duas colunas no celular, para o rodapé não ficar comprido */
+.rodape-lista-dupla { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 16px; }
+
+/* links com área de toque de 44 px */
+.rodape a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    color: inherit;
+    font-weight: 400;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var(--rodape-fio);
+    text-underline-offset: 5px;
+    transition: text-decoration-color var(--duracao) var(--ease-saida), color var(--duracao) var(--ease-saida);
+}
+.rodape a:hover,
+.rodape a:focus-visible { color: var(--cor-papel); text-decoration-color: currentColor; }
+.rodape a:active { color: var(--campo-amarelo); }
+
+/* localização: texto de um lado, carimbo do outro */
+.rodape-local { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.rodape-cidade { font-weight: 600; }
+
+.rodape-carimbo {
+    flex: none;
+    display: block;
+    width: 104px;
+    height: 104px;
+    color: var(--sobre-campo-escuro);
+    transform: rotate(-10deg);
+}
+.rodape-carimbo-aro { fill: none; stroke: currentColor; stroke-width: 3; }
+.rodape-carimbo-texto { font: 600 10.5px var(--fonte-texto); letter-spacing: 1.6px; fill: currentColor; }
+.rodape-carimbo-centro { font: 900 15px var(--fonte-titulo); font-stretch: 62.5%; fill: currentColor; }
+
+.rodape-copy {
+    max-width: var(--largura);
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--rodape-fio);
+    font-size: var(--t-rotulo);
+}
+.rodape p.rodape-copy { max-width: var(--largura); margin-inline: auto; }
+
+/* tablet: duas colunas */
+@media (min-width: 768px) {
+    .rodape-grade { grid-template-columns: repeat(2, minmax(0, 1fr)); padding-bottom: 32px; }
+    .rodape-bloco { padding: 0 0 0 32px; border-top: 0; border-left: 1px solid var(--rodape-fio); }
+    .rodape-bloco:nth-child(odd) { padding-left: 0; padding-right: 32px; border-left: 0; }
+    .rodape-bloco:nth-child(n + 3) { margin-top: 32px; padding-top: 32px; border-top: 1px solid var(--rodape-fio); }
+    .rodape-local { align-items: flex-start; }
+
+    /* landing: logo na linha de cima, contato e localização lado a lado */
+    .rodape-enxuto .rodape-marca { grid-column: 1 / -1; padding: 0 0 32px; }
+    .rodape-enxuto .rodape-bloco:nth-child(2) { margin-top: 0; padding: 32px 32px 0 0; border-left: 0; border-top: 1px solid var(--rodape-fio); }
+    .rodape-enxuto .rodape-bloco:nth-child(3) { margin-top: 0; padding: 32px 0 0 32px; border-left: 1px solid var(--rodape-fio); border-top: 1px solid var(--rodape-fio); }
+}
+
+/* PC: quatro colunas com fios verticais */
+@media (min-width: 1024px) {
+    .rodape-grade { grid-template-columns: 1.2fr 1.3fr 1.2fr 1.2fr; padding-bottom: 40px; }
+    .rodape-bloco,
+    .rodape-bloco:nth-child(odd),
+    .rodape-bloco:nth-child(n + 3) {
+        margin-top: 0;
+        padding: 0 0 0 32px;
+        border-top: 0;
+        border-left: 1px solid var(--rodape-fio);
+    }
+    .rodape-bloco:first-child { padding: 0 32px 0 0; border-left: 0; }
+    .rodape-carimbo { width: 112px; height: 112px; }
+
+    /* landing: três colunas */
+    .rodape-enxuto .rodape-grade { grid-template-columns: 1fr 1.3fr 1.3fr; }
+    .rodape-enxuto .rodape-marca { grid-column: auto; }
+    .rodape-enxuto .rodape-bloco:nth-child(n) { margin-top: 0; padding: 0 0 0 32px; border-top: 0; border-left: 1px solid var(--rodape-fio); }
+    .rodape-enxuto .rodape-bloco:first-child { padding: 0 32px 0 0; border-left: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rodape a { transition: none; }
+}

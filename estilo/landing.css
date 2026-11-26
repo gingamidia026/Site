@@ -650,22 +650,6 @@ a { color: inherit; }
     pointer-events: none;
 }
 
-.rodape {
-    background: var(--campo-escuro);
-    color: var(--sobre-campo-escuro);
-    padding: 32px var(--margem) 110px;
-    font-size: var(--t-rotulo);
-}
-.rodape p { max-width: calc(var(--largura) - 2 * var(--margem)); margin-inline: auto; }
-.rodape a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 44px;
-    color: inherit;
-    font-weight: 600;
-    text-underline-offset: 4px;
-}
-
 /* ================= WHATSAPP FLUTUANTE ================= */
 .whats-flutuante {
     position: fixed;
@@ -683,10 +667,18 @@ a { color: inherit; }
     font: 600 var(--t-texto)/1 var(--fonte-texto);
     text-decoration: none;
     box-shadow: var(--sombra-media);
-    transition: transform var(--duracao) var(--ease-saida);
+    transition: transform var(--duracao) var(--ease-saida), background-color .2s var(--ease-saida), color .2s var(--ease-saida);
 }
 @media (hover: hover) { .whats-flutuante:hover { transform: translateY(-2px); } }
 .whats-flutuante:active { transform: scale(.97); }
+
+/* a cor do botão acompanha o bloco atrás dele (whats-cor.js troca a classe): contraste do botão com o
+   fundo do bloco de pelo menos 3:1 e do ícone com o botão de pelo menos 4,5:1. Sem classe: vermelho no creme */
+.whats-flutuante.whats-azul-escuro { background-color: var(--campo-escuro); color: var(--sobre-campo-escuro); }
+.whats-flutuante.whats-amarelo { background-color: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
+.whats-flutuante.whats-papel { background-color: var(--cor-papel); color: var(--cor-texto); }
+/* no bloco azul escuro o anel de foco azul escuro sumiria */
+.whats-flutuante.whats-amarelo:focus-visible { outline-color: var(--campo-amarelo); }
 
 /* ================= FORMULÁRIO EM CARTA ================= */
 /* A mesma carta de correio aéreo do início (estilo/styles.css), no bloco da chamada final e na janela do
@@ -707,7 +699,7 @@ a { color: inherit; }
     display: flex;
     flex-direction: column;
 }
-/* selo colado: picote amarelo com o tucano, torto no canto da carta */
+/* selo colado: picote amarelo com a onça sobre papel claro (no amarelo o rosto laranja some), torto no canto da carta */
 .selo-colado {
     --furo: 5px;
     --fundo: var(--campo-amarelo);
@@ -722,7 +714,7 @@ a { color: inherit; }
     filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 6px 10px rgba(29, 35, 59, .12));
     transform: rotate(7deg);
 }
-.selo-colado .selo-face { display: block; padding: 8px; background-color: var(--fundo); }
+.selo-colado .selo-face { display: block; padding: 8px; background-color: var(--cor-papel); }
 .selo-colado img { width: 100%; }
 
 .envelope-para { padding: 0 100px 14px 0; margin-bottom: 20px; border-bottom: 3px dashed var(--cor-texto); }

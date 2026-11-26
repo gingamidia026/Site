@@ -1,0 +1,137 @@
+/* Vitrine do início, parte portfolio (carrega depois do styles.css e pode sobrescrever a seção VITRINE dele)
+   Celular desenhado em CSS: corpo escuro arredondado, ilha em cima e tela com a mídia.
+   Todas as medidas do celular saem de --c (a largura dele), então o mesmo desenho serve para a prévia e para a janela. */
+
+/* ----- celular (prévia e janela) ----- */
+.celular {
+    position: relative;
+    width: var(--c);
+    aspect-ratio: 9 / 19;
+    flex: none;
+    box-sizing: border-box;
+    padding: calc(var(--c) * .04);
+    border-radius: calc(var(--c) * .17);
+    background: var(--cor-texto);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--cor-papel) 22%, transparent), var(--sombra-leve);
+    touch-action: pan-y;
+    user-select: none;
+    -webkit-user-select: none;
+}
+.celular-tela {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border-radius: calc(var(--c) * .13);
+    background: var(--cor-texto);
+}
+.celular-ilha {
+    position: absolute;
+    z-index: 3;
+    top: calc(var(--c) * .075);
+    left: 50%;
+    translate: -50% 0;
+    width: calc(var(--c) * .26);
+    height: calc(var(--c) * .06);
+    border-radius: 999px;
+    background: var(--cor-texto);
+    pointer-events: none;
+}
+
+/* tela de um trabalho: vídeo ou foto */
+.port-slide { position: absolute; inset: 0; overflow: hidden; background: var(--cor-texto); }
+.port-slide video, .port-slide img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    display: block;
+    object-fit: cover;
+    -webkit-user-drag: none;
+}
+/* vídeo da prévia: a capa fica de fundo até o vídeo começar a tocar */
+.port-slide-video { background: var(--fundo, var(--cor-texto)) center / cover no-repeat; }
+.port-slide video.port-aguarda { opacity: 0; }
+/* foto na janela: inteira, sobre ela mesma desfocada e escurecida para preencher a tela */
+.vitrine-portfolio .port-slide-foto { background: var(--cor-texto); }
+.vitrine-portfolio .port-slide-foto::before {
+    content: ""; position: absolute; inset: -12%;
+    background: var(--fundo) center / cover no-repeat;
+    filter: blur(14px) brightness(.6);
+}
+.vitrine-portfolio .port-slide-foto img { z-index: 1; object-fit: contain; }
+.vitrine-portfolio .port-slide-video video { object-fit: contain; }
+
+/* ----- prévia dentro do selo: dois celulares lado a lado, levemente inclinados ----- */
+.selo-imagem[data-vitrine="portfolio"] { position: relative; }
+.vitrine-previa.previa-celulares {
+    position: absolute; inset: 0;
+    width: auto; height: auto;
+    container-type: size;
+    display: flex; align-items: center; justify-content: center;
+    padding-right: 14%;                 /* deixa o canto inferior direito livre para o ícone "Clique aqui" */
+    overflow: hidden;
+    background: var(--cor-bloco);
+    --c: calc(86cqh * 9 / 19);          /* largura de cada celular a partir da altura da área do selo */
+}
+.previa-celulares .celular-esquerdo { rotate: -5deg; translate: 0 calc(var(--c) * .05); z-index: 1; }
+.previa-celulares .celular-direito { rotate: 4deg; translate: 0 calc(var(--c) * -.04); z-index: 2; margin-left: calc(var(--c) * -.14); }
+
+/* ----- janela ampliada: setas de 44 px nas laterais, fora da tela do celular ----- */
+.port-cena { container-type: inline-size; display: flex; justify-content: center; padding: 2px 0; }
+.port-aparelho {
+    --seta: 44px;
+    --folga: 8px;
+    /* altura de até 80vh (e 640 px), sem passar da largura que sobra à janela depois das duas setas */
+    --c: min(calc(min(80vh, 640px) * 9 / 19), calc(100cqw - 2 * (var(--seta) + var(--folga))));
+    display: flex; align-items: center; justify-content: center; gap: var(--folga);
+}
+
+/* janela estreita (celular): o celular ocupa a largura toda e as setas descem para os dois cantos de baixo dele */
+@container (max-width: 480px) {
+    .port-aparelho {
+        --c: min(calc(min(80vh, 640px) * 9 / 19), 100cqw);
+        display: grid;
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        row-gap: 12px;
+        width: var(--c);
+    }
+    .port-aparelho .celular { grid-column: 1 / -1; grid-row: 1; }
+    .port-seta-ant { grid-column: 1; grid-row: 2; }
+    .port-seta-prox { grid-column: 2; grid-row: 2; }
+}
+
+.port-seta {
+    flex: none;
+    display: grid; place-items: center;
+    width: var(--seta); height: var(--seta); padding: 0;
+    background: var(--cor-papel); color: var(--cor-texto);
+    border: 2px solid var(--cor-texto); border-radius: var(--raio-pequeno);
+    box-shadow: var(--sombra-leve);
+    cursor: pointer;
+    transition: transform var(--duracao) var(--ease-saida), background-color var(--duracao) var(--ease-saida);
+}
+.port-seta::before {
+    content: ""; width: 10px; height: 10px;
+    border-top: 3px solid currentColor; border-left: 3px solid currentColor;
+}
+.port-seta-ant::before { rotate: -45deg; translate: 2px 0; }
+.port-seta-prox::before { rotate: 135deg; translate: -2px 0; }
+.port-seta:hover { background: var(--cor-fundo); }
+.port-seta:active { transform: scale(.94); }
+.port-seta:focus-visible { outline: 3px solid var(--cor-foco); outline-offset: 2px; }
+
+/* legenda, posição e miniaturas */
+.port-info { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.port-posicao-linha { display: flex; align-items: center; justify-content: center; gap: 12px; }
+.port-pontos { display: flex; align-items: center; gap: 6px; }
+.port-ponto { width: 8px; height: 8px; border-radius: 4px; background: var(--cor-borda-campo); transition: width .2s var(--ease-saida), background-color .2s var(--ease-saida); }
+.port-ponto[data-atual] { width: 22px; background: var(--cor-acao); }
+.port-posicao { font-size: var(--t-rotulo); font-weight: 600; color: var(--cor-texto-suave); white-space: nowrap; }
+.vitrine-portfolio .port-miniaturas { position: relative; justify-content: safe center; }
+/* miniatura da vez: o estilo base marca aria-pressed; aqui acompanha aria-current */
+.vitrine-portfolio .port-miniatura[aria-current="true"] { border-color: var(--cor-acao); }
+
+@media (prefers-reduced-motion: reduce) {
+    .port-seta, .port-ponto { transition: none; }
+}

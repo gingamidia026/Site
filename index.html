@@ -26,12 +26,19 @@
     <meta name="theme-color" content="#F2E8DC">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="Imagens/Favicon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="Imagens/Favicon-onca-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="Imagens/Favicon-onca-192.png">
+    <link rel="apple-touch-icon" href="Imagens/Favicon-onca-192.png">
 
     <!-- Estilos -->
     <link rel="stylesheet" href="estilo/cores.css">
     <link rel="stylesheet" href="estilo/fontes.css">
     <link rel="stylesheet" href="estilo/styles.css">
+    <link rel="stylesheet" href="estilo/vitrine-anuncios.css">
+    <link rel="stylesheet" href="estilo/vitrine-portfolio.css">
+    <link rel="stylesheet" href="estilo/vitrine-site.css">
+    <link rel="stylesheet" href="estilo/passos.css">
+    <link rel="stylesheet" href="estilo/rodape.css">
 
     <!-- Fonte: Archivo, local (estilo/fontes.css) -->
     <link rel="preload" href="estilo/fontes/Archivo-Regular.woff2" as="font" type="font/woff2" crossorigin>
@@ -87,7 +94,7 @@
     <main id="conteudo">
 
         <!-- ============ INÍCIO (HERO) ============ -->
-        <section class="hero" id="inicio">
+        <section class="hero" id="inicio" data-cor-whats="azul-escuro">
             <div class="decoracao" aria-hidden="true">
                 <img class="folhas folhas-esq" src="Imagens/Folhas-esq.webp" alt="" width="690" height="795">
                 <img class="folhas folhas-dir" src="Imagens/Folhas-dir.webp" alt="" width="690" height="795">
@@ -200,7 +207,7 @@
         <!-- ============ SERVIÇOS ============ -->
         <div class="faixa-estampa faixa-ondas" aria-hidden="true"></div>
 
-        <section class="secao secao-amarelo" id="servicos">
+        <section class="secao secao-amarelo" id="servicos" data-cor-whats="azul-escuro">
             <div class="enfeites" aria-hidden="true">
                 <img class="enfeite enfeite-berimbau" src="Imagens/Enfeite-Berimbau.webp" alt="" width="143" height="735" loading="lazy">
                 <img class="enfeite enfeite-folhas" src="Imagens/Folhas-dir.webp" alt="" width="690" height="795" loading="lazy">
@@ -219,7 +226,7 @@
 
         <!-- ============ COMO FUNCIONA ============ -->
         <div class="faixa-estampa faixa-mosaico" aria-hidden="true"></div>
-        <section class="secao secao-azul" id="como-funciona">
+        <section class="secao secao-azul" id="como-funciona" data-cor-whats="amarelo">
             <div class="enfeites" aria-hidden="true">
                 <div class="sol"></div>
                 <img class="enfeite enfeite-pandeiro" src="Imagens/Enfeite-Pandeiro.webp" alt="" width="387" height="248" loading="lazy">
@@ -230,7 +237,7 @@
                 <ol class="passos" id="passos">
                     <li class="selo selo-amarelo revelar" data-ampliar><div class="selo-face tema-bahia">
                         <span class="passo-numero fonte-titulo">1</span>
-                        <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/passo-conversa.webp" alt="Mulher rindo ao telefone, sentada diante de um notebook em um café" width="1200" height="750" loading="lazy"></div>
+                        <div class="selo-imagem" aria-hidden="true"><img src="Imagens/Passos/passo-conversa.svg" alt="" width="320" height="200" loading="lazy"></div>
                         <h3 class="selo-nome">Conversa</h3>
                         <div class="selo-texto"><p>Você conta sobre o seu negócio pelo WhatsApp. Sem compromisso e sem enrolação.</p></div>
                         <div class="selo-mais" hidden>
@@ -239,7 +246,7 @@
                     </div><button class="ver-mais" type="button" aria-haspopup="dialog" aria-label="Ver mais sobre a etapa Conversa">Ver mais</button></li>
                     <li class="selo selo-amarelo revelar" data-ampliar><div class="selo-face tema-brasilia">
                         <span class="passo-numero fonte-titulo">2</span>
-                        <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/passo-proposta.webp" alt="Mulher escrevendo em uma prancheta, entre caixas de papelão, em um pequeno negócio" width="1200" height="750" loading="lazy"></div>
+                        <div class="selo-imagem" aria-hidden="true"><img src="Imagens/Passos/passo-proposta.svg" alt="" width="320" height="200" loading="lazy"></div>
                         <h3 class="selo-nome">Proposta</h3>
                         <div class="selo-texto"><p>Montamos um plano e um orçamento claros, do tamanho da sua necessidade.</p></div>
                         <div class="selo-mais" hidden>
@@ -248,7 +255,7 @@
                     </div><button class="ver-mais" type="button" aria-haspopup="dialog" aria-label="Ver mais sobre a etapa Proposta">Ver mais</button></li>
                     <li class="selo selo-amarelo revelar" data-ampliar><div class="selo-face tema-rio">
                         <span class="passo-numero fonte-titulo">3</span>
-                        <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/passo-producao.webp" alt="Mão ajeitando produtos de maquiagem diante de um celular que grava a cena" width="1200" height="750" loading="lazy"></div>
+                        <div class="selo-imagem" aria-hidden="true"><img src="Imagens/Passos/passo-producao.svg" alt="" width="320" height="200" loading="lazy"></div>
                         <h3 class="selo-nome">Produção</h3>
                         <div class="selo-texto"><p>Fotografamos, filmamos, criamos o site e configuramos os anúncios.</p></div>
                         <div class="selo-mais" hidden>
@@ -257,7 +264,7 @@
                     </div><button class="ver-mais" type="button" aria-haspopup="dialog" aria-label="Ver mais sobre a etapa Produção">Ver mais</button></li>
                     <li class="selo selo-amarelo revelar" data-ampliar><div class="selo-face tema-sul">
                         <span class="passo-numero fonte-titulo">4</span>
-                        <div class="selo-imagem"><img src="Imagens/Fotos%20dos%20selos/passo-resultado.webp" alt="Mulher digitando no notebook atrás do balcão de uma padaria" width="1200" height="750" loading="lazy"></div>
+                        <div class="selo-imagem" aria-hidden="true"><img src="Imagens/Passos/passo-resultado.svg" alt="" width="320" height="200" loading="lazy"></div>
                         <h3 class="selo-nome">Resultado</h3>
                         <div class="selo-texto"><p>Conferimos os números dos anúncios e combinamos os próximos ajustes.</p></div>
                         <div class="selo-mais" hidden>
@@ -285,7 +292,7 @@
                         <header class="ficha-topo">
                             <span class="ficha-tag">Ginga Mídia</span>
                             <h3 class="ficha-nome fonte-titulo">Dominique Oliveira</h3>
-                            <div class="ficha-medalha" aria-hidden="true"><img src="Imagens/Tucano-ginga.webp" alt="" width="449" height="466" loading="lazy"></div>
+                            <div class="ficha-medalha" aria-hidden="true"><img src="Imagens/Onca-ginga.webp" alt="" width="680" height="716" loading="lazy"></div>
                         </header>
                         <p class="ficha-faixa">Equipe da Ginga Mídia</p>
                         <p class="ficha-titulo fonte-titulo">Equipe · Dominique Oliveira</p>
@@ -336,7 +343,7 @@
                         <header class="ficha-topo">
                             <span class="ficha-tag">Ginga Mídia</span>
                             <h3 class="ficha-nome fonte-titulo">Ana Damaceno</h3>
-                            <div class="ficha-medalha" aria-hidden="true"><img src="Imagens/Tucano-ginga.webp" alt="" width="449" height="466" loading="lazy"></div>
+                            <div class="ficha-medalha" aria-hidden="true"><img src="Imagens/Onca-ginga.webp" alt="" width="680" height="716" loading="lazy"></div>
                         </header>
                         <p class="ficha-faixa">Equipe da Ginga Mídia</p>
                         <p class="ficha-titulo fonte-titulo">Equipe · Ana Damaceno</p>
@@ -446,14 +453,14 @@
 
         <!-- ============ SOBRE ============ -->
         <div class="faixa-estampa faixa-ondas-laranja" aria-hidden="true"></div>
-        <section class="secao secao-sobre" id="sobre">
+        <section class="secao secao-sobre" id="sobre" data-cor-whats="azul-escuro">
             <div class="enfeites" aria-hidden="true">
                 <img class="enfeite enfeite-atabaque" src="Imagens/Enfeite-Atabaque.webp" alt="" width="198" height="469" loading="lazy">
                 <img class="enfeite enfeite-arara" src="Imagens/Ave-arara.webp" alt="" width="720" height="1080" loading="lazy">
             </div>
             <div class="conteudo sobre-grade">
                 <div class="sobre-figura selo selo-creme revelar" aria-hidden="true">
-                    <div class="selo-face"><img src="Imagens/Tucano-ginga.webp" alt="" width="449" height="466" loading="lazy"></div>
+                    <div class="selo-face"><img src="Imagens/Onca-ginga.webp" alt="" width="680" height="716" loading="lazy"></div>
                 </div>
                 <div class="sobre-texto revelar">
                     <h2 class="titulo-contorno fonte-titulo">Comunicação brasileira, <span>com jogo de cintura</span></h2>
@@ -475,7 +482,7 @@
         </section>
 
         <!-- ============ CONTATO ============ -->
-        <section class="secao secao-contato" id="contato">
+        <section class="secao secao-contato" id="contato" data-cor-whats="papel">
             <div class="conteudo contato-grade">
                 <div class="contato-texto revelar">
                     <h2 class="titulo-correio fonte-titulo">Vamos conversar sobre o seu projeto?</h2>
@@ -493,7 +500,7 @@
 
                 <form class="formulario envelope revelar" id="formContato" novalidate>
                     <div class="selo selo-amarelo selo-colado" aria-hidden="true">
-                        <div class="selo-face"><img src="Imagens/Tucano-ginga.webp" alt="" width="449" height="466" loading="lazy"></div>
+                        <div class="selo-face"><img src="Imagens/Onca-ginga.webp" alt="" width="680" height="716" loading="lazy"></div>
                     </div>
                     <p class="envelope-para"><strong>Para:</strong> Ginga Mídia, Araraquara · SP</p>
 
@@ -527,14 +534,50 @@
     </dialog>
 
     <!-- ============ RODAPÉ ============ -->
-    <footer class="rodape">
-        <div class="rodape-conteudo">
-            <img class="rodape-logo" src="Imagens/Logo-creme.webp" alt="Ginga Mídia" width="900" height="398" loading="lazy">
-            <p>+ Anúncios &nbsp;+ Fotos &amp; vídeos &nbsp;+ Sites</p>
-            <p><a href="https://wa.me/5516996076565" target="_blank" rel="noopener">Fale com a gente no WhatsApp</a></p>
-            <p><a href="https://www.instagram.com/gingamidiaofc/" target="_blank" rel="noopener">Instagram @gingamidiaofc</a></p>
-            <p class="rodape-copy">© <span id="ano">2026</span> Ginga Mídia. Araraquara, SP.</p>
+    <footer class="rodape" data-cor-whats="amarelo">
+        <div class="rodape-grade">
+            <div class="rodape-bloco rodape-marca">
+                <img class="rodape-logo" src="Imagens/Logo-creme.webp" alt="Ginga Mídia" width="900" height="398" loading="lazy">
+                <ul class="rodape-lista rodape-servicos">
+                    <li>+ Anúncios</li>
+                    <li>+ Fotos &amp; vídeos</li>
+                    <li>+ Sites</li>
+                </ul>
+            </div>
+            <nav class="rodape-bloco" aria-labelledby="rodape-nav">
+                <h2 class="rodape-titulo" id="rodape-nav">Nesta página</h2>
+                <ul class="rodape-lista rodape-lista-dupla">
+                    <li><a href="#servicos">Serviços</a></li>
+                    <li><a href="#como-funciona">Como funciona</a></li>
+                    <li><a href="#quem-somos">Quem somos</a></li>
+                    <li><a href="#portfolio">Portfólio</a></li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#contato">Orçamento</a></li>
+                </ul>
+            </nav>
+            <div class="rodape-bloco">
+                <h2 class="rodape-titulo">Contato</h2>
+                <ul class="rodape-lista">
+                    <li><a href="https://wa.me/5516996076565" target="_blank" rel="noopener">Fale com a gente no WhatsApp</a></li>
+                    <li><a href="https://www.instagram.com/gingamidiaofc/" target="_blank" rel="noopener">Instagram @gingamidiaofc</a></li>
+                </ul>
+            </div>
+            <div class="rodape-bloco rodape-local">
+                <div>
+                    <h2 class="rodape-titulo">Onde estamos</h2>
+                    <p class="rodape-cidade">Araraquara, SP</p>
+                </div>
+                <svg class="rodape-carimbo" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true" focusable="false">
+                    <defs><path id="circuloRodape" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+                    <circle cx="60" cy="60" r="57" class="rodape-carimbo-aro"/>
+                    <circle cx="60" cy="60" r="31" class="rodape-carimbo-aro"/>
+                    <text class="rodape-carimbo-texto"><textPath href="#circuloRodape">GINGA MÍDIA • ARARAQUARA • SP •</textPath></text>
+                    <text class="rodape-carimbo-centro" x="60" y="57" text-anchor="middle">CEP</text>
+                    <text class="rodape-carimbo-centro" x="60" y="73" text-anchor="middle">14800</text>
+                </svg>
+            </div>
         </div>
+        <p class="rodape-copy">© <span id="ano">2026</span> Ginga Mídia. Araraquara, SP.</p>
     </footer>
 
     <!-- Botão flutuante do WhatsApp -->
@@ -545,6 +588,11 @@
     </a>
 
     <script src="script.js"></script>
+    <script src="whats-cor.js"></script>
     <script src="vitrine.js"></script>
+    <script src="vitrine-anuncios.js"></script>
+    <script src="vitrine-portfolio.js"></script>
+    <script src="vitrine-site.js"></script>
+    <script src="passos.js"></script>
 </body>
 </html>

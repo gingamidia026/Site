@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <!-- passo 4, resultado: colunas crescendo e seta subindo -->
+  <rect width="320" height="200" fill="#F2E8DC"/>
+  <circle cx="160" cy="100" r="80" fill="#F2AE30"/>
+  <!-- colunas -->
+  <rect x="82" y="128" width="30" height="40" fill="#1D233B"/>
+  <rect x="124" y="106" width="30" height="62" fill="#03588C"/>
+  <rect x="166" y="82" width="30" height="86" fill="#1D233B"/>
+  <rect x="208" y="56" width="30" height="112" fill="#BF471B"/>
+  <!-- chão -->
+  <rect x="66" y="166" width="188" height="8" rx="4" fill="#1D233B"/>
+  <!-- seta subindo -->
+  <path fill="none" stroke="#1D233B" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" d="M80 104l42-22 32 10 54-48"/>
+  <path fill="#1D233B" d="M222 28l-32 6 24 26Z"/>
+</svg>

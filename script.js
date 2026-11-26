@@ -200,3 +200,35 @@ modal.addEventListener('close', () => {
 
 // Ano no rodapé
 document.getElementById('ano').textContent = new Date().getFullYear();
+
+// Celular: as aves do topo ficam na altura dos selos, cada uma num vão entre dois selos
+// (tucano entre o 1º e o 2º, arara entre o 2º e o 3º). Recalcula quando os selos mudam de altura.
+(() => {
+  const decoracao = document.querySelector('.hero .decoracao');
+  const grade = document.querySelector('.hero .grade-tres');
+  if (!decoracao || !grade) return;
+  const aves = [decoracao.querySelector('.ave-tucano'), decoracao.querySelector('.ave-arara')];
+  const celular = window.matchMedia('(max-width: 767px)');
+
+  const posicionarAves = () => {
+    if (!celular.matches) {
+      aves.forEach(ave => ave && ave.style.removeProperty('--ave-topo'));
+      return;
+    }
+    const selos = grade.querySelectorAll(':scope > .selo');
+    aves.forEach((ave, i) => {
+      if (!ave || !selos[i + 1]) return;
+      // meio do vão entre o selo i e o seguinte, medido em offsetTop (ignora o deslocamento da
+      // animação de entrada); a grade está dentro do hero, que é também a caixa da decoração
+      const fimSelo = selos[i].offsetTop + selos[i].offsetHeight;
+      const meioVao = grade.offsetTop + (fimSelo + selos[i + 1].offsetTop) / 2;
+      // a cabeça da ave (terço de cima do desenho) fica no vão
+      ave.style.setProperty('--ave-topo', Math.round(meioVao - ave.offsetHeight * 0.3) + 'px');
+    });
+  };
+
+  if ('ResizeObserver' in window) new ResizeObserver(posicionarAves).observe(grade);
+  celular.addEventListener('change', posicionarAves);
+  window.addEventListener('load', posicionarAves);
+  posicionarAves();
+})();

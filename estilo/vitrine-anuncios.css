@@ -1,0 +1,107 @@
+/* Vitrine do início, parte anuncios (carrega depois do styles.css e pode sobrescrever a seção VITRINE dele) */
+/* Tamanhos de letra desta parte: .75rem (rótulos do gráfico), --t-rotulo, --t-texto e --t-destaque.
+   Cores: azul no investimento, vermelho nos cliques, amarelo nas impressões; texto sempre no azul escuro. */
+
+/* ---------- prévia dentro do selo ---------- */
+.previa-relatorio { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 6px; padding: 10px 12px; }
+.previa-rel-valor small { font-family: var(--fonte-texto); font-stretch: 100%; font-weight: 600; font-size: var(--t-rotulo); color: var(--cor-texto-suave); }
+.previa-rel-plano { position: relative; display: flex; align-items: flex-end; border-bottom: 2px solid var(--cor-texto); min-height: 0; }
+.previa-rel-coluna { position: relative; flex: 1; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+.previa-rel-barra { width: 62%; height: var(--h); background: var(--campo-azul); border-radius: 2px 2px 0 0; }
+.previa-rel-ponto {
+    position: absolute; left: 50%; bottom: var(--y); z-index: 2;
+    width: 8px; height: 8px; margin: 0 0 -4px -4px;
+    border-radius: 50%; background: var(--cor-acao); border: 2px solid var(--cor-papel);
+}
+.previa-rel-linha, .rel-linha { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; z-index: 1; }
+.previa-rel-linha polyline, .rel-linha polyline { fill: none; stroke: var(--cor-acao); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+/* rodapé empilhado à esquerda: o canto de baixo à direita fica vazio para o aviso "Clique aqui" */
+.previa-rel-rodape { display: flex; flex-direction: column; align-items: flex-start; justify-content: flex-start; gap: 0; padding-right: 40%; line-height: 1.25; font-size: var(--t-rotulo); font-weight: 600; color: var(--cor-texto-suave); }
+.previa-rel-rodape b { font-weight: 700; color: var(--cor-texto); }
+.previa-rel-cliques b { color: var(--cor-acao); }
+
+/* ---------- janela ampliada ---------- */
+.vitrine-relatorio { gap: 28px; }
+.vitrine-relatorio .rel-subtitulo { font-family: var(--fonte-texto); font-stretch: 100%; font-weight: 700; font-size: var(--t-texto); line-height: 1.3; letter-spacing: 0; text-transform: none; margin: 0 0 12px; }
+
+/* os três números do período: lista com fios, sem botão */
+.rel-numeros { display: grid; grid-template-columns: 1fr; gap: 0; margin: 0; border-top: 2px solid var(--cor-fio-forte); border-bottom: 1px solid var(--cor-fio); }
+.rel-numero {
+    display: flex; flex-direction: row; align-items: baseline; justify-content: space-between; gap: 12px;
+    padding: 10px 0; min-height: 0;
+    background: none; color: var(--cor-texto); border: 0; border-radius: 0; cursor: auto;
+}
+.rel-numero + .rel-numero { border-top: 1px solid var(--cor-fio); }
+.rel-numero:active { transform: none; }
+.rel-numero-nome { font-size: var(--t-rotulo); font-weight: 600; color: var(--cor-texto-suave); }
+.rel-numero-valor { margin: 0; }
+@media (min-width: 640px) {
+    .rel-numeros { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .rel-numero { flex-direction: column-reverse; align-items: flex-start; justify-content: flex-end; gap: 4px; padding: 14px 16px 14px 0; }
+    .rel-numero + .rel-numero { border-top: 0; border-left: 1px solid var(--cor-fio); padding-left: 16px; }
+}
+
+/* gráfico único */
+.rel-grafico { margin: 0; }
+.rel-legenda { list-style: none; display: flex; flex-wrap: wrap; gap: 6px 20px; margin: 0 0 14px; padding: 0; font-size: var(--t-rotulo); color: var(--cor-texto); }
+.rel-legenda li { display: flex; align-items: center; gap: 8px; }
+.rel-marca { flex: none; width: 18px; height: 12px; }
+.rel-marca-investimento { background: var(--campo-azul); border-radius: 2px 2px 0 0; }
+.rel-marca-cliques { height: 10px; background: radial-gradient(circle, var(--cor-acao) 4.5px, transparent 5px) center / 10px 10px no-repeat, linear-gradient(var(--cor-acao) 0 0) center / 100% 2.5px no-repeat; }
+.rel-marca-impressoes { height: 4px; background: var(--campo-amarelo); }
+
+.rel-plano, .rel-faixa { display: grid; grid-template-columns: repeat(var(--semanas), minmax(0, 1fr)); }
+.rel-plano { position: relative; height: 230px; border-bottom: 2px solid var(--cor-texto); }
+.rel-coluna { position: relative; display: flex; align-items: flex-end; justify-content: center; min-width: 0; }
+.rel-barra {
+    flex: none; width: 72%; max-width: 76px; height: var(--h);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    padding: 0 0 6px; background: var(--campo-azul); border: 0; border-radius: 3px 3px 0 0; cursor: auto;
+}
+.rel-barra-valor { max-width: none; overflow: visible; font-size: .75rem; font-weight: 700; white-space: nowrap; color: var(--sobre-campo-azul); }
+.rel-ponto {
+    position: absolute; left: 50%; bottom: var(--y); z-index: 2;
+    width: 12px; height: 12px; margin: 0 0 -6px -6px;
+    border-radius: 50%; background: var(--cor-acao); border: 2px solid var(--cor-papel);
+}
+.rel-ponto-valor {
+    position: absolute; left: 50%; bottom: 13px; transform: translateX(-50%);
+    padding: 1px 6px; border-radius: var(--raio-pequeno);
+    background: var(--cor-papel); border: 1.5px solid var(--cor-acao); color: var(--cor-texto);
+    font-size: .75rem; font-weight: 700; line-height: 1.3; white-space: nowrap;
+}
+.rel-faixa span { min-width: 0; text-align: center; font-size: .75rem; font-weight: 700; color: var(--cor-texto); white-space: nowrap; }
+.rel-datas { padding-top: 6px; }
+.rel-vistas { margin-top: 12px; }
+/* impressões: o número e um traço amarelo proporcional embaixo */
+.rel-vistas span { padding-bottom: 7px; background: linear-gradient(var(--campo-amarelo) 0 0) center bottom / calc(var(--w) * .8) 4px no-repeat; }
+.rel-faixa-nome { margin: 2px 0 0; max-width: none; text-align: center; font-size: .75rem; font-weight: 400; color: var(--cor-texto-suave); }
+
+/* tabela só para leitor de tela */
+.rel-so-leitor { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+
+/* leitura dos números: lista com fios, valor à esquerda e explicação à direita */
+.rel-leitura { margin: 0; border-top: 2px solid var(--cor-fio-forte); }
+.rel-leitura-item { display: grid; grid-template-columns: 1fr; gap: 4px; padding: 14px 0; border-bottom: 1px solid var(--cor-fio); }
+.rel-leitura dt { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 8px; }
+.rel-leitura-valor { font-family: var(--fonte-titulo); font-stretch: 62.5%; font-weight: 900; font-size: var(--t-destaque); line-height: 1.05; color: var(--cor-texto); }
+.rel-leitura-nome { font-size: var(--t-rotulo); font-weight: 700; color: var(--cor-texto); }
+.rel-leitura dd { margin: 0; max-width: 62ch; font-size: var(--t-texto); font-weight: 400; line-height: 1.5; color: var(--cor-texto); }
+@media (min-width: 640px) {
+    .rel-leitura-item { grid-template-columns: 190px minmax(0, 1fr); gap: 24px; align-items: baseline; }
+    .rel-leitura dt { flex-direction: column; gap: 2px; }
+}
+
+/* quanto rendeu e estimativa de clientes: mesma lista com fios, em bloco à parte, cada linha com o selo do que é
+   dado, estimativa ou hipótese */
+.rel-estimativa { margin-top: 28px; padding: 16px 16px 18px; background: var(--cor-fundo); border-left: 4px solid var(--campo-amarelo); border-radius: 0 var(--raio-pequeno) var(--raio-pequeno) 0; }
+.rel-estimativa .rel-leitura-item:last-child { border-bottom: 0; }
+.rel-selo-estimativa { flex: 1 1 100%; font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--cor-texto-suave); }
+.rel-estimativa-aviso { margin: 4px 0 0; padding-top: 12px; border-top: 1px solid var(--cor-fio); max-width: 70ch; font-size: var(--t-rotulo); font-weight: 400; line-height: 1.5; color: var(--cor-texto-suave); }
+.rel-estimativa-aviso a { color: var(--cor-texto); font-weight: 600; text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+.rel-estimativa-aviso a:focus-visible { outline: 2px solid var(--cor-foco); outline-offset: 2px; }
+
+@media (max-width: 420px) {
+    .rel-barra { width: 80%; }
+    .rel-ponto-valor { padding: 1px 5px; }
+}

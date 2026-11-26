@@ -18,7 +18,9 @@
     <link rel="canonical" href="https://gingamidia.com/estetica/">
     <meta name="theme-color" content="#F2E8DC">
 
-    <link rel="icon" type="image/png" href="../Imagens/Favicon-192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../Imagens/Favicon-onca-32.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="../Imagens/Favicon-onca-192.png">
+    <link rel="apple-touch-icon" href="../Imagens/Favicon-onca-192.png">
 
     <link rel="stylesheet" href="../estilo/cores.css">
     <link rel="stylesheet" href="../estilo/fontes.css">
@@ -26,6 +28,7 @@
     <link rel="preload" href="../estilo/fontes/ArchivoCondensed-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="../estilo/landing.css">
     <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../estilo/rodape.css">
 </head>
 <body>
 
@@ -42,7 +45,7 @@
 
     <main id="conteudo">
 
-        <section class="hero" aria-labelledby="titulo-hero">
+        <section class="hero" aria-labelledby="titulo-hero" data-cor-whats="azul-escuro">
             <h1 id="titulo-hero" class="hero-titulo">Anúncios, fotos e vídeos para a sua clínica de estética</h1>
             <p class="hero-apoio">A Ginga Mídia é de Araraquara. Gravamos na sua clínica, cuidamos dos anúncios no Google e no Instagram e mostramos cada peça para você aprovar antes de publicar.</p>
             <a class="botao zap" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Tenho%20uma%20cl%C3%ADnica%20de%20est%C3%A9tica%20e%20quero%20uma%20proposta%20da%20Ginga.%20%28c%C3%B3digo%20estetica%29" target="_blank" rel="noopener">Pedir proposta pelo WhatsApp</a>
@@ -87,7 +90,7 @@
         </section>
 
         <!-- #3 · COMO FUNCIONA -->
-        <section class="secao passos" aria-labelledby="titulo-passos">
+        <section class="secao passos" aria-labelledby="titulo-passos" data-cor-whats="amarelo">
             <h2 id="titulo-passos" class="titulo">Do primeiro contato ao anúncio no ar</h2>
             <ol class="passos-lista">
                 <li><span class="passo-numero" aria-hidden="true">1</span><div><h3>Conversa</h3><p>Você conta sobre a clínica pelo WhatsApp. Pode ser por áudio.</p></div></li>
@@ -184,7 +187,7 @@
         </section>
 
         <!-- #5 · O RESUMO DA SEMANA -->
-        <section class="secao resumo" aria-labelledby="titulo-resumo">
+        <section class="secao resumo" aria-labelledby="titulo-resumo" data-cor-whats="azul-escuro">
             <h2 id="titulo-resumo" class="titulo">O que você recebe toda semana</h2>
             <p class="texto-largo">Um resumo de uma tela, pelo WhatsApp, sem termo de agência.</p>
 
@@ -298,13 +301,13 @@
         </section>
 
         <!-- #8 · CHAMADA FINAL -->
-        <section class="secao final" aria-labelledby="titulo-final">
+        <section class="secao final" aria-labelledby="titulo-final" data-cor-whats="papel">
             <h2 id="titulo-final" class="titulo">Conte o que a sua clínica precisa</h2>
             <p class="texto-largo">A gente responde pelo WhatsApp e manda a proposta por escrito.</p>
             <div class="final-carta">
                 <form class="formulario" id="formContato" data-origem="página de clínicas de estética" data-codigo="estetica" novalidate>
                     <div class="selo-colado" aria-hidden="true">
-                        <div class="selo-face"><img src="../Imagens/Tucano-ginga.webp" alt="" width="449" height="466"></div>
+                        <div class="selo-face"><img src="../Imagens/Onca-ginga.webp" alt="" width="680" height="716"></div>
                     </div>
                     <p class="envelope-para"><strong>Para:</strong> Ginga Mídia, Araraquara · SP</p>
 
@@ -338,8 +341,34 @@
         <div class="modal-conteudo modal-formulario" id="modalConteudo"></div>
     </dialog>
 
-    <footer class="rodape">
-        <p>Ginga Mídia · Araraquara, SP · Instagram <a href="https://www.instagram.com/gingamidiaofc/" target="_blank" rel="noopener">@gingamidiaofc</a></p>
+    <footer class="rodape rodape-enxuto" data-cor-whats="amarelo">
+        <div class="rodape-grade">
+            <div class="rodape-bloco rodape-marca">
+                <img class="rodape-logo" src="../Imagens/Logo-creme.webp" alt="Ginga Mídia" width="900" height="398" loading="lazy">
+            </div>
+            <div class="rodape-bloco">
+                <h2 class="rodape-titulo">Contato</h2>
+                <ul class="rodape-lista">
+                    <li><a href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Tenho%20uma%20cl%C3%ADnica%20de%20est%C3%A9tica%20e%20quero%20uma%20proposta%20da%20Ginga.%20%28c%C3%B3digo%20estetica%29" target="_blank" rel="noopener">Fale com a gente no WhatsApp</a></li>
+                    <li><a href="https://www.instagram.com/gingamidiaofc/" target="_blank" rel="noopener">Instagram @gingamidiaofc</a></li>
+                </ul>
+            </div>
+            <div class="rodape-bloco rodape-local">
+                <div>
+                    <h2 class="rodape-titulo">Onde estamos</h2>
+                    <p class="rodape-cidade">Araraquara, SP</p>
+                </div>
+                <svg class="rodape-carimbo" viewBox="0 0 120 120" width="120" height="120" aria-hidden="true" focusable="false">
+                    <defs><path id="circuloRodape" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+                    <circle cx="60" cy="60" r="57" class="rodape-carimbo-aro"/>
+                    <circle cx="60" cy="60" r="31" class="rodape-carimbo-aro"/>
+                    <text class="rodape-carimbo-texto"><textPath href="#circuloRodape">GINGA MÍDIA • ARARAQUARA • SP •</textPath></text>
+                    <text class="rodape-carimbo-centro" x="60" y="57" text-anchor="middle">CEP</text>
+                    <text class="rodape-carimbo-centro" x="60" y="73" text-anchor="middle">14800</text>
+                </svg>
+            </div>
+        </div>
+        <p class="rodape-copy">© Ginga Mídia. Araraquara, SP.</p>
     </footer>
 
     <a class="whats-flutuante zap" href="https://wa.me/5516996076565?text=Ol%C3%A1%21%20Tenho%20uma%20cl%C3%ADnica%20de%20est%C3%A9tica%20e%20quero%20uma%20proposta%20da%20Ginga.%20%28c%C3%B3digo%20estetica%29" target="_blank" rel="noopener" aria-label="WhatsApp: pedir proposta">
@@ -350,6 +379,7 @@
     </a>
 
     <script src="script.js"></script>
+    <script src="../whats-cor.js"></script>
     <script src="../landing-formulario.js"></script>
 </body>
 </html>

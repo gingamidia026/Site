@@ -563,7 +563,7 @@ a { color: inherit; }
     gap: 48px;
     align-items: center;
 }
-/* o tucano da Ginga num selo serrilhado creme (ilustração 1 da seção; a arara é a 2) */
+/* a onça, mascote da Ginga, num selo serrilhado creme (ilustração 1 da seção; a arara é a 2) */
 .sobre-figura.selo { --face: var(--cor-papel); max-width: min(380px, 80%); width: 100%; }
 .sobre-figura .selo-face { padding: 20px 20px 8px; }
 .sobre-figura .selo-face::after { display: none; }
@@ -647,6 +647,7 @@ a { color: inherit; }
     overflow: hidden;
 }
 .ficha-medalha img { width: 70%; }
+/* o rosto da onça ocupa o quadro inteiro do arquivo: 70% cabe no círculo sem cortar as orelhas */
 
 .ficha-faixa {
     background-color: var(--cor-texto);
@@ -841,7 +842,7 @@ a { color: inherit; }
     display: flex;
     flex-direction: column;
 }
-/* selo colado: picote amarelo com o tucano, torto no canto do envelope */
+/* selo colado: picote amarelo com a onça sobre papel claro (no amarelo o rosto laranja some), torto no canto do envelope */
 .selo-colado {
     --furo: 5px;
     --fundo: var(--campo-amarelo);
@@ -856,7 +857,7 @@ a { color: inherit; }
     filter: drop-shadow(0 1px 1px rgba(29, 35, 59, .25)) drop-shadow(0 6px 10px rgba(29, 35, 59, .12));
     transform: rotate(7deg);
 }
-.selo-colado .selo-face { display: block; height: auto; padding: 8px; }
+.selo-colado .selo-face { display: block; height: auto; padding: 8px; background-color: var(--cor-papel); }
 .selo-colado .selo-face::after { display: none; }
 .selo-colado img { position: relative; z-index: 1; width: 100%; }
 
@@ -896,24 +897,9 @@ a { color: inherit; }
 .formulario .botao { align-self: flex-start; }
 .form-aviso { margin: 12px 0 0; font-weight: 600; min-height: 1.5em; color: var(--vermelho); }
 
-/* ================= RODAPÉ ================= */
-.rodape {
-    position: relative;
-    background-color: var(--campo-escuro);
-    color: var(--sobre-campo-escuro);
-    padding: clamp(48px, 6vw, 72px) var(--margem) 48px;
-}
-.rodape-conteudo {
-    max-width: var(--largura);
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-}
-.rodape-logo { height: 48px; width: auto; margin-bottom: 8px; }
-.rodape a { color: inherit; text-underline-offset: 4px; }
-.rodape-copy { font-size: var(--t-rotulo); margin-top: 16px; padding-top: 16px; border-top: 1px solid rgba(242, 232, 220, .3); width: 100%; max-width: none; }
+/* ================= RODAPÉ =================
+   O rodapé mora em estilo/rodape.css. Daqui sobra só o respiro embaixo do logo, que o rodapé novo ainda usa. */
+.rodape-logo { margin-bottom: 8px; }
 
 /* ================= WHATSAPP FLUTUANTE ================= */
 .whats-flutuante {
@@ -927,11 +913,19 @@ a { color: inherit; }
     display: grid;
     place-items: center;
     box-shadow: var(--sombra-media);
-    transition: transform var(--duracao) var(--ease-saida);
+    transition: transform var(--duracao) var(--ease-saida), background-color .2s var(--ease-saida), color .2s var(--ease-saida);
 }
 @media (hover: hover) { .whats-flutuante:hover { transform: translateY(-2px); } }
 .whats-flutuante:active { transform: scale(.97); }
 .whats-flutuante:focus-visible { outline-color: var(--cor-foco); }
+
+/* a cor do botão acompanha o bloco atrás dele (whats-cor.js troca a classe): contraste do botão com o
+   fundo do bloco de pelo menos 3:1 e do ícone com o botão de pelo menos 4,5:1. Sem classe: vermelho no creme */
+.whats-flutuante.whats-azul-escuro { background-color: var(--campo-escuro); color: var(--sobre-campo-escuro); }
+.whats-flutuante.whats-amarelo { background-color: var(--campo-amarelo); color: var(--sobre-campo-amarelo); }
+.whats-flutuante.whats-papel { background-color: var(--cor-papel); color: var(--cor-texto); }
+/* no bloco azul escuro o anel de foco azul escuro sumiria */
+.whats-flutuante.whats-amarelo:focus-visible { outline-color: var(--campo-amarelo); }
 
 /* ================= VER MAIS E JANELA AMPLIADA ================= */
 [data-ampliar] { cursor: pointer; position: relative; }
@@ -1091,6 +1085,23 @@ body.modal-aberto { overflow: hidden; }
     .botao:hover, .botao:active, .whats-flutuante:hover, .whats-flutuante:active { transform: none; }
     .modal-conteudo, .modal-selo::backdrop { animation-duration: .01ms; }
     .carimbo-giro { animation: none; }
+}
+
+/* ================= SÓ CELULAR (até 767 px; o tablet começa em 768) ================= */
+@media (max-width: 767px) {
+    /* o arco vira só a curva de cima, mais larga que a tela, no respiro entre o menu e o logo:
+       as laterais saem da tela antes de chegar a qualquer texto */
+    .hero::before {
+        left: -12vw; right: -12vw;
+        bottom: auto;
+        height: 64px;
+        border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+    }
+    /* as aves descem para a faixa dos selos (aparecem na margem e nos vãos entre um selo e outro);
+       o script.js põe --ave-topo no vão certo, e a porcentagem fica de reserva sem script */
+    .ave { width: 30vw; }
+    .ave-tucano { left: -13vw; top: var(--ave-topo, 40%); }
+    .ave-arara { right: -13vw; top: var(--ave-topo, 64%); }
 }
 
 /* ================= TABLET / COMPUTADOR ================= */
