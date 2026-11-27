@@ -699,7 +699,7 @@ a { color: inherit; }
     display: flex;
     flex-direction: column;
 }
-/* selo colado: picote amarelo com a onça sobre papel claro (no amarelo o rosto laranja some), torto no canto da carta */
+/* selo colado: picote amarelo com a onça inteira sobre papel claro, torto no canto da carta */
 .selo-colado {
     --furo: 5px;
     --fundo: var(--campo-amarelo);
@@ -715,7 +715,7 @@ a { color: inherit; }
     transform: rotate(7deg);
 }
 .selo-colado .selo-face { display: block; padding: 8px; background-color: var(--cor-papel); }
-.selo-colado img { width: 100%; }
+.selo-colado img { width: 72%; margin-inline: auto; }
 
 .envelope-para { padding: 0 100px 14px 0; margin-bottom: 20px; border-bottom: 3px dashed var(--cor-texto); }
 .formulario label, .formulario legend { font-weight: 600; margin-bottom: 6px; }

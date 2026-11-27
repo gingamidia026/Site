@@ -567,6 +567,7 @@ a { color: inherit; }
 .sobre-figura.selo { --face: var(--cor-papel); max-width: min(380px, 80%); width: 100%; }
 .sobre-figura .selo-face { padding: 20px 20px 8px; }
 .sobre-figura .selo-face::after { display: none; }
+.sobre-figura .selo-face img { width: auto; max-height: min(52vh, 420px); margin-inline: auto; }
 .sobre-figura img { width: 100%; }
 .sobre-texto p { margin-top: 16px; }
 .sobre-texto .titulo-contorno { margin-bottom: 8px; }
@@ -646,8 +647,8 @@ a { color: inherit; }
     place-items: center;
     overflow: hidden;
 }
-.ficha-medalha img { width: 70%; }
-/* o rosto da onça ocupa o quadro inteiro do arquivo: 70% cabe no círculo sem cortar as orelhas */
+.ficha-medalha img { width: auto; height: 86%; }
+/* a onça inteira, sentada, é mais alta que larga: entra pela altura do círculo */
 
 .ficha-faixa {
     background-color: var(--cor-texto);
@@ -842,7 +843,7 @@ a { color: inherit; }
     display: flex;
     flex-direction: column;
 }
-/* selo colado: picote amarelo com a onça sobre papel claro (no amarelo o rosto laranja some), torto no canto do envelope */
+/* selo colado: picote amarelo com a onça inteira sobre papel claro, torto no canto do envelope */
 .selo-colado {
     --furo: 5px;
     --fundo: var(--campo-amarelo);
@@ -859,7 +860,7 @@ a { color: inherit; }
 }
 .selo-colado .selo-face { display: block; height: auto; padding: 8px; background-color: var(--cor-papel); }
 .selo-colado .selo-face::after { display: none; }
-.selo-colado img { position: relative; z-index: 1; width: 100%; }
+.selo-colado img { position: relative; z-index: 1; width: 72%; margin-inline: auto; }
 
 .envelope-para { padding: 0 100px 14px 0; margin-bottom: 20px; border-bottom: 3px dashed var(--cor-texto); }
 .formulario label, .formulario legend { font-weight: 600; margin-bottom: 6px; }
